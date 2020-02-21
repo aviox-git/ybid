@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link href="assets/css/invoice.css" rel="stylesheet">
+  <title>6003-TICKETS-INVOICE-PNS</title>
+  <meta name="description" content="">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<div class="logo-alignmnet" style="width: 100%; justify-content: flex-start; margin-bottom: 36px;">
+			 <address id="logo">
+	      		<img src="./assets/images/dummy-logo.png" class="img-fluid">
+	    	</address>
+			<div id="ABC1">
+				<h4>ABC COMPANY</h4>
+				<p>
+					1425 Cecile Street<br>
+					seattle, Washington, 98745<br>
+					United States<br>
+					www.abccompany.com
+				</p>
+			</div>
+		</div>
+		<div id="clear"></div>
+	</header>
+	<!-- <div class="logo-alignmnet">
+		<div id="ABC1" style="margin-right: 108px; margin-bottom: 36px;">
+			<h4 style="margin-bottom: 0;">SEND TO:</h4>
+			<p style="margin-top: 0;">
+				Test Test<br>
+				123 W Main ST, 123 W Main St<br>
+				Mesa, Washington, 85202<br>
+				United States
+			</p>
+		</div>
+	</div> -->
+	<div id="invoice_table">
+		<table id="table_content">
+			<tr>
+				<th>Last Name</th>
+				<th>First Name</th>
+				<th>Address</th>
+				<th>City</th>
+				<th>State</th>
+				<th>Zip</th>
+				<th>Country</th>
+				<th>Telephone</th>
+				<th>Email</th>
+			</tr>
+			<tr>
+				<td>Cust</td>
+				<td>Cust</td>
+				<td>12345 Orcas Street</td>
+				<td>Seattle</td>
+				<td>WA</td>
+				<td>98999</td>
+				<td>USA</td>
+				<td>55678946477</td>
+				<td>demo@gmail.com</td>
+			</tr>
+		</table>
+		<table id="invoice_detail">
+			<tr id="tr_bg">
+				<td>
+					<h5>
+						Invoice Date / Time:
+					</h5>
+					<span>2014-02-23 / 12:30 PM</span>
+				</td>
+				<td></td>
+				<td align="right">
+					<h5>
+						Invoice No:
+					</h5>
+					<span>%%hhrr1000</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Total Purchase
+				</td>
+				<td style="white-space: nowrap;">Special Posting Fee</td>
+				<td align="right" >
+					$95.00
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" align="center">Attendees: ##</td>
+			</tr>
+			<tr>
+				<td>Subtotal</td>
+				<td></td>
+				<td align="right" >$95.00</td>
+			</tr>
+			<tr>
+				<td>Less: Discount Code</td>
+				<td></td>
+				<td align="right" >$0.00</td>
+			</tr>
+			<tr id="tr_bg">
+				<td style="font-weight: bold;">Grand Total</td>
+				<td></td>
+				<td  align="right" style="font-weight: bold;">$95.00</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/dashboard.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<title>index</title>
+</head>
+<body>
+	<!-- Navbar Start -->
+	<div class="header_bottom">
+		<div class="container-fluid">
+			<div class="nav_area">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<a class="navbar-brand" href="index.html">
+						<!-- <img src="./assets/images/ticket.png" alt="ticket"> -->
+						demo Logo
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item active">
+								<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="about.html">About Us</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#why_us">Why Us</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">FAQ</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Blog</a>
+							</li>
+							<!-- <li class="nav-item">
+								<a class="nav-link" href="#">Image Editor</a>
+							</li> -->
+							<li class="nav-item">
+								<a class="nav-link" href="contact.html">Contact</a>
+							</li>
+							<li class="nav-item align-self-center finder_code">
+								
+								<input class="text-center" type="text" name="email" placeholder="EVENT FINDER CODE">
+							</li>
+							<li class="nav-item dropdown"><!-- 
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Dashboard
+								</a> -->
+								<a href="#" class="nav-link">Dashboard</a>
+								<!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item" href="#">Action</a>
+									<a class="dropdown-item" href="#">Another action</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="#">Something else here</a>
+								</div> -->
+							</li>
+							<!-- <li class="nav-item">
+								<a class="nav-link" href="contact.html">Cust</a>
+							</li>
+							<li class="d-flex nav-item login_sign_link">
+								<a class="nav-link sign_link" href="#">Sign Out</a>
+							</li> -->
+							<li class="d-flex nav-item ml-3 login_sign_link">
+								<a class="nav-link login_link" href="login.html">GOGO /&nbsp;</a>
+								<a class="nav-link sign_link" href="#"> Sign Up</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<!-- Navbar End -->
+	<!--Section Start-->
+	<section style="background-color: #f7f7f7;">
+		<!-- <div class="about_us">
+			<h1>About Us</h1>
+			<div class="border-bottom my-3"></div>
+		</div> -->
+		<div class="container-fluid">
+			<div class="about_us_contain">
+				<h2>Order Histroy</h2>
+				<div class="border-bottom my-2 text-left" style="margin-left: 0; border-bottom: 3px solid #000 !important;"></div>
+				<div class="ticket_manage_post mt-5">
+							<div class="my-frofile-form">
+											<form>
+												<div class="d-flex justify-content-center">
+													<div class="mr-3">
+														<label for="" class="mb-1">From</label>
+														<input type="text" class="form-control">
+													</div>
+													<div class="mr-3">
+														<label for="" class="mb-1">To</label>
+														<input type="text" class="form-control">
+													</div>
+												</div>
+					
+					
+												<div class="posting_table table-responsive">
+													<table id="example" class="table table-striped table-bordered" style="width:100%">
+							<thead>
+								<tr>
+									 <th>Invoice</th>
+									<th>Date</th>
+									<th>Title</th>
+									<th>Name</th>
+									<th>Donation</th>
+									<th>Total</th>
+									<th>Yearbook<br>Delivery Status</th>
+									<th>Portraiture<br>
+										Download
+									</th>
+									<th>ID Card<br>
+									Delivery Status</th>
+									<th>Contact<br>Organizer</th>
+								</tr>
+							</thead>
+							<tbody>
+					
+							  <tr>
+								  <td class="image_id">PENDING ORDER</td>
+								  <td></td>
+								  <td></td>
+								  <td></td>
+								  <td></td>
+								  <td></td>
+								  <td></td>
+								  <td></td>
+								  <td></td>
+								  <td></td>
+							  </tr>
+								<tr>
+									<td class="image_id">EP707712345</td>
+									<td>2016-10-30 </td>
+									<td>PNBCOP16</td>
+									<th>John Doe</th>
+									<td>$10.00</td>
+									<td>$55.00</td>
+									<td class="text-center">
+										<a href="#" data-toggle="modal" data-target="#shipping_modal">
+												<i class="fas fa-book-open red"></i>
+										</a>
+									</td>
+									<td class="text-center">
+											<a href="#" data-toggle="modal" data-target="#view_img_describ">
+													<i class="fas fa-download mr-2 red" aria-hidden="true"></i>
+											</a>
+										</td>
+									<td class="list_icon text-center">
+										<a href="#" data-toggle="modal" data-target="#shipping_modal_truck">
+											<i class="fa fa-truck red" aria-hidden="true"></i>
+										</a>					
+									</td>
+									<td class="text-center">
+											<a href="#" data-toggle="modal" data-target="#error_sign">
+												<i class="fa fa-exclamation-triangle blue" aria-hidden="true"></i>
+											</a>
+										</td>
+								</tr>
+								<tr>
+									<td class="image_id">EP707712345</td>
+									<td>2016-10-30 </td>
+									<td>PNBCOP16</td>
+									<th>John Doe</th>
+									<td>$10.00</td>
+									<td>$55.00</td>
+									<td class="text-center">
+										<a href="#" data-toggle="modal" data-target="#shipping_modal">
+												<i class="fas fa-book-open orange"></i>
+										</a>
+									</td>
+									<td class="text-center">
+											<a href="#" data-toggle="modal" data-target="#view_img_describ">
+													<i class="fas fa-download mr-2 green" aria-hidden="true"></i>
+											</a>
+										</td>
+									<td class="list_icon text-center">
+										<a href="#" data-toggle="modal" data-target="#shipping_modal_truck">
+											<i class="fa fa-truck orange" aria-hidden="true"></i>
+										</a>					
+									</td>
+									<td class="text-center">
+											<a href="#" data-toggle="modal" data-target="#error_sign">
+												<i class="fa fa-exclamation-triangle blue" aria-hidden="true"></i>
+											</a>
+										</td>
+								</tr>
+								<tr>
+									<td class="image_id">EP707712345</td>
+									<td>2016-10-30 </td>
+									<td>PNBCOP16</td>
+									<th>John Doe</th>
+									<td>$10.00</td>
+									<td>$55.00</td>
+									<td class="text-center">
+										<a href="#" data-toggle="modal" data-target="#shipping_modal">
+												<i class="fas fa-book-open green"></i>
+										</a>
+									</td>
+									<td class="text-center">
+											<a href="#" data-toggle="modal" data-target="#view_img_describ">
+													<i class="fas fa-download mr-2 green" aria-hidden="true"></i>
+											</a>
+										</td>
+									<td class="list_icon text-center">
+										<a href="#" data-toggle="modal" data-target="#shipping_modal_truck">
+											<i class="fa fa-truck green" aria-hidden="true"></i>
+										</a>					
+									</td>
+									<td class="text-center">
+											<a href="#" data-toggle="modal" data-target="#error_sign">
+												<i class="fa fa-exclamation-triangle black" aria-hidden="true"></i>
+											</a>
+										</td>
+								</tr>
+							   
+							   
+							</tbody>
+						   <!--  <tfoot>
+								<tr>
+									<th>Name</th>
+									<th>Position</th>
+									<th>Office</th>
+									<th>Age</th>
+									<th>Start date</th>
+									<th>Salary</th>
+								</tr>
+							</tfoot> -->
+						</table>
+												</div>
+												
+											
+											</form>
+					
+					<div class="modal fade bd-example-modal-lg" id="Thankyou" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						<div class="modal-dialog modal-lg" role="document">
+							<div class="modal-content">
+								<div class="d-flex justify-content-between upload_links mt-3 mb-0 mx-3">
+									<a href="#">Upload Background Image</a>
+									<a href="#">Free Images</a>
+									<a href="#">Send Thank You Note Now</a>
+								</div>
+								<div class="container-fluid background-img">
+									<div class="row mt-3 mb-3">
+										<div class="col-md-12">
+											<div class="border py-4 px-3 border-flower">
+												<div class="invited_area">
+													<h1 class="text-center">
+														<img src="./assets/images/thankyou1.png" class="img-fluid" alt="thankyou1">
+													</h1>
+													<div class="text-center mb-3 mt-3">
+														<div class="d-flex justify-content-center">
+															<i class="fas fa-star mr-3"></i>
+															<i class="fas fa-star mr-3"></i>
+															<i class="fas fa-star mr-3"></i>
+															<i class="fas fa-star mr-3"></i>
+															<i class="fas fa-star"></i>
+														</div>
+													</div>
+													<div>
+														<label for="">Name</label>
+														<input type="text" class="form-control mb-3" placeholder="Enter Name">
+													</div>
+													<div>
+														<label for="">Message</label>
+														<textarea name="" id="" cols="30" rows="10" class="form-control mb-3" placeholder="Message"></textarea>
+													</div>
+													<div>
+														<label for="">Host</label>
+														<input type="text" class="form-control" placeholder="Host Name">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- shipping modal -->
+					<div id="shipping_modal" class="modal fade" role="dialog">
+							<div class="modal-dialog">
+						  
+							  <!-- Modal content-->
+							  <div class="modal-content">
+								<div class="modal-header">
+								  <div class="d-flex justify-content-between w-100">
+										<img src="./assets/images/YEARBOOK.png" alt="YEARBOOK" class="img-fluid">
+								  		<button type="button" class="close" data-dismiss="modal">×</button>
+									</div>
+								</div>
+								<div class="modal-body">
+								  <table class="table table-striped">
+							<thead>
+							  <tr>
+								<th scope="col">ORDER STATUS</th>
+								<th class="text-right" scope="col">FULFILLMENT Date: 2018-12-17</th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<td colspan="2">Si Daniels<br>5215 47th Ave S<br>Seattle, Washington, 98118<br>United States</td>
+						   
+							  </tr>
+							  <tr>
+								<td><span class="font-weight-bold">Invoice Date /Time</span><br><span class="modal_date">2016-12-06 / 19:43 pm</span></td>
+								<td><span class="font-weight-bold">Invoice Number</span><br><span class="modal_date">EP5829108</span></td>
+							  </tr>
+							  <tr>
+								  <th>Processing History</th>
+							  </tr>
+							  <tr>
+			  <td><img src="./assets/images/yellow.jpg" alt="yellow" class="img-fluid"> 2016-12-07 / 10:14 am</td>
+		  </tr>
+		  <tr>
+			  <td><img src="./assets/images/green.jpg" alt="yellow" class="img-fluid"> 2016-12-07 / 09:27 am</td>
+		  </tr>
+
+						  
+							</tbody>
+						  </table>
+								</div>
+							  </div>
+						  
+							</div>
+						  </div>
+<!-- modal end -->
+<!-- shipping modal -->
+<div id="shipping_modal_truck" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+	  
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  	<div class="d-flex justify-content-between w-100">
+					<img src="./assets/images/IDCARD.png" alt="IDCARD" class="img-fluid">
+					<button type="button" class="close" data-dismiss="modal">×</button>
+				</div>
+			</div>
+			<div class="modal-body">
+			  <table class="table table-striped">
+		<thead>
+		  <tr>
+			<th scope="col">ORDER STATUS</th>
+			<th class="text-right" scope="col">FULFILLMENT Date: 2018-12-17</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+			<td colspan="2">Si Daniels<br>5215 47th Ave S<br>Seattle, Washington, 98118<br>United States</td>
+	   
+		  </tr>
+		  <tr>
+			<td><span class="font-weight-bold">Invoice Date /Time</span><br><span class="modal_date">2016-12-06 / 19:43 pm</span></td>
+			<td><span class="font-weight-bold">Invoice Number</span><br><span class="modal_date">EP5829108</span></td>
+		  </tr>
+		
+		  <tr>
+			  <th>Processing History</th>
+		  </tr>
+		  <tr>
+			  <td><img src="./assets/images/yellow.jpg" alt="yellow" class="img-fluid"> 2016-12-07 / 10:14 am</td>
+		  </tr>
+		  <tr>
+			  <td><img src="./assets/images/green.jpg" alt="yellow" class="img-fluid"> 2016-12-07 / 09:27 am</td>
+		  </tr>
+
+	  
+		</tbody>
+	  </table>
+			</div>
+		  </div>
+	  
+		</div>
+	  </div>
+<!-- error modal -->
+<div class="modal fade" id="error_sign">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+  
+		<!-- Modal Header -->
+		<div class="modal-header">
+		  <h4 class="modal-title text-left">TO : Seller Name</h4>
+		  <button type="button" class="close" data-dismiss="modal">×</button>
+		</div>
+  
+		<!-- Modal body -->
+		<div class="modal-body">
+		 <textarea class="form-control" rows="7" placeholder="Enter message here"></textarea>
+		</div>
+  
+		<!-- Modal footer -->
+		<div class="modal-footer justify-content-start">
+			<button type="button" class="btn btn-warning" data-dismiss="modal">Send</button>
+		  <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+		</div>
+  
+	  </div>
+	</div>
+  </div>
+
+
+<!-- modal end -->
+
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--Section End-->
+	<!-- Footer Start-->
+	<footer class="pt-5 py-4">
+		<div class="nav_area">
+			<div class="text-center footer_inner">
+				<div class="d-flex justify-content-center">
+					<div class="fb_icon mr-2">
+						<a href="#">
+							<i class="fab fa-facebook-f"></i>
+						</a>
+					</div>
+					<div class="tw_icon mr-2">
+						<a href="#">
+							<i class="fab fa-twitter"></i>
+						</a>
+					</div>
+					<div class="gplus_icon mr-2">
+						<a href="#">
+							<i class="fab fa-google-plus-g"></i>	
+						</a>
+					</div>
+					<div class="instant_icon mr-2">
+						<a href="#">
+							<i class="fab fa-instagram"></i>	
+						</a>
+					</div>
+					<div class="inbox_icon">
+						<a href="#">
+							<i class="far fa-envelope"></i>
+						</a>
+					</div>
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="footer_list_links mt-4 mb-2">
+								<ul class="d-flex justify-content-start">
+									<li class="mr-3">
+										<a href="#">ABOUT</a>
+									</li>
+									<li class="mr-3">
+										<a href="#why_us">WHY US</a>
+									</li>
+									<li class="mr-3">
+										<a href="#">FAQ</a>
+									</li>
+									<li class="mr-3">
+										<a href="contact.html">CONTACT</a>
+									</li>
+									<li class="mr-3">
+										<a href="#">TERMS</a>
+									</li>
+									<li class="mr-3">
+										<a href="#">PRIVACY</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="footer_list_links mt-4 mb-2">
+								<ul class="d-flex justify-content-end">
+									<li class="mr-3">
+										<a href="#">© Copyright 2019</a>
+									</li>
+									<li class="mr-3">
+										<a href="#">DOMAIN.COM</a>
+									</li>
+									<li class="mr-3">
+										<a href="#">All Rights Reserved</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer End-->
+	<!-- Scroll Page-->
+	<div class="scroll_page">
+		<a href="javascript:" id="return-to-top"><i class="fas fa-angle-double-up"></i></i></a>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+	
+
+
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

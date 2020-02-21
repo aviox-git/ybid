@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/dashboard.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<title>index</title>
+</head>
+<body>
+	<!-- Navbar Start -->
+	<div class="header_bottom">
+		<div class="container-fluid">
+			<div class="nav_area">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<a class="navbar-brand" href="index.html">
+						<!-- <img src="./assets/images/ticket.png" alt="ticket"> -->
+						demo Logo
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item active">
+								<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="about.html">About Us</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#why_us">Why Us</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">FAQ</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Blog</a>
+							</li>
+							<!-- <li class="nav-item">
+								<a class="nav-link" href="#">Image Editor</a>
+							</li> -->
+							<li class="nav-item">
+								<a class="nav-link" href="contact.html">Contact</a>
+							</li>
+							<li class="nav-item align-self-center finder_code">
+								
+								<input class="text-center" type="text" name="email" placeholder="EVENT FINDER CODE">
+							</li>
+							<li class="nav-item dropdown"><!-- 
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Dashboard
+								</a> -->
+								<a href="#" class="nav-link">Dashboard</a>
+								<!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item" href="#">Action</a>
+									<a class="dropdown-item" href="#">Another action</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="#">Something else here</a>
+								</div> -->
+							</li>
+							<!-- <li class="nav-item">
+								<a class="nav-link" href="contact.html">Cust</a>
+							</li>
+							<li class="d-flex nav-item login_sign_link">
+								<a class="nav-link sign_link" href="#">Sign Out</a>
+							</li> -->
+							<li class="d-flex nav-item ml-3 login_sign_link">
+								<a class="nav-link login_link" href="login.html">GOGO /&nbsp;</a>
+								<a class="nav-link sign_link" href="#"> Sign Up</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<!-- Navbar End -->
+	<!--Section Start-->
+	<section style="background-color: #f7f7f7;">
+		<!-- <div class="about_us">
+			<h1>About Us</h1>
+			<div class="border-bottom my-3"></div>
+		</div> -->
+		<div class="container-fluid">
+			<div class="about_us_contain">
+				<h2>Manage Postings</h2>
+				<div class="border-bottom my-2 text-left" style="margin-left: 0;"></div>
+				
+				<div class="ticket_manage_post mt-5">
+						<div class="history_detail">
+								<div class="d-flex justify-content-center">
+									<div class="mr-3">
+										<label for="" class="mb-1">From</label>
+										<input type="text" class="form-control">
+									</div>
+									<div class="mr-3">
+										<label for="" class="mb-1">To</label>
+										<input type="text" class="form-control">
+									</div>
+								</div>
+							</div>
+					<div class="d-flex justify-content-between mb-4">
+						<div class="history_detail" style="display: flex; align-self: center; width: 100%; margin-top: 11px;">
+							<label for="" class="mr-1 mt-1">Show</label>
+							<select name="" id="" class="px-2 py-1">
+								<option value="">1</option>
+								<option value="">2</option>
+								<option value="">3</option>
+								<option value="">4</option>
+								<option value="">5</option>
+							</select>
+							<label for="" class="ml-1 mt-1 mr-2">entries</label>
+						</div>
+						
+						<div class="history_detail">
+							<label for=" " class="mb-1">Search:</label>
+							<input type="text" class="form-control">
+						</div>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-bordered ">
+							<thead>
+								<tr>
+									<th scope="col">Posting Date</th>
+									<th scope="col">Title</th>
+									<th scope="col">Event Date / Start Time / Station</th>
+									<th scope="col" class="text-center">Orders</th>
+									<th scope="col">Event Finder Code</th>
+									<th scope="col">Upload</th>
+									<th scope="col">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td scope="row">2016-05-16</td>
+									<td>
+										<a href="#">Barclay Dance</a>
+									</td>
+									<td>2016-04-15 / 2:00 pm / A</td>
+									<td class="text-center"><a href="#" data-toggle="modal" data-target="#Guest_modal" data-target=".bd-example-modal-lg">30</a></td>
+									<td>EP58PUH3234K</td>
+									<td>
+										<a href="#" data-toggle="modal" data-target="#upload_2200">
+												<i class="fas fa-upload"></i>
+										</a>
+										<a class="ml-2" href="#">
+												8
+										</a>
+										<a class="ml-2" href="#" data-toggle="modal" data-target="#ybid_eye_2200">
+												<i class="far fa-eye"></i>
+										</a>
+										<a class="ml-2" href="#" data-toggle="modal" data-target="#ybid_delete_2200">
+												<i class="far fa-trash-alt"></i>
+										</a>
+									</td>
+
+									<td>
+										<a href="#" data-toggle="modal" data-target="#invited_modal">
+											<i class="far fa-envelope mr-2"></i>
+										</a>
+										<a href="#">
+											<i class="fas fa-download mr-2"></i>
+										</a>
+										<a href="#">
+											<i class="far fa-edit mr-2"></i>
+										</a>
+										<a href="#">
+											<i class="far fa-copy mr-2"></i>
+										</a>
+										<a href="#">
+											<i class="fas fa-times mr-2"></i>
+										</a>
+										<a href="#">
+											<i class="fas fa-dollar-sign mr-2"></i>
+										</a>
+										<a href="#">
+											p
+										</a>
+									</td>
+								</tr>
+								<tr>
+										<td scope="row">2016-05-16</td>
+										<td>
+											<a href="#">Barclay Dance</a>
+										</td>
+										<td>2016-04-15 / 2:00 pm / A</td>
+										<td class="text-center"><a href="#" data-toggle="modal" data-target="#Guest_modal" data-target=".bd-example-modal-lg">30</a></td>
+										<td>EP58PUH3234K</td>
+										<td>
+											<a href="#">
+													<i class="fas fa-upload"></i>
+											</a>
+											<a class="ml-2" href="#">
+													5
+											</a>
+											<a class="ml-2" href="#" data-toggle="modal" data-target="#ybid_eye_2200">
+													<i class="far fa-eye"></i>
+											</a>
+											<a class="ml-2" href="#" data-toggle="modal" data-target="#ybid_delete_2200">
+													<i class="far fa-trash-alt"></i>
+											</a>
+										</td>
+	
+										<td>
+											<a href="#" data-toggle="modal" data-target="#invited_modal">
+												<i class="far fa-envelope mr-2"></i>
+											</a>
+											<a href="#">
+												<i class="fas fa-download mr-2"></i>
+											</a>
+											<a href="#">
+												<i class="far fa-edit mr-2"></i>
+											</a>
+											<a href="#">
+												<i class="far fa-copy mr-2"></i>
+											</a>
+											<a href="#">
+												<i class="fas fa-times mr-2"></i>
+											</a>
+											<a href="#">
+												<i class="fas fa-dollar-sign mr-2"></i>
+											</a>
+											<a href="#">
+												p
+											</a>
+										</td>
+									</tr>
+									<tr>
+											<td scope="row">2016-05-16</td>
+											<td>
+												<a href="#">Barclay Dance</a>
+											</td>
+											<td>2016-04-15 / 2:00 pm / A</td>
+											<td class="text-center"><a href="#" data-toggle="modal" data-target="#Guest_modal" data-target=".bd-example-modal-lg">30</a></td>
+											<td>EP58PUH3234K</td>
+											<td>
+													
+											</td>
+		
+											<td>
+												<a href="#" data-toggle="modal" data-target="#invited_modal">
+													<i class="far fa-envelope mr-2"></i>
+												</a>
+												<a href="#">
+													<i class="fas fa-download mr-2"></i>
+												</a>
+												<a href="#">
+													<i class="far fa-edit mr-2"></i>
+												</a>
+												<a href="#">
+													<i class="far fa-copy mr-2"></i>
+												</a>
+												<a href="#">
+													<i class="fas fa-times mr-2"></i>
+												</a>
+												<a href="#">
+													<i class="fas fa-dollar-sign mr-2"></i>
+												</a>
+												<a href="#">
+													p
+												</a>
+											</td>
+										</tr>
+										<tr>
+												<td scope="row">2016-05-16</td>
+												<td>
+													<a href="#">Barclay Dance</a>
+												</td>
+												<td>2016-04-15 / 2:00 pm / A</td>
+												<td class="text-center"><a href="#" data-toggle="modal" data-target="#Guest_modal" data-target=".bd-example-modal-lg">30</a></td>
+												<td>EP58PUH3234K</td>
+												<td>
+													<a href="#">
+															<i class="fas fa-upload"></i>
+													</a>
+													<a class="ml-2" href="#">
+															11
+													</a>
+													<a class="ml-2" href="#" data-toggle="modal" data-target="#ybid_eye_2200">
+															<i class="far fa-eye"></i>
+													</a>
+													<a class="ml-2" href="#" data-toggle="modal" data-target="#ybid_delete_2200">
+															<i class="far fa-trash-alt"></i>
+													</a>
+												</td>
+			
+												<td>
+													<a href="#" data-toggle="modal" data-target="#invited_modal">
+														<i class="far fa-envelope mr-2"></i>
+													</a>
+													<a href="#">
+														<i class="fas fa-download mr-2"></i>
+													</a>
+													<a href="#">
+														<i class="far fa-edit mr-2"></i>
+													</a>
+													<a href="#">
+														<i class="far fa-copy mr-2"></i>
+													</a>
+													<a href="#">
+														<i class="fas fa-times mr-2"></i>
+													</a>
+													<a href="#">
+														<i class="fas fa-dollar-sign mr-2"></i>
+													</a>
+													<a href="#">
+														p
+													</a>
+												</td>
+											</tr>
+											<tr>
+													<td scope="row">2016-05-16</td>
+													<td>
+														<a href="#">Barclay Dance</a>
+													</td>
+													<td>2016-04-15 / 2:00 pm / A</td>
+													<td class="text-center"><a href="#" data-toggle="modal" data-target="#Guest_modal" data-target=".bd-example-modal-lg">30</a></td>
+													<td>EP58PUH3234K</td>
+													<td>
+														<a href="#">
+																<i class="fas fa-upload"></i>
+														</a>
+														<a class="ml-2" href="#">
+																8
+														</a>
+														<a class="ml-2" href="#">
+																<i class="far fa-eye"></i>
+														</a>
+														<a class="ml-2" href="#">
+																<i class="far fa-trash-alt"></i>
+														</a>
+													</td>
+				
+													<td>
+														<a href="#" data-toggle="modal" data-target="#invited_modal">
+															<i class="far fa-envelope mr-2"></i>
+														</a>
+														<a href="#">
+															<i class="fas fa-download mr-2"></i>
+														</a>
+														<a href="#">
+															<i class="far fa-edit mr-2"></i>
+														</a>
+														<a href="#">
+															<i class="far fa-copy mr-2"></i>
+														</a>
+														<a href="#">
+															<i class="fas fa-times mr-2"></i>
+														</a>
+														<a href="#">
+															<i class="fas fa-dollar-sign mr-2"></i>
+														</a>
+														<a href="#">
+															p
+														</a>
+													</td>
+												</tr>
+							</tbody>
+						</table>
+						<div class="d-flex justify-content-between">
+							<div class="showing_heading">
+								<h3>Showing 1 to 3  of 3 entries</h3>
+							</div>
+							<div class="pagi">
+								<nav aria-label="Page navigation example">
+									<ul class="pagination">
+										<li class="page-item disabled">
+											<a class="page-link" href="#" tabindex="-1">Previous</a>
+										</li>
+										<li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
+										<li class="page-item">
+											<a class="page-link" href="#">Next</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+					<!-- Modal -->
+					<div class="modal fade bd-example-modal-lg" id="Guest_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						<div class="modal-dialog modal-lg" role="document">
+							<div class="modal-content">
+								<div class="table-responsive mt-4">
+									<table class="table">
+										<thead class="thead-light">
+											<tr>
+												<th scope="col">DATE</th>
+												<th scope="col">PURCHASER</th>
+												<th scope="col">PURCHASE</th>
+												<th scope="col">DONATION</th>
+											
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td scope="row">2019-02-23</td>
+												<td>Guest F</td>
+												<td>$20. 00</td>
+												<td>$100. 00</td>
+											</tr>
+											<tr>
+												<td scope="row">2019-02-23</td>
+												<td>Guest D</td>
+												<td>$10. 00</td>
+												<td>$0. 00</td>
+											</tr>
+											<tr>
+												<td scope="row">2019-02-23</td>
+												<td>Guest A</td>
+												<td>$50. 00</td>
+												<td>$100. 00</td>
+											</tr>
+											<tr>
+												<td scope="row">2019-02-23</td>
+												<td>Guest B/td>
+												<td>$50. 00</td>
+												<td>$100. 00</td>
+											</tr>
+											<tr>
+												<td scope="row">2019-02-23</td>
+												<td>Guest D</td>
+												<td>$50. 00</td>
+												<td>$100. 00</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal fade bd-example-modal-lg" id="invited_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						<div class="modal-dialog modal-lg" role="document">
+							<div class="modal-content">
+								<div class="d-flex justify-content-between upload_links mt-3 mb-0 mx-3">
+									<a href="#">Upload Background Image</a>
+									<a href="#">Free Images</a>
+									<a href="#">Download Invitation</a>
+								</div>
+								<div class="container-fluid background-img">
+										<div class="border py-4 px-3 my-3">
+											<div class="invited_area_ybid">
+												<h1 class="text-center">
+													<img src="./assets/images/order-img.png" class="img-fluid" alt="order-img">
+												</h1>
+												<div class="text-center mb-3 mt-3">
+													<div class="d-flex justify-content-center">
+														<i class="fas fa-star mr-3"></i>
+														<i class="fas fa-star mr-3"></i>
+														<i class="fas fa-star mr-3"></i>
+														<i class="fas fa-star mr-3"></i>
+														<i class="fas fa-star"></i>
+													</div>
+												</div>
+												<div class="row">
+												<div class="col-md-3 mb-3">
+													<h6 class="">TITLE:</h6>
+												</div>
+												<div class="col-md-9 mb-3">
+													<p style="margin-top: -2px; word-break: break-all;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+												</div>
+												</div>
+												<div class="row">
+												<div class="col-md-3 mb-3">
+													<h6 class="">DESCRIPTION / ORDER GUIDE
+													</h6>
+												</div>
+												<div class="col-md-9 mb-3">
+													<p style="margin-top: -2px; word-break: break-all;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+												</div>
+												</div>
+											
+												<div class="row">
+												<div class="col-md-6">
+												<div class="d-flex mb-3">
+													<h6 class="mr-5">EVENT DATE:</h6>
+													<p style="margin-top: -2px">JULY 28, 2019</p>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="d-flex mb-3">
+													<h6 class="mr-5">Event Time:</h6>
+													<p style="margin-top: -2px mr-3">01:00 PM <span class="mx-4">TO</span>4:00 PM</p>
+												</div>
+												</div>
+											</div>
+												
+											<div class="row">
+													<div class="col-md-3 mb-3">
+														<h6 class="">STATION:</h6>
+													</div>
+													<div class="col-md-9 mb-3">
+														<p style="margin-top: -2px">A</p>
+													</div>
+													</div>
+													<div class="row">
+															<div class="col-md-3 mb-3">
+																<h6 class="">STATION DETAIL:</h6>
+															</div>
+															<div class="col-md-9 mb-3">
+																<p style="margin-top: -2px">Class 1A, 1B, 1C, 2A, 2B, 2C, 3A, 3B, 3C, 3D, 3E, 3F</p>
+															</div>
+															</div>
+											
+												<div class="text-center my-5">
+													<p style="width: 100%;">EVENT FINDER CODE</p>
+													<h2><b style="font-size: 22px; color: #000;">EXK387MBBCV</b></h2>
+												</div>
+											</div>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--Section End-->
+<!-----eye icon modal start--->
+<!-- Modal -->
+<div id="ybid_eye_2200" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+	  
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			  <!--<button type="button" class="close" data-dismiss="modal">&times;</button>--->
+			  
+			<div class="modal-body">
+					<h6 class="modal-title text-center">STATION AAA</h6>
+					<div class="modal_2200_img_bdr">
+			 <div class="row">
+				 <div class="col-md-6">
+					 <div class="d-flex img__2200">
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1 </div>
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 2 </div>
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 3 </div>
+					 </div>
+				 </div>
+				 <div class="col-md-6">
+						<div class="d-flex img__2200">
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1456 </div>
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1457 </div>
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1">1458</div>
+							</div>
+				 </div>
+			 </div>
+			</div>
+
+		
+			<!-- IMSGE SECOND LIST -->
+			<h6 class="modal-title text-center mt-4">STATION BBB</h6>
+					<div class="modal_2200_img_bdr">
+			 <div class="row">
+				 <div class="col-md-6">
+					 <div class="d-flex img__2200">
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1 </div>
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 2 </div>
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 3 </div>
+					 </div>
+				 </div>
+				 <div class="col-md-6">
+						<div class="d-flex img__2200">
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 856 </div>
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 857 </div>
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1">858</div>
+							</div>
+				 </div>
+			 </div>
+			</div>
+
+	
+			<!-- IMSGE SECOND LIST -->
+			<h6 class="modal-title text-center mt-4">STATION CCC</h6>
+					<div class="modal_2200_img_bdr">
+			 <div class="row">
+				 <div class="col-md-6">
+					 <div class="d-flex img__2200">
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1 </div>
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 2 </div>
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 3 </div>
+					 </div>
+				 </div>
+				 <div class="col-md-6">
+						<div class="d-flex img__2200">
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1121 </div>
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1122 </div>
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1">1123</div>
+							</div>
+				 </div>
+			 </div>
+			</div>
+
+			</div>
+			<!-- <div class="modal-footer">
+			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div> -->
+		  </div>
+	  
+		</div>
+	  </div>
+<!-----eye icon modal ends--->
+
+<!-----DELETE icon modal start--->
+<!-- Modal -->
+<div id="ybid_delete_2200" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+	  
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			  <!--<button type="button" class="close" data-dismiss="modal">&times;</button>--->
+			  
+			<div class="modal-body">
+					<h6 class="modal-title text-center">STATION AAA</h6>
+					<div class="modal_2200_img_bdr">
+			 <div class="row">
+				 <div class="col-md-6">
+					 <div class="d-flex img__2200">
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1 </div>
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 2 </div>
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 3 </div>
+					 </div>
+				 </div>
+				 <div class="col-md-6">
+						<div class="d-flex img__2200">
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1456 </div>
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1457 </div>
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1">1458</div>
+							</div>
+				 </div>
+			 </div>
+			</div>
+
+		
+			<!-- IMSGE SECOND LIST -->
+			<h6 class="modal-title text-center mt-4">STATION BBB</h6>
+					<div class="modal_2200_img_bdr">
+			 <div class="row">
+				 <div class="col-md-6">
+					 <div class="d-flex img__2200">
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1 </div>
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 2 </div>
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 3 </div>
+					 </div>
+				 </div>
+				 <div class="col-md-6">
+						<div class="d-flex img__2200">
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1456 </div>
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1457 </div>
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1">1458</div>
+							</div>
+				 </div>
+			 </div>
+			</div>
+
+	
+			<!-- IMSGE SECOND LIST -->
+			<h6 class="modal-title text-center mt-4">STATION CCC</h6>
+					<div class="modal_2200_img_bdr">
+			 <div class="row">
+				 <div class="col-md-6">
+					 <div class="d-flex img__2200">
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1 </div>
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 2 </div>
+						 <div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 3 </div>
+					 </div>
+				 </div>
+				 <div class="col-md-6">
+						<div class="d-flex img__2200">
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1456 </div>
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1"> 1457 </div>
+								<div class="ybrid_img_1"><img src="assets/images/2200.jpg" class="img-fluid" alt="multiimg1">1458</div>
+							</div>
+				 </div>
+			 </div>
+			</div>
+
+			</div>
+			<!-- <div class="modal-footer">
+			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div> -->
+		  </div>
+	  
+		</div>
+	  </div>
+<!-----DELETE icon modal ends--->
+<!-- upload icon modal start-->
+
+  <!-- Modal -->
+  <div class="modal fade" id="upload_2200" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header justify-content-center">
+			  <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+			  <h6 class="modal-title">DO NOT LEAVE THIS PAGE DURING UPLOADING</h6>
+			</div>
+			<div class="modal-body">
+			  <div class="upload_modal_top">
+				  <div class="my-4 top_search_2200">
+					<div class="">
+					<div class="d-flex"><input type="text" class="form-control" placeholder="Enter "Station Name and detail if any. Eg Station A,-Class 1A, 1B, 1C, 2A, 3B>Add New Station</div>
+					<label for="" class="mb-1">100 Charactors</label>
+						</div>
+						<form>
+								<div class="form-check">
+								 <input type="checkbox" class="form-check-input" id="exampleCheck1">
+								 <label> I acknowledge I am the sole original artist / owner of the uploaded images.</label>
+								</div>
+								<div class="form-check">
+								 <input type="checkbox" class="form-check-input" id="exampleCheck1">
+								 <label>I agree not to upload any obsence, pornogrphic or oterwise may offend human dignity images.<br>
+								Note: Uploading minimum and optmum image uploading size is 1600x2400 pixels. Max 1500 images per station. 
+								</label>
+								</div>
+							</form>
+							<div class="text-center">
+								<button class="btn btn-warning btn-same-start">Start</button>
+								<button class="btn btn-warning btn-same-start">Reset queues</button>
+								<button class="btn btn-warning btn-same-start">Close</button>
+							</div>
+			  </div>
+			  <div class="select_file_box">
+			  				<div class="row">
+							<div class="col-md-6">
+							<div class="select_file">
+		
+									<div class="">
+										<div class="select_top">
+											<div class="row">
+												<div class="col-md-9">
+											<h5 class="mb-1">Select Files (Frame 1 to 300)</h5>
+											<p>
+													Add and verify files to upload and click "Start Upload" button Before the next queue<br>
+													(max 300 files due to browser limitation)
+												</p>
+												</div>
+												<div class="col-md-3 align-self-center">
+													<h4 class="text-right">Queue 1</h4>
+												</div>
+												</div>
+										</div>
+										<div class="Drag_area">
+												<div class="text-center py-5">
+													<i class="fas fa-upload" aria-hidden="true"></i>
+													<span>Drag Files Here</span>
+												</div>
+											</div>
+											<div class="select-footer d-flex justify-content-between">
+												<div class="">
+												<button class="btn btn-warning btn-same-upload"><i class="fas fa-plus-circle"></i> Add Files</button>
+														<button class="btn btn-warning btn-same-upload"><i class="fas fa-arrow-up"></i> Start Upload</button>
+												</div>
+												<div>
+													<span>0  b</span><span class="mx-4">0 %</span>
+												</div>
+											</div>
+									</div>
+
+							
+							</div>
+							</div>
+							<!-- select file 1 -->
+							<div class="col-md-6">
+									<div class="select_file">
+				
+											<div class="">
+												<div class="select_top">
+													<div class="row">
+														<div class="col-md-9">
+													<h5 class="mb-1">Select Files (Frame 301 to 600)</h5>
+													<p>
+															Add and verify files to upload and click "Start Upload" button Before the next queue<br>
+															(max 300 files due to browser limitation)
+														</p>
+														</div>
+														<div class="col-md-3 align-self-center">
+															<h4 class="text-right">Queue 2</h4>
+														</div>
+														</div>
+												</div>
+												<div class="Drag_area">
+														<div class="text-center py-5">
+															<i class="fas fa-upload" aria-hidden="true"></i>
+															<span>Drag Files Here</span>
+														</div>
+													</div>
+													<div class="select-footer d-flex justify-content-between">
+														<div class="">
+														<button class="btn btn-warning btn-same-upload"><i class="fas fa-plus-circle"></i> Add Files</button>
+														<button class="btn btn-warning btn-same-upload"><i class="fas fa-arrow-up"></i> Start Upload</button>
+														</div>
+														<div>
+															<span>0  b</span><span class="mx-4">0 %</span>
+														</div>
+													</div>
+											</div>
+		
+									
+									</div>
+									</div>
+									<!-- select queue file 3 -->
+									<div class="col-md-6">
+											<div class="select_file">
+						
+													<div class="">
+														<div class="select_top">
+															<div class="row">
+																<div class="col-md-9">
+															<h5 class="mb-1">Select Files (Frame 601 to 900)</h5>
+															<p>
+																	Add and verify files to upload and click "Start Upload" button Before the next queue<br>
+																	(max 300 files due to browser limitation)
+																</p>
+																</div>
+																<div class="col-md-3 align-self-center">
+																	<h4 class="text-right">Queue 3</h4>
+																</div>
+																</div>
+														</div>
+														<div class="Drag_area">
+																<div class="text-center py-5">
+																	<i class="fas fa-upload" aria-hidden="true"></i>
+																	<span>Drag Files Here</span>
+																</div>
+															</div>
+															<div class="select-footer d-flex justify-content-between">
+																<div class="">
+																<button class="btn btn-warning btn-same-upload"><i class="fas fa-plus-circle"></i> Add Files</button>
+																<button class="btn btn-warning btn-same-upload"><i class="fas fa-arrow-up"></i> Start Upload</button>
+																</div>
+																<div>
+																	<span>0  b</span><span class="mx-4">0 %</span>
+																</div>
+															</div>
+													</div>
+				
+											
+											</div>
+											</div>
+											<!-- select queue file 3 -->
+									<div class="col-md-6">
+											<div class="select_file">
+						
+													<div class="">
+														<div class="select_top">
+															<div class="row">
+																<div class="col-md-9">
+															<h5 class="mb-1">Select Files (Frame 901 to 1200)</h5>
+															<p>
+																	Add and verify files to upload and click "Start Upload" button Before the next queue<br>
+																	(max 300 files due to browser limitation)
+																</p>
+																</div>
+																<div class="col-md-3 align-self-center">
+																	<h4 class="text-right">Queue 4</h4>
+																</div>
+																</div>
+														</div>
+														<div class="Drag_area">
+																<div class="text-center py-5">
+																	<i class="fas fa-upload" aria-hidden="true"></i>
+																	<span>Drag Files Here</span>
+																</div>
+															</div>
+															<div class="select-footer d-flex justify-content-between">
+																<div class="">
+																<button class="btn btn-warning btn-same-upload"><i class="fas fa-plus-circle"></i> Add Files</button>
+																<button class="btn btn-warning btn-same-upload"><i class="fas fa-arrow-up"></i> Start Upload</button>
+																</div>
+																<div>
+																	<span>0  b</span><span class="mx-4">0 %</span>
+																</div>
+															</div>
+													</div>
+				
+											
+											</div>
+											</div>
+											<!-- select queue file 3 -->
+									<div class="col-md-6">
+											<div class="select_file">
+						
+													<div class="">
+														<div class="select_top">
+															<div class="row">
+																<div class="col-md-9">
+															<h5 class="mb-1">Select Files (Frame 1201 to 1500)</h5>
+															<p>
+																	Add and verify files to upload and click "Start Upload" button Before the next queue<br>
+																	(max 300 files due to browser limitation)
+																</p>
+																</div>
+																<div class="col-md-3 align-self-center">
+																	<h4 class="text-right">Queue 3</h4>
+																</div>
+																</div>
+														</div>
+														<div class="Drag_area">
+																<div class="text-center py-5">
+																	<i class="fas fa-upload" aria-hidden="true"></i>
+																	<span>Drag Files Here</span>
+																</div>
+															</div>
+															<div class="select-footer d-flex justify-content-between">
+																<div class="">
+																<button class="btn btn-warning btn-same-upload"><i class="fas fa-plus-circle"></i> Add Files</button>
+																<button class="btn btn-warning btn-same-upload"><i class="fas fa-arrow-up"></i> Start Upload</button>
+																</div>
+																<div>
+																	<span>0  b</span><span class="mx-4">0 %</span>
+																</div>
+															</div>
+													</div>
+				
+											
+											</div>
+											</div>
+							<!-- row end -->
+							</div>
+							</div>
+			  </div>
+			</div>
+			
+		  </div>
+		  
+		</div>
+	  </div>
+	  
+<!-- upload icon modal end-->
+
+
+	<!-- Footer Start-->
+	<footer class="pt-5 py-4">
+		<div class="nav_area">
+			<div class="text-center footer_inner">
+				<div class="d-flex justify-content-center">
+					<div class="fb_icon mr-2">
+						<a href="#">
+							<i class="fab fa-facebook-f"></i>
+						</a>
+					</div>
+					<div class="tw_icon mr-2">
+						<a href="#">
+							<i class="fab fa-twitter"></i>
+						</a>
+					</div>
+					<div class="gplus_icon mr-2">
+						<a href="#">
+							<i class="fab fa-google-plus-g"></i>	
+						</a>
+					</div>
+					<div class="instant_icon mr-2">
+						<a href="#">
+							<i class="fab fa-instagram"></i>	
+						</a>
+					</div>
+					<div class="inbox_icon">
+						<a href="#">
+							<i class="far fa-envelope"></i>
+						</a>
+					</div>
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="footer_list_links mt-4 mb-2">
+								<ul class="d-flex justify-content-start">
+									<li class="mr-3">
+										<a href="#">ABOUT</a>
+									</li>
+									<li class="mr-3">
+										<a href="#why_us">WHY US</a>
+									</li>
+									<li class="mr-3">
+										<a href="#">FAQ</a>
+									</li>
+									<li class="mr-3">
+										<a href="contact.html">CONTACT</a>
+									</li>
+									<li class="mr-3">
+										<a href="#">TERMS</a>
+									</li>
+									<li class="mr-3">
+										<a href="#">PRIVACY</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="footer_list_links mt-4 mb-2">
+								<ul class="d-flex justify-content-end">
+									<li class="mr-3">
+										<a href="#">© Copyright 2019</a>
+									</li>
+									<li class="mr-3">
+										<a href="#">DOMAIN.COM</a>
+									</li>
+									<li class="mr-3">
+										<a href="#">All Rights Reserved</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer End-->
+	<!-- Scroll Page-->
+	<div class="scroll_page">
+		<a href="javascript:" id="return-to-top"><i class="fas fa-angle-double-up"></i></i></a>
+	</div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

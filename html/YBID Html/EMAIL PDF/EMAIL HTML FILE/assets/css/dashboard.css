@@ -1,0 +1,509 @@
+@font-face {
+  font-family: Afternoon in Stereo Personal Use;
+  src: url('../assets/fonts/Afternoon in Stereo Personal Use.ttf') format('truetype');
+       /*url(/assets/fonts/Poppins-Bold.woff) format('woff');*/
+}
+/*DASHBOARD CSS*/
+/*#invited_modal .modal-lg {
+    max-width: 1200px;
+}
+#Thankyou .modal-lg {
+    max-width: 1200px;
+}*/
+.navbar-toggler:not(:disabled):not(.disabled):focus {
+    outline: 0;
+}
+.dashboard-nav-list li {
+    font-size: 14px;
+    /*font-weight: 600;*/
+    padding: 0 3px;
+}
+.dashboard-nav-list li.active a {
+    color: #c62027 !important;
+    font-weight: 600;
+}
+.logo {
+    background: #f82929f2;
+    color: #fff !important;
+    padding: 12px 20px;
+}
+.expitation input {
+    width: 155px;
+}
+.cvv input {
+    width: 88px;
+}
+#upload_button {
+  display: inline-block;
+}
+#upload_button input[type=file] {
+    opacity: 0;
+    position: absolute;
+    padding: 4px;
+    width: 67%;
+}
+p.upload-text {
+    font-size: 12px;
+    color: #7d7b7b;
+}
+.cb-logo img {
+    width: 95px;
+}
+select {
+  background: transparent url(../../assets/images/arrow_down.png) no-repeat;
+  background-color: #fff;
+  background-size: 19px;
+  background-position: 100% center;
+  -webkit-appearance: none;
+}
+button.d-btn:hover {
+    background: #1b9e2e;
+    color: #fff;
+}
+button.d-btn {
+    background: #1b9e2e;
+    border: none;
+    padding: 7px 19px;
+    border-radius: 4px;
+    color: #fff;
+}
+button.d-btn:focus {
+    outline: 0;
+}
+/* Styling Checkbox Starts */
+.checkbox-label {
+    display: block;
+    position: relative;
+    margin: auto;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 24px;
+    clear: both;
+}
+
+.checkbox-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkbox-label .checkbox-custom {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 24px;
+    width: 24px;
+    background-color: transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    border: 2px solid #000;
+}
+
+.checkbox-label input:checked ~ .checkbox-custom {
+    background-color: #000;
+    border-radius: 5px;
+    -webkit-transform: rotate(0deg) scale(1);
+    -ms-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+    border: 2px solid #000;
+}
+
+
+
+.checkbox-label .checkbox-custom::after {
+    position: absolute;
+    content: "";
+    left: 12px;
+    top: 12px;
+    height: 0px;
+    width: 0px;
+    border-radius: 5px;
+    border: solid #009BFF;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(0deg) scale(0);
+    -ms-transform: rotate(0deg) scale(0);
+    transform: rotate(0deg) scale(0);
+    opacity:1;
+  	transition: all 0.3s ease-out;
+  	-webkit-transition: all 0.3s ease-out;
+  	-moz-transition: all 0.3s ease-out;
+  	-ms-transition: all 0.3s ease-out;
+  	-o-transition: all 0.3s ease-out;
+}
+
+
+.checkbox-label input:checked ~ .checkbox-custom::after {
+    -webkit-transform: rotate(45deg) scale(1);
+    -ms-transform: rotate(45deg) scale(1);
+    transform: rotate(45deg) scale(1);
+    opacity: 1;
+    left: 8px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    background-color: #ffffff00;
+    border-radius: 0;
+}
+
+
+
+/* For Ripple Effect */
+.checkbox-label .checkbox-custom::before {
+    position: absolute;
+    content: "";
+    left: 10px;
+    top: 10px;
+    width: 0px;
+    height: 0px;
+    border-radius: 5px;
+    border: 2px solid #FFFFFF;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+}
+
+.checkbox-label input:checked ~ .checkbox-custom::before {
+    left: -3px;
+    top: -3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    -webkit-transform: scale(3);
+    -ms-transform: scale(3);
+    transform: scale(3);
+    opacity: 0;
+    z-index: 999;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+}
+span.input-title {
+    margin-left: 33px;
+    font-size: 16px;
+    font-weight: 600;
+}
+span.d-domain {
+    font-weight: 400;
+    padding: 0 8px;
+}
+.form-second-section {
+    margin: 82px 0;
+}
+.checkbox-container {
+    padding-top: 100px;
+}
+.form-second-section .send_btn {
+    margin-left: 21px;
+}
+h1.my-account-heading {
+    font-size: 34px;
+    font-weight: 600;
+    padding: 50px 0px;
+}
+.hdr-bdr {
+    border-bottom: 2px solid #797777;
+}
+span.not-verify {
+    font-size: 13px;
+    padding: 0 11px;
+    color: #0058db;
+    vertical-align: middle;
+    font-weight: normal;
+}
+.dash-drop li {
+    display: block;
+    font-weight: 200;
+    margin-left: 35px;
+}
+.dash-drop li.active {
+    color: #c62027 !important;
+    font-weight: 600;
+}
+.nav-list2 .drop-item-mod {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 600;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+a {
+    color: unset !important;
+}
+a:hover {
+    color: unset !important;
+}
+.nav-list2 .dropdown-menu {
+   
+    min-width: 12rem;
+    padding: 14px 0;
+    margin: .125rem 0 0;
+    background-color: #f6f6f6;
+ 
+}
+.ticket__1 {
+    margin: 60px 0;
+}
+.ticker__hdr {
+    background: linear-gradient(#8c8c8c, #383333, #080404);
+    color: #fff;
+    padding: 11px 15px;
+    border-radius: 4px;
+}
+h3.ticker_ttl {
+    font-size: 22px;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+#dashboard__2 select {
+    /*background: transparent url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat;
+    background-color: #fff;
+    background-size: 9px;
+    background-position: 95% center;
+    -webkit-appearance: none;*/
+}
+.lh_2 {
+	line-height: 2.2;
+}
+.req_p > div {
+	padding-right: 11px;
+}
+.req_p select {
+    padding: .375rem 3px !important;
+    font-size: 14px !important;
+    width: 47px;
+}
+#dashboard__2 .form-control {
+    padding: .375rem 9px;
+    font-size: 14px;
+}
+p.sale-end {
+    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+    margin-right: 9px;
+}
+.ticker__sale1 {
+    font-size: 16px;
+}
+.ticket-bdr {
+    border: 1px solid #000;
+    padding: 22px 14px;
+    border-radius: 4px;
+}
+p.door-opn {
+    font-size: 14px;
+    color: #212529;
+      white-space: nowrap;
+}
+.step__7 .x {
+    color: #ff0000;
+}
+.table-shet th i {
+    color: #0000ff;
+}
+.table-shet .x {
+    color: #ff0000;
+}
+@media (min-width: 576px) {
+.dashboard_2_container {
+    max-width: 540px !important;
+}}
+@media (min-width: 768px) {
+.dashboard_2_container {
+    max-width: 720px !important;
+}}
+@media (min-width: 992px) {
+.dashboard_2_container {
+    max-width: 960px !important;
+}}
+@media (min-width: 1200px) {
+.dashboard_2_container {
+    max-width: 936px !important;
+}}
+
+.step-4-form > div {
+	margin: 5px 0;
+}
+.ticket-less {
+    background: #0f7db7;
+    padding: 3px 11px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    margin-left: 7px;
+}
+p.up-text {
+    font-size: 12px;
+    color: #0c5dd5;
+}
+.add-img img {
+    width: 125px;
+}
+.all-dv-m > div {
+	margin: 10px 0;
+}
+thead.payment-hdr tr th {
+    font-size: 13px;
+}
+.d2-tbl-bdr {
+    border: 1px solid #bab9b9;
+}
+d2-note p {
+    font-size: 12px;
+}
+.no-attend {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 8px 0;
+}
+.btm-check-term {
+    font-size: 14px;
+}
+.ticket_manage_post .pagi .page-item.active .page-link {
+  background-color: #000 !important;
+  border: 1px solid #000 !important;
+  color: #fff !important;
+}
+.showing_heading h3 {
+  font-size: 18px;
+  color: #000;
+}
+.ticket_manage_post td a {
+  color: #212529;
+}
+.ticket_manage_post .upload_links a {
+  color: #c62027;
+}
+.ticket_manage_post .invited_area h1 {
+ font-family: Afternoon in Stereo Personal Use;
+}
+.ticket_manage_post .invited_area h1 img {
+    width: 80%;
+}
+.ticket_manage_post .invited_area h6 {
+  font-weight: bold;
+  width: 20%;
+}
+.ticket_manage_post .invited_area p {
+  width: 80%;
+}
+.ticket_manage_post .order_close_icon {
+  position: relative;
+}
+.ticket_manage_post .order_close_icon i {
+  position: absolute;
+  right: 0;
+  top: -33px;
+}
+.ticket_manage_post .send_btn {
+  background-color: #c62027;
+  color: #fff !important;
+  padding: 5px 14px;
+  border-radius: 8px;
+}
+/*.ticket_manage_post .history_detail {
+  width: 33.3%;
+}*/
+.ticket_manage_post .history_detail select {
+  width: 100px;
+  background-position: 100% center;
+}
+.background-img .border {
+    background-image: url('../../assets/images/thankyou.png');
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.background-img .border-flower {
+    background-image: url('../../assets/images/flowers.png');
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 756px;
+}
+
+@media (max-width: 991px) { 
+   .nav-list2 .finder_code {
+    align-self: flex-start !important;
+   } 
+   .ticket_manage_post .w-50 {
+    width: 100% !important;
+   }
+    .ticker__sale2,
+    .ticker__sale1 {
+        display: block !important;
+    }
+}
+@media (max-width: 767px) {
+    .ticket_manage_post  .background-img .col-md-4 {
+        padding-right: 15px !important;
+    }
+    .ticket_manage_post  .background-img .col-md-8 {
+        padding-left: 15px !important;
+    }
+    .background-img .thankyou_img {
+        margin-top: 15px;
+    }
+}
+@media (max-width: 575px) {
+    .ticket_manage_post > div {
+        display: block !important;
+    }
+    .ticket_manage_post .upload_links a {
+        font-size: 14px;
+    }
+}
+@media (max-width: 480px) {
+    .req_p select {
+        width: 100%;
+    }
+    .ticker__sale1,
+    .ticker__sale2,
+    .ticker__sale3 {
+        display: block !important;
+    }
+    .ticket_manage_post .invited_area .descrip_detail {
+        display: block !important;
+    }
+    .ticket_manage_post .invited_area .descrip_detail  p {
+        width: 100%;
+        margin: 8px 0 !important;
+    }
+    .ticket_manage_post .invited_area p {
+        word-break: break-all;
+        margin-left: 12px;
+    }
+    .ticker__sale1 .req_p,
+    .ticker__sale2 .req_p,
+    .ticker__sale3 .req_p {
+        display: block !important;
+    }
+    .ticker__sale1 .req_p input,
+    .ticker__sale2 .req_p input,
+    .ticker__sale3 .req_p input {
+        width: 100% !important;
+    }
+    .ticker__sale1 .req_p select,
+    .ticker__sale2 .req_p select,
+    .ticker__sale3 .req_p select {
+        margin-bottom: 12px;
+    }
+}
