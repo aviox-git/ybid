@@ -1,0 +1,266 @@
+
+a {
+    color: #000000;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+table tr td,
+table tr th {
+    font-size: 12px;
+}
+.add-img img {
+    width: 100px;
+    height: 100px;
+    /*object-fit: contain;*/
+}
+#example tr td {
+    white-space: nowrap;
+}
+.navbar {
+    padding: 0 !important;
+}
+.navbar-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: unset !important;
+    margin-bottom: 0;
+    list-style: none;
+}
+.Summary_box {
+    display: inline-block;
+    background: #3c8dbc;
+    color: #fff;
+    width: 167px;
+    border-radius: 50%;
+    height: 167px;
+    text-align: center;
+    margin: 10px 5px;
+}
+h2.summary_count {
+    font-weight: 600;
+    font-size: 35px;
+        margin-top: 20px;
+}
+p.summary_head {
+    font-size: 15px;
+}
+.navbar-custom-menu>.navbar-nav>li {
+    position: relative;
+    padding: 0 9px;
+}
+.main-header .navbar .nav>li>a>.label {
+    position: absolute;
+    top: -4px;
+    right: 22px;
+    text-align: center;
+    font-size: 9px;
+    padding: 2px 3px;
+    line-height: .9;
+}
+.manage_admin {
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 0 4px 0px #c3bebe;
+}
+.product-list tr th {
+    border-bottom: 0 !important;
+}
+.add_min h3 {
+    font-size: 20px;
+}
+.add_min.d-flex.justify-content-between {
+    padding: 8px;
+}
+
+.access_list ul li {
+    display: inline-block;
+    width: 174px;
+    padding: 7px 0;
+}
+.btn-orange {
+    background-color: #fa7d34;
+    border-color: #fa7d34;
+    color: #fff;
+}
+ul.mg_top_ic li {
+    display: inline-block;
+    padding: 2px 7px;
+    background-color: #cdcdcd;
+    margin: 0 4px;
+}
+/*td.list_icon i {
+    background: #cdcdcd;
+    padding: 5px 5px;
+    display: inline-block;
+    margin: 0 4px;
+    font-size: 14px;
+    color: #282828;
+}*/
+/****** sulakhan css *************/
+.s_paypal_struct h4 {
+    color: #000;
+}
+.s_paypal_struct .sanbox_input {
+    width: 100%;
+}
+.s_paypal_struct .sanbox_input button {
+    text-align: left;
+    background-color: #d8d7d7;
+}
+.blog_list_table table th {
+    vertical-align: top;
+}
+.ticket_manage_post .pagi .page-item.active .page-link {
+  background-color: #000 !important;
+  border: 1px solid #000 !important;
+  color: #fff !important;
+}
+.showing_heading h3 {
+  font-size: 18px;
+  color: #000;
+}
+.ticket_manage_post td a {
+  color: #212529;
+}
+.ticket_manage_post .upload_links a {
+  color: #c62027;
+}
+.ticket_manage_post .invited_area h1 {
+ font-family: Afternoon in Stereo Personal Use;
+}
+.ticket_manage_post .invited_area h1 img {
+    width: 80%;
+}
+.ticket_manage_post .invited_area h6 {
+  font-weight: bold;
+  width: 20%;
+}
+.ticket_manage_post .invited_area p {
+  width: 80%;
+}
+.ticket_manage_post .order_close_icon {
+  position: relative;
+}
+.ticket_manage_post .order_close_icon i {
+  position: absolute;
+  right: 0;
+  top: -33px;
+}
+.ticket_manage_post .send_btn {
+  background-color: #c62027;
+  color: #fff !important;
+  padding: 5px 14px;
+  border-radius: 8px;
+}
+/*.ticket_manage_post .history_detail {
+  width: 33.3%;
+}*/
+.ticket_manage_post .history_detail select {
+  width: 100px;
+  background-position: 100% center;
+}
+.background-img .border {
+    background-image: url('../../dist/img/thankyou.png');
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.background-img .border-flower {
+    background-image: url('../../dist/img/flowers.png');
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 670px;
+}
+.ticket_manage_post .upload_links a {
+  color: #000;
+  font-weight: bold;
+}
+.input_width input {
+    width: 75%;
+}
+@media (max-width: 991px) { 
+   .nav-list2 .finder_code {
+    align-self: flex-start !important;
+   } 
+   .ticket_manage_post .w-50 {
+    width: 100% !important;
+   }
+    .ticker__sale2,
+    .ticker__sale1 {
+        display: block !important;
+    }
+}
+@media (max-width: 767px) {
+    .ticket_manage_post  .background-img .col-md-4 {
+        padding-right: 15px !important;
+    }
+    .ticket_manage_post  .background-img .col-md-8 {
+        padding-left: 15px !important;
+    }
+    .background-img .thankyou_img {
+        margin-top: 15px;
+    }
+}
+@media (max-width: 575px) {
+    .ticket_manage_post > div {
+        display: block !important;
+    }
+    .ticket_manage_post .upload_links a {
+        font-size: 14px;
+    }
+}
+@media (max-width: 480px) {
+    .req_p select {
+        width: 100%;
+    }
+    .ticker__sale1,
+    .ticker__sale2,
+    .ticker__sale3 {
+        display: block !important;
+    }
+    .ticket_manage_post .invited_area .descrip_detail {
+        display: block !important;
+    }
+    .ticket_manage_post .invited_area .descrip_detail  p {
+        width: 100%;
+        margin: 8px 0 !important;
+    }
+    .ticket_manage_post .invited_area p {
+        word-break: break-all;
+        margin-left: 12px;
+    }
+    .ticker__sale1 .req_p,
+    .ticker__sale2 .req_p,
+    .ticker__sale3 .req_p {
+        display: block !important;
+    }
+    .ticker__sale1 .req_p input,
+    .ticker__sale2 .req_p input,
+    .ticker__sale3 .req_p input {
+        width: 100% !important;
+    }
+    .ticker__sale1 .req_p select,
+    .ticker__sale2 .req_p select,
+    .ticker__sale3 .req_p select {
+        margin-bottom: 12px;
+    }
+}
+sapn.sap_img img {
+    width: 40%;
+}
+.btn-warning {
+    background-color: #f39c12;
+    border-color: #e08e0b;
+    color: #fff;
+}
+.image_id {
+    color: #117ad3;
+}
