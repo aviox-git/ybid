@@ -2,223 +2,341 @@
 {% load static %}
 {% block content %}
 
-	<section>
-		<div class="login_page">
-			<h1>Login/Signin</h1>
-			<div class="border-bottom my-3"></div>
-		</div>
-		<div class="login_page_area">
-			<div class="container-fluid">
-				<div class="about_us_contain">
-					<div class="alert alert-danger text-center" role="alert" style="display: none;">
-						Your account has not been verified. Please <a href="#">click here</a> to resend verification email.
-					</div>
-					<div class="alert alert-success text-center" role="alert" style="display: none;">
-						Account activated successfully.
-					</div>
-					<div class="row">
-						<div class="offset-lg-3 offset-md-2 offset-sm-12"></div>
-						<div class="col-lg-6 col-md-8 col-sm-12">
-							<div class="login_sign_page">
-								<ul class="nav nav-tabs" id="myTab" role="tablist">
-									<li class="nav-item w-50">
-										<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Login</a>
-									</li>
-									<li class="nav-item w-50">
-										<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
-									</li>
-								</ul>
-								<div class="tab-content" id="myTabContent">
+<section>
+	<div class="login_page">
+		<h1>Login/Signin</h1>
+		<div class="border-bottom my-3"></div>
+	</div>
+	<div class="login_page_area">
+		<div class="container-fluid">
+			<div class="about_us_contain">
+				<div class="alert alert-danger text-center" role="alert" style="display: none;">
+					Your account has not been verified. Please <a href="#">click here</a> to resend verification email.
+				</div>
+				<div class="alert alert-success text-center" role="alert" style="display: none;">
+					Account activated successfully.
+				</div>
+				<div class="row">
+					<div class="offset-lg-3 offset-md-2 offset-sm-12"></div>
+					<div class="col-lg-6 col-md-8 col-sm-12">
+						<div class="login_sign_page">
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<li class="nav-item w-50">
+									<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Login</a>
+								</li>
+								<li class="nav-item w-50">
+									<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
+								</li>
+							</ul>
+							<div class="tab-content" id="myTabContent">
+								<form action="{% url 'login' %}?next={{next_}}" method="post" id="login_form" >
+									{% csrf_token %}
+									<input name="next_" value="{{next_}}" type="hidden">
 									<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 										<div class="login-area login-bg">
 											<div class="login_details py-3">
 												<label>Email Address</label>
-												<input type="text" class="form-control" required>
+												<input type="text" class="form-control" name="email" id="email"   autocomplete="off" required>
 											</div>
 											<div class="login_details pb-3">
 												<label>Password</label>
-												<input type="password" class="form-control" required>
+												<input type="password" class="form-control" id="pass" name="password"  autocomplete="off">
 											</div>
 											<div class="text-center">
 												<img src="{% static 'assets/images/capcha.png' %}" class="img-fluid" alt="capcha">
 											</div>
-											<div class="login_achor_btn mt-3" style="border: 0;">
-												<div class="login-brn">
-													<!-- <a href="#">Login</a> -->
-													<button type="button" class="btn btn-dark">Login</button>
-												</div>
+										</div>
+										<div class="login_achor_btn mt-3" style="border: 0;">
+											<div class="login-brn">
+												<!-- <a href="#">Login</a> -->
+												<button type="submit" class="login btn btn-dark">Login</button>
 											</div>
-											<div class="mt-2 mb-4">
-												<a href="#">Forgot password?</a>	
+										</div>
+										<div class="mt-2 mb-4">
+											<a href="#">Forgot password?</a>	
+										</div>
+										<div class="login_social d-flex">
+											<div class="login_fb w-50">
+												<a href="#">
+													<!-- <i class="fab fa-facebook-f"></i> -->
+													Facebook
+												</a>
 											</div>
-											<div class="login_social d-flex">
-												<div class="login_fb w-50">
-													<a href="#">
-														<!-- <i class="fab fa-facebook-f"></i> -->
-														Facebook
-													</a>
-												</div>
-												<div class="gp_btn w-50">
-													<a href="#">
-														<!-- <i class="fab fa-google-plus-g"></i> -->
-														Google+
-													</a>
-												</div>
+											<div class="gp_btn w-50">
+												<a href="#">
+													<!-- <i class="fab fa-google-plus-g"></i> -->
+													Google+
+												</a>
 											</div>
 										</div>
 									</div>
-									<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-										<div class="sign-area">
-											<div class="row">
-												<div class="col-md-6 col-sm-12">
-													<div class="login-area">
-														<div class="login_details py-3">
-															<label>First Name</label>
-															<input type="text" class="form-control" required>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12">
+								</form>
+							</div>
+
+							<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+								<form action="{% url 'registration' %}"  method="POST" id="register_form" autocomplete="off">
+									{% csrf_token %}
+									<div class="sign-area">
+										<div class="row">
+											<div class="col-md-6 col-sm-12">
+												<div class="login-area">
 													<div class="login_details py-3">
-														<label>Last Name</label>
-														<input type="text" class="form-control" required>
+														<label>First Name</label>
+														<input type="text" class="form-control" name="first_name" id="first_name" maxlength="30" minlength="2"  onkeypress="return (event.charCode > 64 && 
+														event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
 													</div>
 												</div>
 											</div>
-											<div class="row">
-												<div class="col-md-6 col-sm-12">
-													<div class="login-area">
-														<div class="login_details py-3">
-															<label>Email Address</label>
-															<input type="email" class="form-control" required>
-														</div>
-													</div>
+											<div class="col-md-6 col-sm-12">
+												<div class="login_details py-3">
+													<label>Last Name</label>
+													<input type="text" name="last_name" class="form-control" minlength="2" maxlength="30" id="last_name" onkeypress="return (event.charCode > 64 && 
+												event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
 												</div>
-												<div class="col-md-6 col-sm-12">
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6 col-sm-12">
+												<div class="login-area">
 													<div class="login_details py-3">
-														<label>Retype Email</label>
-														<input type="email" class="form-control" required>
+														<label>Email Address</label>
+														<input type="email" id="email" name="email" class="form-control" id="Email" >
 													</div>
 												</div>
 											</div>
-											<div class="row">
-												<div class="col-md-6 col-sm-12">
-													<div class="login-area">
-														<div class="login_details py-3">
-															<label>Enter Password</label>
-															<input type="password" class="form-control" required>
-														</div>
-													</div>
+											<div class="col-md-6 col-sm-12">
+												<div class="login_details py-3">
+													<label>Retype Email</label>
+													<input type="email" class="form-control" name="remail" id="remail">
+													<span style="display: none; color: red;" id="mismatch_email">Email does not match</span>
 												</div>
-												<div class="col-md-6 col-sm-12">
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6 col-sm-12">
+												<div class="login-area">
 													<div class="login_details py-3">
-														<label>Confirm Password</label>
-														<input type="password" class="form-control" required>
+														<label>Enter Password</label>
+														<input type="password" class="form-control" name="password" id="password" minlength="8"  autocomplete="off" >
 													</div>
 												</div>
 											</div>
-											<div class="row">
-												<div class="col-md-6 col-sm-12">
-													<div class="login-area">
-														<div class="login_details py-3">
-															<label>Country</label>
-															<select name="" id="" class="form-control">
-																<option value="">United States</option>
-																<option value="">India</option>
-															</select>
-														</div>
-													</div>
+											<div class="col-md-6 col-sm-12">
+												<div class="login_details py-3">
+													<label>Confirm Password</label>
+													<input type="password" class="form-control" id="confirm_password" name="confirm_password" minlength="8"  autocomplete="off" >
+													<span style="display: none; color: red;" id="mismatch_pass">Password does not match</span>
 												</div>
-												<div class="col-md-6 col-sm-12">
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6 col-sm-12">
+												<div class="login-area">
 													<div class="login_details py-3">
-														<label>State</label>
-														<select name="" id="" class="form-control">
-															<option value="">Washington</option>
-															<option value="">Delhi</option>
+														<label>Country</label>
+														<select name="parent_country" id="countryId" class="form-control">
+															<option value="United States">United States</option>
+															<option value="India">India</option>
 														</select>
 													</div>
 												</div>
 											</div>
-											<div class="text-center">
-												<img src="{% static 'assets/images/capcha.png' %}" class="img-fluid" alt="capcha">
-											</div>
-											<div class="mt-3">
-												<label class="payment_gateway_checkbox"> I agree with XOimages terms
-													<input type="checkbox">
-													<span class="checkmark"></span>
-												</label>
-											</div>
-											<div class="login_achor_btn mt-3 mb-3" style="border: 0;">
-												<div class="login-brn">
-													<!-- <a href="#">Register</a> -->
-													<button type="button" class="btn btn-dark">Register</button>
-												</div>
-											</div>
-											<div class="login_social d-flex">
-												<div class="login_fb w-50">
-													<a href="#">
-														<!-- <i class="fab fa-facebook-f"></i> -->
-														Facebook
-													</a>
-												</div>
-												<div class="gp_btn w-50">
-													<a href="#">
-														<!-- <i class="fab fa-google-plus-g"></i> -->
-														Google+
-													</a>
+											<div class="col-md-6 col-sm-12">
+												<div class="login_details py-3">
+													<label>State</label>
+													<select name="state" id="stateId" class="form-control">
+														<option value="Washington">Washington</option>
+														<option value="Delhi">Delhi</option>
+													</select>
 												</div>
 											</div>
 										</div>
-										<!-- 	<div class="login-area px-3">
-												<div class="login-area px-3">
-												<div class="login_details py-3">
-													<label>Email Address</label>
-													<input type="text" class="form-control" required>
-												</div>
-												<div class="login_details pb-3">
-													<label>Password</label>
-													<input type="password" class="form-control" required>
-												</div>
-												<div class="login_achor_btn mt-3">
-													<div class="login-brn">
-														<a href="#">Login</a>
-													</div>
-												</div>
-												<div class="mt-2 mb-4">
-													<a href="#">Forget password?</a>	
-												</div>
-												<div class="login_social d-flex">
-													<div class="login_fb w-50">
-														<a href="#">
-															<i class="fab fa-facebook-f"></i>
-															facebook
-														</a>
-													</div>
-													<div class="gp_btn w-50">
-														<a href="#">
-															<i class="fab fa-google-plus-g"></i>
-															Google+
-														</a>
-													</div>
-												</div>
-											</div> -->
+										<div class="text-center">
+											<img src="{% static 'assets/images/capcha.png' %}" class="img-fluid" alt="capcha">
+										</div>
+										<div class="mt-3">
+											<label class="payment_gateway_checkbox"> I agree with XOimages terms
+												<input type="checkbox" name="terms" value="True" required>
+												<span class="checkmark"></span>
+											</label>
+										</div>
+										<div class="login_achor_btn mt-3 mb-3" style="border: 0;">
+											<div class="login-brn">
+												<!-- <a href="#">Register</a> -->
+												<button type="submit" class="btn btn-dark register" value="submit">Register</button>
+												
+											</div>
 										</div>
 									</div>
-								</div>
+								</form>
 							</div>
 						</div>
-						<div class="offset-lg-3 offset-md-2 offset-sm-12"></div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-	<!--Section End-->
-	<!-- Footer Start-->
-
-	<!-- Footer End-->
-	<!-- Scroll Page-->
-	<div class="scroll_page">
-		<a href="javascript:" id="return-to-top"><i class="fas fa-angle-double-up"></i></i></a>
 	</div>
+</section>
+{% endblock %}
+
+{% block extrascript %}
+
+<script type="text/javascript">
+
+<!------------------------ Login Jquery --------------------------->
+
+$('.login').on("click", function() {
+	
+var $inputs = $('#login_form :input');
+
+var values = {};
+$inputs.each(function() {
+	values[this.name] = $(this).val();
+});
+var error_list  =[];
+var submit = true;
+
+var email = document.getElementById('email').value;
+if (email == null || email == "") {
+	passwordError = "Please enter Email";
+	error_list.push(passwordError);
+	submit = false;
+}
+var passw = document.getElementById('pass').value;
+if (passw == null || passw == "") {
+	passwordError = "Please enter password";
+	error_list.push(passwordError);
+	submit = false;
+}
+
+if (error_list.length > 0){
+  	$('.alert-danger').show();
+  	$('.alert-danger').html("");
+  	var i;
+  	for (i = 0; i<error_list.length; i++){
+  		$('.alert-danger').append('<p>'+ error_list[i]+'</p>')
+  			$('html, body').animate({
+        scrollTop: $(".alert-danger").offset().top
+    },1);
+  	}
+
+  }
+  return submit;
+
+ });
+
+
+
+
+
+
+
+<!------------------------ Registration Jquery --------------------------->
+
+
+$('.register').on("click", function() {
+
+	var $inputs = $('#register_form :input');
+
+	var values = {};
+	$inputs.each(function() {
+		values[this.name] = $(this).val();
+	});
+	var error_list  =[];
+	var submit = true;
+
+  if (values['first_name'] == null || values['first_name'] == "") {
+  	nameError = "Please enter first name";
+  	error_list.push(nameError);
+  	submit = false;
+  }
+	 var f_length = (values['first_name']) 
+ 	if (f_length.length < 2) {
+  	nameError = "Please enter  minimum 2 character in First Name";
+  	error_list.push(nameError);
+  	submit = false;
+  }
+  if (values['last_name'] == null || values['last_name'] == "") {
+  	last_nameError = "Please enter last name";
+  	error_list.push(last_nameError);
+  	submit = false;
+  }
+   var lastname_length = (values['last_name']) 
+ 	if (lastname_length.length < 2) {
+  	nameError = "Please enter  minimum 2 character in Last Name";
+  	error_list.push(nameError);
+  	submit = false;
+  }
+
+   if (values['email'] == null || values['email'] == "") {
+  	emailError = "Please enter email";
+  	error_list.push(emailError);
+  	submit = false;
+  }
+	
+// email pattern
+
+
+if (values['remail'] == null || values['remail'] == "") {
+  	repeat_emailError = "Please enter confirm email";
+  	error_list.push(repeat_emailError);
+  	submit = false;
+  }
+  if (values['email'] != values['remail']) {
+  	emailNotmatch = "Email does not match";
+  	error_list.push(emailNotmatch);
+  	submit = false;
+  }
+  if (values['password'] == null || values['password'] == "") {
+  	passwordError = "Please enter password";
+  	error_list.push(passwordError);
+  	submit = false;
+  }
+  if (values['confirm_password'] == null || values['confirm_password'] == "") {
+  	confirm_passwordError = "Please enter confirm password";
+  	error_list.push(confirm_passwordError);
+  	submit = false;
+  }
+  if (values['password'] != values['confirm_password']) {
+  	passwordNotmatch = "Password does not match";
+  	error_list.push(passwordNotmatch);
+  	submit = false;
+  }
+  var country = $('#countryId').val();
+  if (country  == null || country == "" || country == undefined){
+	countryError = "Please Select Country";
+ 	error_list.push(countryError)
+ 	submit = false;	 	  
+  } 
+	var state = $('#stateId').val();
+  if (state  == null || state == "" || state == undefined){
+	stateError = "Please Select State";
+ 	error_list.push(stateError)
+ 	submit = false;	 	  
+  } 
+	var terms = $('input[name="terms"]:checked').val();
+	if (terms  == null || terms == "" || terms == undefined){
+		checkboxError = "Please agree with Terms";
+	 	error_list.push(checkboxError)
+	 	submit = false;	 	  
+	}
+
+  console.log(error_list);
+  if (error_list.length > 0){
+  	$('.alert-danger').show();
+  	$('.alert-danger').html("");
+  	var i;
+  	for (i = 0; i<error_list.length; i++){
+  		$('.alert-danger').append('<p>'+ error_list[i]+'</p>')
+  		$('html, body').animate({
+        scrollTop: $(".alert-danger").offset().top
+    }, 1);
+  	}
+
+  }
+ return submit;
+});
+
+
+</script>
 {% endblock %}
