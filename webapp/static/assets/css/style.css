@@ -321,7 +321,7 @@ h2::before {
   position: relative;
   z-index: 99;
 }
-/*.header_bottom:after {
+.header_bottom:after {
   position: absolute;
   top: 100%;
   left: 0;
@@ -329,7 +329,7 @@ h2::before {
   content: "";
   height: 17px;
   width: 100%;
-}*/
+}
 
 .hows_section img {
   width: 100% !important;
@@ -870,9 +870,9 @@ h2::before {
   padding: 25px 23px;
 }
 .login_sign_page .nav-link.active {
-  background-color: #ea7904;
-  color: #fff;
-  border: 0;
+  background-color: #ea7904 !important;
+  color: #fff !important;
+  border: 0 !important;
  /* border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border-top-right-radius: 0;
@@ -1527,7 +1527,7 @@ footer .instant_icon a {
 footer .inbox_icon a {
   background-color: #0078d7;
 }
-/*.footer_inner:after {
+.footer_inner:after {
   background: url(../../assets/images/footer_line.png) no-repeat scroll center top;
   position: absolute;
   left: 0;
@@ -1535,7 +1535,7 @@ footer .inbox_icon a {
   height: 17px;
   width: 100%;
   top: -16px;
-}*/
+}
 .footer_list_links ul {
   list-style-type: none;
 }
@@ -1600,12 +1600,12 @@ footer .inbox_icon a {
   .hows_div_content {
     width: 40%;
   }
-  /*.header_bottom:after {
+  .header_bottom:after {
     top: 99%;
     height: 15px;
     background: url(../../assets/images/line-2.png) scroll center;
-  }*/
- /* .mutliple-shows:before {
+  }
+  .mutliple-shows:before {
     top: 99%;
     height: 15px;
     background: url(../../assets/images/multiple_booster_line.png) scroll center;
@@ -1622,7 +1622,7 @@ footer .inbox_icon a {
   .footer_inner:after {
     top: -13px !important;
     background: url(../../assets/images/footer_line.png) scroll center top !important;
-  }*/
+  }
 }
 @media (max-width: 991px) {
   .google_map>div {

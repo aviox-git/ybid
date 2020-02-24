@@ -1,0 +1,1769 @@
+{% extends 'Front/main.html' %}
+{% load static %}
+{% block content %}
+
+
+	<section id="dashboard__2" style="background-color: #f7f7f7;" class="pb-3 pt-5">
+		<div class="container dashboard_2_container">
+			<div class="ticket__1">
+				<div class="step__1">
+					<div class="ticker__hdr mb-3">
+						<div class="d-flex justify-content-between">
+							<h3 class="ticker_ttl">STEP 1: SET TITLE</h3>
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input" id="exampleCheck1">
+								<label style="margin-bottom: 0;">FUNDRAISING BANNER</label>
+							</div>
+						</div>
+					</div>
+					<input type="text" class="form-control" required="">
+				</div>
+				<div class="step__2">
+					<div class="ticker__hdr mb-3 mt-4">
+						<h3 class="ticker_ttl">STEP 2: DESCRIPTION AND ORDER GUIDE</h3>
+					</div>
+					<textarea class="form-control" rows="2" placeholder=""></textarea>
+				</div>
+				<!-- step 2 end -->
+				<div class="step__3">
+					<div class="ticker__hdr mb-3 mt-4">
+						<div class="d-flex justify-content-between">
+							<h3 class="ticker_ttl">STEP 3: SET TYPE OF POSTING</h3>
+							<div class="text-right add_btn" style="width: 166px;">
+								<select name="" id="" class="form-control">
+									<option  selected="select">Select Time Zone</option>
+								</select>
+							</div>
+						</div>
+					</div>	
+					<!-- border 1 set end -->
+					<div class="ticket-bdr mt-3 border-0">
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+							<label class="form-check-label" for="inlineRadio1">Self-Portrait: Members / Students submit their own portrait for ID card photo.</label>
+							<input class="form-check-input mr-2 ml-3" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option1">
+							<label class="form-check-label" for="inlineRadio2">Activate Free Trail.</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+							<label class="form-check-label" for="inlineRadio1">Pro-Portrait: Organizer upload Members / Students photos for sale taken by professional photographer.</label>
+							<input class="form-check-input mr-2 ml-3" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option1">
+							<label class="form-check-label" for="inlineRadio2">Activate Free Trail.</label>
+						</div>
+					</div>
+					<!-- border 2 set end -->
+				</div>
+				<div>
+					<!-- step 4 start -->
+					<!--Self Portait Content Start-->
+					<div class="step__3">
+						<div class="self_port">
+							<!-- <h2 class="text-center">SELF PORTRAIT</h2> -->
+						</div>
+						<div class="ticker__hdr mb-3 mt-4">
+							<div class="d-flex align-items-end">
+								<h3 class="ticker_ttl">STEP 4: SET EXPIRATION DATES</h3>
+								<span class="ml-3">(All uploaded images will be purged when posting expires)</span>
+							</div>
+						</div>
+						<div class="ticket-bdr border-0">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="set_express_heading">
+										<h6 class="mb-3">
+											<b>Early Bird Price Expiration Date</b>
+										</h6>
+										<div class="d-flex">
+											<input type="text" class="form-control mr-2">
+											<span>(Max 90 days from posting start date)</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="set_express_heading">
+										<h6 class="mb-3">
+											<b>Regular Price Expiration Date / Posting End Date</b>
+										</h6>
+										<div class="d-flex mr-2">
+											<input type="text" class="form-control mr-2">
+											<span>(Max 365 days from posting start date)</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- step 4 end -->
+					<!-- step 5 start -->
+					<div class="step__3">
+						<div class="ticker__hdr mb-3 mt-4">
+							<h3 class="ticker_ttl">STEP 5: SET YEARBOOK PHOTO SPECIFICATION & PRICES</h3>
+						</div>
+						<div class="ticket-bdr border-0">
+							<div class="row">
+								<div class="col-md-9">
+									<div class="form-check year_specification py-3 pr-3">
+										<h6><a href="#">SET YEARBOOK PHOTO SPECIFICATION</a></h6>
+										<div class="dimension_div">
+											<div class="yearbook_div d-flex align-items-end mb-3">
+												<h6 class="mr-3">Year Photo Dimension:</h6>
+												<div class="mr-3" style="white-space: nowrap;">
+													<input type="radio">
+													<label for="" style="margin-bottom: 0">inches</label>
+												</div>
+												<div class="mr-3" style="white-space: nowrap;">
+													<input type="radio">
+													<label for="" style="margin-bottom: 0">millimeter</label>
+												</div>
+												<div class="width_selector">
+													<select name="" class="form-control">
+														<option value="" slected>Width</option>
+														<option value="">1.00" /26 mm</option>
+														<option value="">1.25" /33 mm</option>
+														<option value="">1.50" /39 mm</option>
+													</select>
+												</div>
+												<div class="width_selector ml-3"> 
+													<select name="" class="form-control">
+														<option value="" slected>Height</option>
+													</select>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between align-items-end">
+												<h6 class="w-50">Yearbook Photo Face Size:</h6>
+												<div style="width: 50%;" class="">
+													<select name="" class="form-control">
+														<option value="" selected>1"/26mm</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<h6 class="mt-3 mb-3"><a href="#">YEARBOOK PHOTO IMAGE RESIZING</a></h6>
+										<div class="d-flex">
+											<div class="d-flex w-50 align-items-end">
+												<label for="" style="width: 70%; color: #024279; white-space: nowrap;" class="mr-2">Early Bird Price:</label>
+												<input type="text" class="form-control">
+											</div>
+											<div class="d-flex w-50 align-items-end ml-3">
+												<label for="" style="width: 70%; color: #024279; white-space: nowrap;">Regular Price:</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+										<h6 class="mt-3 mb-3"><a href="#">PRICE PER YEARBOOK</a> (Optional)</h6>
+										<div class="d-flex">
+											<div class="d-flex w-50 align-items-end">
+												<label for="" style="width: 70%; color: #024279; white-space: nowrap;" class="mr-2">Early Bird Price:</label>
+												<input type="text" class="form-control">
+											</div>
+											<div class="d-flex w-50 align-items-end ml-3">
+												<label for="" style="width: 70%; color: #024279">Regular Price:</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div>
+										<img src="{% static 'assets/images/profile.jpg' %}" alt="profile">
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- step 6 -->
+						<!-- step 6 start-->
+						<div class="step__6">
+							<div class="ticker__hdr mb-3 mt-4">
+								<h3 class="ticker_ttl">STEP 6: SET IDENTIFICATION CARD PRICE AND DESIGN</h3>
+							</div>
+							<div class="ticket-bdr border-0">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="">
+											<input type="checkbox">
+											<label for="">Enable ID Card processing</label>
+										</div>
+										<div class="row">
+											<div class="col-md-3">
+												<label for="" class="mt-1">Identity Card Price:</label>
+											</div>
+											<div class="col-md-9">
+												<div class="d-flex">
+													<div class="d-flex w-50 align-items-end">
+														<label for="" style="width: 42%; white-space: nowrap;" class="mr-2">Early Bird $</label>
+														<input type="text" class="form-control">
+													</div>
+													<div class="d-flex w-50 align-items-end ml-3">
+														<label for="" style="width: 42%;">Regular $</label>
+														<input type="text" class="form-control">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row mt-3">
+											<div class="col-md-3">
+												<label for="" class="mt-1">Insignia:</label>
+											</div>
+											<div class="col-md-9">
+												<div class="d-flex">
+													<label>
+														<input type="file" ngf-select="" ng-model="new_files" multiple="" style="width: 248px;">
+													<!-- 	<button class="btn btn-dark">Browse...</button> -->
+													<span>600x600 (jpg or png)</span>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="row mt-3">
+											<div class="col-md-3">
+												<label for="" class="mt-1">Barcode Type:</label>
+											</div>
+											<div class="col-md-9">
+												<div class="d-flex">
+													<div class="w-25">
+														<select name="" id="" class="form-control">
+															<option value="" selected>CODE128</option>
+															<option value="">CODE 39</option>
+															<option value="">DATA MATRIX</option>
+															<option value="">UPC - A</option>
+															<option value="">PDF471</option>
+															<option value="">QR Code</option>
+														</select>
+													</div>
+													<div class="ml-3 mt-2">
+														<input type="checkbox">
+														<label for="">Enable Barcode and select data field to generate code.</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Date Field name -->
+										<div class="row mt-3">
+											<div class="col-md-3">
+												<label for="" class="mt-1">Date Field Name:</label>
+											</div>
+											<div class="col-md-9">
+												<div class="d-flex">
+													<div class="d-flex mr-3">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="Last Name">
+													</div>
+													<div class="d-flex">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="First Name">
+													</div>
+												</div>
+												<div class="d-flex">
+													<div class="d-flex top-feild mr-3">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+													<div class="d-flex top-feild">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+												</div>
+												<div class="d-flex mt-3">
+													<div class="d-flex mr-3">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="Last Name">
+													</div>
+													<div class="d-flex">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="First Name">
+													</div>
+												</div>
+												<div class="d-flex">
+													<div class="d-flex top-feild mr-3">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+													<div class="d-flex top-feild">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+												</div>
+												<div class="d-flex mt-3">
+													<div class="d-flex mr-3">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="Last Name">
+													</div>
+													<div class="d-flex">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="First Name">
+													</div>
+												</div>
+												<div class="d-flex">
+													<div class="d-flex top-feild mr-3">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+													<div class="d-flex top-feild">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+												</div>
+												<div class="d-flex mt-3">
+													<div class="d-flex mr-3">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="Last Name">
+													</div>
+													<div class="d-flex">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="First Name">
+													</div>
+												</div>
+												<div class="d-flex">
+													<div class="d-flex top-feild mr-3">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+													<div class="d-flex top-feild">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Date Field name end -->
+										<div class="row">
+											<div class="col-md-3">
+												<div>
+													Service icon:
+													(3 Letters Only)
+												</div>
+											</div>
+											<div class="col-md-9">
+												<div class="d-flex align-items-center">	
+													<div class="d-flex mt-2">
+														<span class="mr-2 mt-1">Acronyn</span>
+														<input type="text" class="form-control" placeholder="Eg. ASB" style="width: 90px;">
+														<span class="mr-2 mt-1">Price</span>
+														<input type="text" class="form-control" style="width: 90px;">
+													</div>
+													<div class="d-flex align-items-center">
+														<span class="ml-2">Description:</span>
+														<input type="text" class="form-control">
+														<div class="ml-2">+</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="text-center mt-4">	
+											<button class="d-btn btn btn-warning" style="width: 248px;">START ID CARD DESIGN</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- step 6 end-->
+						<div class="step__6">
+							<div class="ticker__hdr mb-3 mt-4">
+								<h3 class="ticker_ttl">STEP 7: ORGANIZER INFORMATION</h3>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="row">
+									<div class="col-md-6">
+										<div class="fm-1 mb-2">
+											<input type="text" class="form-control" required="" placeholder="First Name">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="fm-1 mb-2">
+											<input type="text" class="form-control" required="" placeholder="Last Name">
+										</div>
+									</div>
+									</div>
+									<div class="step-6-form all-dv-m">
+										<div class="fm-1">
+											<input type="text" class="form-control" required="" placeholder="Company Name (if applicable)">
+										</div>
+										<div class="fm-1">
+											<input type="text" class="form-control" required="" placeholder="Website">
+										</div>
+										<div class="fm-1">
+											<input type="text" class="form-control" required="" placeholder="Address">
+										</div>
+										<div class="fm-1">
+											<select class="form-control">
+													<option>Country</option>
+													<option>India</option>
+													<option>England</option>
+													<option>Sri Lanka</option>
+													<option>U.S</option>
+												</select>
+										</div>
+										<div class="fm-1">
+											<select class="form-control">
+													<option>State</option>
+													<option>Demo</option>
+													<option>Demo</option>
+													<option>Demo</option>
+													<option>Demo</option>
+												</select>
+										</div>
+										<div class="fm-1">
+											<input type="text" class="form-control" required="" placeholder="City">
+										</div>
+									
+										<div class="fm-1">
+											<input type="text" class="form-control" required="" placeholder="Postal Code">
+										</div>
+										<div class="fm-1">
+											<input type="text" class="form-control" required="" placeholder="Telephone">
+										</div>
+
+									</div>
+							</div>
+							<!-- right side column -->
+							<div class="col-md-6">
+								<div class="info-add-file">
+									<div class="form-group d-flex justify-content-between">
+										<div id="upload_button" class=" align-self-center">
+											<label>
+												<input type="file" ngf-select="" ng-model="new_files" multiple="">
+												<button class="btn btn-warning">Browse...</button>
+												<span>No File Selected.</span>
+											</label>
+											<p class="up-text mb-2">Logo (jpg, gif, png)</p>
+												<p class="upload-text">Displayed size-maximum 200 x 200 px</p>
+										</div>
+											<div class="add-img"><img src="{% static 'assets/images/add-logo.png' %}" alt="pdf"></div>
+									</div>
+
+									<div class="form-group d-flex justify-content-between">
+										<div id="upload_button" class=" align-self-center">
+											<label>
+												<input type="file" ngf-select="" ng-model="new_files" multiple="">
+												<button class="btn btn-warning">Browse...</button>
+												<span>No File Selected.</span>
+											</label>
+												<p class="up-text mb-2">Business license-optional (jpg, gif, png)</p>
+												<p class="upload-text">Displaying business license will show customer the business is legitimate.</p>
+										</div>
+											<div class="add-img"><img src="{% static 'assets/images/upload.png' %}" alt="pdf"></div>
+									</div>
+									<div class="dash_2-testarea">
+										<textarea class="form-control" rows="6" placeholder="About Initiator"></textarea>
+									</div>
+
+								</div>
+							</div>
+
+							<!-- row -->
+							</div>
+						</div>
+					</div>
+					<!-- step 6 end -->
+					<!-- step 7 start -->
+					<div class="step__7">
+						<div class="ticker__hdr mb-3 mt-4">
+							<h3 class="ticker_ttl">STEP 8: INITIATOR TERMS</h3>
+						</div>
+						<div class="table-start my-4">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th  colspan="3" scope="col">Title</th>
+										<th scope="col" class="text-center">Text</th>
+										<th scope="col" class="text-center">Enable</th>
+										<th scope="col" style="color: #100cec; font-size: 18px;" class="text-center">+</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th colspan="3" class="th_text" scope="row">Damage and Defective Items</th>
+										<td class="text-center">Edit</td>
+										<td class="text-center">
+											<form>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												</div>
+											</form>
+										</td>
+										<td class="x text-center"><i class="fas fa-times"></i></td>
+									</tr>
+									<tr>
+										<th colspan="3" class="th_text"  scope="row">I did not recive my order</th>
+										<td class="text-center">Edit</td>
+										<td class="text-center">
+											<form>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												</div>
+											</form>
+										</td>
+										<td class="x text-center"><i class="fas fa-times"></i></td>
+									</tr>
+									<tr>
+										<th colspan="3" class="th_text" scope="row">Wrong Item</th>
+										<td class="text-center">Edit</td>
+										<td class="text-center">
+											<form>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												</div>
+											</form>
+										</td>
+										<td class="x text-center"><i class="fas fa-times"></i></td>
+									</tr>
+									<tr>
+										<th colspan="3" class="th_text" scope="row">Items can't be returned</th>
+										<td class="text-center">Edit</td>
+										<td class="text-center">
+											<form>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												</div>
+											</form>
+										</td>
+										<td class="x text-center"><i class="fas fa-times"></i></td>
+									</tr>
+									<tr>
+										<th colspan="3" class="th_text" scope="row">Restocking Fee</th>
+										<td class="text-center">Edit</td>
+										<td class="text-center">
+											<form>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												</div>
+											</form>
+										</td>
+										<td class="x text-center"><i class="fas fa-times"></i></td>
+									</tr>
+									<tr>
+										<th colspan="3" class="th_text" scope="row">Return shipping</th>
+										<td class="text-center">Edit</td>
+										<td class="text-center">
+											<form>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												</div>
+											</form>
+										</td>
+										<td class="x text-center"><i class="fas fa-times"></i></td>
+									</tr>
+									<tr>
+										<th colspan="3" class="th_text" scope="row">No refund policy</th>
+										<td class="text-center">Edit</td>
+										<td class="text-center">
+											<form>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												</div>
+											</form>
+										</td>
+										<td class="x text-center"><i class="fas fa-times"></i></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- step 7 end -->
+					<!-- step 8 start -->
+					<div class="step__8">
+						<div class="ticker__hdr mb-3 mt-4">
+							<h3 class="ticker_ttl">STEP 9: PAYMENT AND TERMS</h3>
+						</div>
+						<div class="talle-start table-responsive">
+							<table class="table table-hover d2-tbl-bdr">
+							  <thead class="payment-hdr">
+							    <tr>
+							      <th scope="col" style="border-right: 1px solid #dee2e6;">Service Type / Service Fees</th>
+							      <th scope="col">Special $ / Students</th>
+							      <th scope="col" style="border-right: 1px solid #dee2e6;">Minimum / Students</th>
+							      <th scope="col">Regular $ / Students**</th>
+							      <th scope="col">Minimum Students</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							    <tr>
+							      <td scope="row" style="border-right: 1px solid #dee2e6;">Type 1</td>
+							      <td class="text-center">$0.40</td>
+							      <td class="text-center" style="border-right: 1px solid #dee2e6;">30</td>
+							      <td class="text-center">$1.00</td>
+							      <td class="text-center">15</td>
+							    </tr>
+							    <tr>
+							       <td scope="row" style="border-right: 1px solid #dee2e6;">Type 2</td>
+							      <td class="text-center">$0.60</td>
+							      <td class="text-center" style="border-right: 1px solid #dee2e6;">40</td>
+							      <td class="text-center">$2.00</td>
+							      <td class="text-center">15</td>
+							    </tr>
+							    <tr>
+							       <td scope="row" style="border-right: 1px solid #dee2e6;">Free Trail - Type 1 & 2</td>
+							      <td class="text-center">$0.00</td>
+							      <td class="text-center" style="border-right: 1px solid #dee2e6;">10 (Trail Maximum)</td>
+							      <td class="text-center">N.A.</td>
+							      <td class="text-center">N.A.</td>
+							    </tr>
+
+							  </tbody>
+							</table>
+						</div>
+						<div class="d2-note">
+							<p><b>Note:</b> Unused service fee is forfeited and irredeemable on event end date and time.</p>
+							<p>**Site sends 'Top Up' email reminder automatically when there are 30% left unused attendees to avoid freezing of your live posting. Regular Price shall apply.</p>
+						</div>
+						<div class="row">
+							<div class="col-md-5 my-4">
+								<div class="no-attend d-flex justify-content-between align-items-center">
+								<p>A.&nbsp;&nbsp;&nbsp;&nbsp;Total Number of Students</p>
+								<div style="width: 60px;"><input type="text" class="form-control" required=""></div>
+								</div>
+								<!-- second -->
+								<div class="no-attend d-flex justify-content-between align-items-center">
+								<p>B.&nbsp;&nbsp;&nbsp;&nbsp;Price per Students:</p>
+								<div>$0.60</div>
+								</div>
+								<!-- third -->
+								<div class="no-attend d-flex justify-content-between align-items-center">
+								<div style="width: 66%;">Cost of Posting (A multiply by B)</div>
+								<div><span>$24.60</span></div>
+								</div>
+							</div>
+							<div class="col-md-7 my-4">
+								<div style="margin-top: 6px;">
+									<b style="    font-size: 14px;"><u>Estimate Total Sales Calculator</u></b> <span style="font-size: 12px;">(Assuming each student orders a product)</span>
+								</div>
+								<p style="    font-size: 14px; margin: 10px 0;">(Yearbook + Portraiture + ID Card) x Students = $500.00</p>
+								<p style="    font-size: 14px;">(Yearbook + Portraiture + ID Card + Service icon ##) x Students = $755.00</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+						<div class="form-check">
+							<input class="form-check-input mt-2" type="radio" name="exampleRadios" id="exampleRadios11" value="option1" checked="">
+							<input type="text" class="form-control" placeholder="" for="exampleRadios11" required="">
+						</div>
+						<div class="form-check mt-3">
+							<input type="text" class="form-control" placeholder="" required="">
+						</div>
+						<p style="font-size: 12px; margin-left: 20px;">Paypal email is required to receive funds and posting.</p>
+						<div class="form-check my-3">
+							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios11" value="option1" checked="">
+							<label class="form-check-label" for="exampleRadios11">
+								I will enter my Paypal email later.
+							</label>
+						</div>
+					</div>
+					</div>
+
+					<div class="col-md-12">
+							<div class="btm-check-term mt-5">
+								<form>
+									<div class="form-check">
+									 <input type="checkbox" class="form-check-input" id="exampleCheck1">
+									 <label> I understand I will recive 100% of invitee's payment (less paypal fee) directly to my paypal account.</label>
+									</div>
+									<div class="form-check">
+									 <input type="checkbox" class="form-check-input" id="exampleCheck1">
+									 <label>I agree to seek a dispute resolution at Paypal Resolution Center when a dispute arises with any invitees.</label>
+									</div>
+									<div class="form-check">
+									 <input type="checkbox" class="form-check-input" id="exampleCheck1">
+									 <label>I agree with Domain.com <b>Terms.</b></label>
+									</div>
+								</form>
+							</div>
+					</div>
+
+					<!-- step 8 end -->
+					<div class="buttons-d2 mt-5 mb-4 text-center">
+						<button class="d-btn btn btn-warning btn-same-pay">Save / unpost</button>
+						<button class="d-btn btn btn-warning mr-4 btn-same-pay">Post now</button>
+					</div>
+					<!--Self Portait Content End-->
+				</div>
+				<div>
+					<!--Pro Portait Content Start-->
+					<div class="step__3 pro_protait">
+						<div class="self_port">
+							<!-- <h2 class="text-center mb-3">PRO PORTRAIT</h2> -->
+						</div>
+						<div class="table-responsive">
+							<table class="table table-striped border">
+								<thead>
+									<tr>
+										<th scope="col" style="width: 34%;">Event Schedule</th>
+										<th scope="col" class="text-center">Station</th>
+										<th scope="col" class="text-center" style="white-space: nowrap;">Station Details <i class="fas fa-question-circle"></i></th>
+										<th scope="col" class="text-center" style="white-space: nowrap;">Photographer upload Password <i class="fas fa-question-circle"></i></th>
+										<th scope="col" class="text-center">Initiator Upload</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td scope="row">
+											<div class="d-flex justify-content-between">
+												<h6 class="mr-3" style="white-space: nowrap;">Event Date</h6>
+												<input type="text" class="form-control">
+											</div>
+											<div class="d-flex mt-2 mb-2">
+												<h6 class="mr-3">Event Start Time</h6>
+												<div class="d-flex w-100">
+													<select name="" id="" class="form-control timer_select mr-2">
+														<option value="" selected>00</option>
+														<option value="">01</option>
+														<option value="">02</option>
+														<option value="">03</option>
+													</select>
+													<select name="" id="" class="form-control timer_select mr-2">
+														<option value="" selected>00</option>
+														<option value="">01</option>
+														<option value="">02</option>
+														<option value="">03</option>
+													</select>
+													<select name="" id="" class="form-control timer_select">
+														<option value="" selected>AM</option>
+														<option value="">PM</option>
+													</select>
+												</div>
+											</div>
+											<div class="d-flex mt-2 mb-2">
+												<h6 class="mr-3">Event End Time</h6>
+												<div class="d-flex w-100">
+													<select name="" id="" class="form-control timer_select mr-2">
+														<option value="" selected>00</option>
+														<option value="">01</option>
+														<option value="">02</option>
+														<option value="">03</option>
+													</select>
+													<select name="" id="" class="form-control timer_select mr-2">
+														<option value="" selected>00</option>
+														<option value="">01</option>
+														<option value="">02</option>
+														<option value="">03</option>
+													</select>
+													<select name="" id="" class="form-control timer_select">
+														<option value="" selected>AM</option>
+														<option value="">PM</option>
+													</select>
+												</div>
+											</div>
+										</td>
+										<td>
+											<select name="" id="" class="form-control">
+												<option value="" selected="">A</option>
+												<option value="">B</option>
+												<option value="">C</option>
+												<option value="">D</option>
+											</select>
+										</td>
+										<td>
+											<textarea name="" id=""rows="6" class="w-100 form-control" placeholder="Enter Class, Group or Team Name" style="font-size: 13px;"></textarea>
+										</td>
+										<td>
+											<div class="text-center">
+												<h6 class="mb-2">Photographer</h6>
+												<div class="d-flex">
+													<input type="text" class="form-control mr-2" placeholder="First Name">
+													<input type="text" class="form-control" placeholder="Last Name">
+												</div>
+												<div class="mb-3 mt-2" style="font-size: 14px;">
+													Send Upload Password: <b>UBXEP</b>
+												</div>
+												<div style="font-size: 14px;">
+													Send Upload Password to photographer
+												</div>
+											</div>
+										</td>
+										<td><div class="text-center"><i class="fas fa-angle-double-up"></i><br> <span>0 files</span></div></td>
+									</tr>
+									<tr>
+										<td scope="row">
+											<div class="d-flex justify-content-between">
+												<h6 class="mr-3" style="white-space: nowrap;">Event Date</h6>
+												<input type="text" class="form-control">
+											</div>
+											<div class="d-flex mt-2 mb-2">
+												<h6 class="mr-3">Event Start Time</h6>
+												<div class="d-flex w-100">
+													<select name="" id="" class="form-control timer_select mr-2">
+														<option value="" selected>00</option>
+														<option value="">01</option>
+														<option value="">02</option>
+														<option value="">03</option>
+													</select>
+													<select name="" id="" class="form-control timer_select mr-2">
+														<option value="" selected>00</option>
+														<option value="">01</option>
+														<option value="">02</option>
+														<option value="">03</option>
+													</select>
+													<select name="" id="" class="form-control timer_select">
+														<option value="" selected>AM</option>
+														<option value="">PM</option>
+													</select>
+												</div>
+											</div>
+											<div class="d-flex mt-2 mb-2">
+												<h6 class="mr-3">Event End Time</h6>
+												<div class="d-flex w-100">
+													<select name="" id="" class="form-control timer_select mr-2">
+														<option value="" selected>00</option>
+														<option value="">01</option>
+														<option value="">02</option>
+														<option value="">03</option>
+													</select>
+													<select name="" id="" class="form-control timer_select mr-2">
+														<option value="" selected>00</option>
+														<option value="">01</option>
+														<option value="">02</option>
+														<option value="">03</option>
+													</select>
+													<select name="" id="" class="form-control timer_select">
+														<option value="" selected>AM</option>
+														<option value="">PM</option>
+													</select>
+												</div>
+											</div>
+										</td>
+										<td>
+											<select name="" id="" class="form-control">
+												<option value="" selected="">A</option>
+												<option value="">B</option>
+												<option value="">C</option>
+												<option value="">D</option>
+											</select>
+										</td>
+										<td>
+											<textarea name="" id=""rows="6" class="w-100 form-control" placeholder="Enter Class, Group or Team Name" style="font-size: 13px;"></textarea>
+										</td>
+										<td>
+											<div class="text-center">
+												<h6 class="mb-2">Photographer</h6>
+												<div class="d-flex">
+													<input type="text" class="form-control mr-2" placeholder="First Name">
+													<input type="text" class="form-control" placeholder="Last Name">
+												</div>
+												<div class="mb-3 mt-2" style="font-size: 14px;">
+													Send Upload Password: <b>UBXEP</b>
+												</div>
+												<div style="font-size: 14px;">
+													Send Upload Password to photographer
+												</div>
+											</div>
+										</td>
+										<td><div class="text-center"><i class="fas fa-angle-double-up"></i><br> <span>0 files</span></div></td>
+									</tr>
+									<tr>
+										<td scope="row">
+											<div class="d-flex justify-content-between">
+												<h6 class="mr-3" style="white-space: nowrap;">Event Date</h6>
+												<input type="text" class="form-control">
+											</div>
+											<div class="d-flex mt-2 mb-2">
+												<h6 class="mr-3">Event Start Time</h6>
+												<div class="d-flex w-100">
+													<select name="" id="" class="form-control timer_select mr-2">
+														<option value="" selected>00</option>
+														<option value="">01</option>
+														<option value="">02</option>
+														<option value="">03</option>
+													</select>
+													<select name="" id="" class="form-control timer_select mr-2">
+														<option value="" selected>00</option>
+														<option value="">01</option>
+														<option value="">02</option>
+														<option value="">03</option>
+													</select>
+													<select name="" id="" class="form-control timer_select">
+														<option value="" selected>AM</option>
+														<option value="">PM</option>
+													</select>
+												</div>
+											</div>
+											<div class="d-flex mt-2 mb-2">
+												<h6 class="mr-3">Event End Time</h6>
+												<div class="d-flex w-100">
+													<select name="" id="" class="form-control timer_select mr-2">
+														<option value="" selected>00</option>
+														<option value="">01</option>
+														<option value="">02</option>
+														<option value="">03</option>
+													</select>
+													<select name="" id="" class="form-control timer_select mr-2">
+														<option value="" selected>00</option>
+														<option value="">01</option>
+														<option value="">02</option>
+														<option value="">03</option>
+													</select>
+													<select name="" id="" class="form-control timer_select">
+														<option value="" selected>AM</option>
+														<option value="">PM</option>
+													</select>
+												</div>
+											</div>
+										</td>
+										<td>
+											<select name="" id="" class="form-control">
+												<option value="" selected="">A</option>
+												<option value="">B</option>
+												<option value="">C</option>
+												<option value="">D</option>
+											</select>
+										</td>
+										<td>
+											<textarea name="" id=""rows="6" class="w-100 form-control" placeholder="Enter Class, Group or Team Name" style="font-size: 13px;"></textarea>
+										</td>
+										<td>
+											<div class="text-center">
+												<h6 class="mb-2">Photographer</h6>
+												<div class="d-flex">
+													<input type="text" class="form-control mr-2" placeholder="First Name">
+													<input type="text" class="form-control" placeholder="Last Name">
+												</div>
+												<div class="mb-3 mt-2" style="font-size: 14px;">
+													Send Upload Password: <b>UBXEP</b>
+												</div>
+												<div style="font-size: 14px;">
+													Send Upload Password to photographer
+												</div>
+											</div>
+										</td>
+										<td><div class="text-center"><i class="fas fa-angle-double-up"></i><br> <span>285 files</span></div></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="ticker__hdr mb-3 mt-4">
+							<div class="d-flex align-items-end">
+								<h3 class="ticker_ttl">STEP 4: SET EXPIRATION DATES</h3>
+								<span class="ml-3">(All uploaded images will be purged when posting expires)</span>
+							</div>
+						</div>
+						<div class="ticket-bdr border-0">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="set_express_heading">
+										<h6 class="mb-3">
+											<b>Early Bird Price Expiration Date</b>
+										</h6>
+										<div class="d-flex">
+											<input type="text" class="form-control mr-2">
+											<span>(Max 90 days from posting start date)</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="set_express_heading">
+										<h6 class="mb-3">
+											<b>Regular Price Expiration Date / Posting End Date</b>
+										</h6>
+										<div class="d-flex mr-2">
+											<input type="text" class="form-control mr-2">
+											<span>(Max 365 days from posting start date)</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- step 4 end -->
+					<!-- step 5 start -->
+					<div class="step__3">
+						<div class="ticker__hdr mb-3 mt-4">
+							<h3 class="ticker_ttl">STEP 5: SET YEARBOOK PHOTO SPECIFICATION & PRICES</h3>
+						</div>
+						<div class="ticket-bdr border-0">
+							<div class="row">
+								<div class="col-md-9">
+									<div class="form-check year_specification py-3 pr-3">
+										<h6><a href="#">SET YEARBOOK PHOTO SPECIFICATION</a></h6>
+										<div class="dimension_div">
+											<div class="yearbook_div d-flex align-items-end mb-3">
+												<h6 class="mr-3">Year Photo Dimension:</h6>
+												<div class="mr-3" style="white-space: nowrap;">
+													<input type="radio">
+													<label for="" style="margin-bottom: 0">inches</label>
+												</div>
+												<div class="mr-3" style="white-space: nowrap;">
+													<input type="radio">
+													<label for="" style="margin-bottom: 0">millimeter</label>
+												</div>
+												<div class="width_selector">
+													<select name="" class="form-control">
+														<option value="" slected>Width</option>
+													</select>
+												</div>
+												<div class="width_selector ml-3"> 
+													<select name="" class="form-control">
+														<option value="" slected>Height</option>
+													</select>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between align-items-end">
+												<h6 class="w-50">Yearbook Photo Face Size:</h6>
+												<div style="width: 50%;" class="">
+													<select name="" class="form-control">
+														<option value="" selected>1"/26mm</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<h6 class="mt-3 mb-3"><a href="#">YEARBOOK PHOTO IMAGE RESIZING</a></h6>
+										<div class="d-flex">
+											<div class="d-flex w-50 align-items-end">
+												<label for="" style="width: 70%; color: #024279; white-space: nowrap;" class="mr-2">Early Bird Price:</label>
+												<input type="text" class="form-control">
+											</div>
+											<div class="d-flex w-50 align-items-end ml-3">
+												<label for="" style="width: 70%; color: #024279; white-space: nowrap;">Regular Price:</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+										<h6 class="mt-3 mb-3"><a href="#">PRICE PER YEARBOOK</a> (Optional)</h6>
+										<div class="d-flex">
+											<div class="d-flex w-50 align-items-end">
+												<label for="" style="width: 70%; color: #024279; white-space: nowrap;" class="mr-2">Early Bird Price:</label>
+												<input type="text" class="form-control">
+											</div>
+											<div class="d-flex w-50 align-items-end ml-3">
+												<label for="" style="width: 70%; color: #024279">Regular Price:</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div>
+										<img src="{% static 'assets/images/profile.jpg' %}" alt="profile">
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- step 6 -->
+						<!-- step 6 start-->
+						<div class="step__6">
+							<div class="ticker__hdr mb-3 mt-4">
+								<h3 class="ticker_ttl">STEP 6: SET IDENTIFICATION CARD PRICE AND DESIGN</h3>
+							</div>
+							<div class="ticket-bdr border-0">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="">
+											<input type="checkbox">
+											<label for="">Enable ID Card processing</label>
+										</div>
+										<div class="row">
+											<div class="col-md-3">
+												<label for="" class="mt-1">Identity Card Price:</label>
+											</div>
+											<div class="col-md-9">
+												<div class="d-flex">
+													<div class="d-flex w-50 align-items-end">
+														<label for="" style="width: 42%; white-space: nowrap;" class="mr-2">Early Bird $</label>
+														<input type="text" class="form-control">
+													</div>
+													<div class="d-flex w-50 align-items-end ml-3">
+														<label for="" style="width: 42%;">Regular $</label>
+														<input type="text" class="form-control">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row mt-3">
+											<div class="col-md-3">
+												<label for="" class="mt-1">Insignia:</label>
+											</div>
+											<div class="col-md-9">
+												<div class="d-flex">
+													<label>
+														<input type="file" ngf-select="" ng-model="new_files" multiple="" style="width: 248px;">
+													<!-- 	<button class="btn btn-dark">Browse...</button> -->
+													<span>600x600 (jpg or png)</span>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="row mt-3">
+											<div class="col-md-3">
+												<label for="" class="mt-1">Barcode Type:</label>
+											</div>
+											<div class="col-md-9">
+												<div class="d-flex">
+													<div class="w-25">
+														<select name="" id="" class="form-control">
+															<option value="" selected>CODE128</option>
+															<option value="">CODE 39</option>
+															<option value="">DATA MATRIX</option>
+															<option value="">UPC - A</option>
+															<option value="">PDF471</option>
+															<option value="">QR Code</option>
+														</select>
+													</div>
+													<div class="ml-3 mt-2">
+														<input type="checkbox">
+														<label for="">Enable Barcode and select data field to generate code.</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Date Field name -->
+										<div class="row mt-3">
+											<div class="col-md-3">
+												<label for="" class="mt-1">Date Field Name:</label>
+											</div>
+											<div class="col-md-9">
+												<div class="d-flex">
+													<div class="d-flex mr-3">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="Last Name">
+													</div>
+													<div class="d-flex">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="First Name">
+													</div>
+												</div>
+												<div class="d-flex">
+													<div class="d-flex top-feild mr-3">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+													<div class="d-flex top-feild">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+												</div>
+												<div class="d-flex mt-3">
+													<div class="d-flex mr-3">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="Last Name">
+													</div>
+													<div class="d-flex">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="First Name">
+													</div>
+												</div>
+												<div class="d-flex">
+													<div class="d-flex top-feild mr-3">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+													<div class="d-flex top-feild">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+												</div>
+												<div class="d-flex mt-3">
+													<div class="d-flex mr-3">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="Last Name">
+													</div>
+													<div class="d-flex">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="First Name">
+													</div>
+												</div>
+												<div class="d-flex">
+													<div class="d-flex top-feild mr-3">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+													<div class="d-flex top-feild">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+												</div>
+												<div class="d-flex mt-3">
+													<div class="d-flex mr-3">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="Last Name">
+													</div>
+													<div class="d-flex">
+														<input type="checkbox" style="margin-top: 10px; margin-right: 12px;">
+														<input type="text" class="form-control" placeholder="First Name">
+													</div>
+												</div>
+												<div class="d-flex">
+													<div class="d-flex top-feild mr-3">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+													<div class="d-flex top-feild">
+														<div>
+															<input type="radio">
+															<label for="">Text</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Date</label>
+														</div>
+														<div>
+															<input type="radio">
+															<label for="">Number</label>
+														</div>
+														<div>
+															<input type="checkbox">
+															<label for="">Barcode</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Date Field name end -->
+										<div class="row">
+											<div class="col-md-3">
+												<div>
+													Service icon:
+													(3 Letters Only)
+												</div>
+											</div>
+											<div class="col-md-9">
+												<div class="d-flex align-items-center">	
+													<div class="d-flex mt-2">
+														<span class="mr-2 mt-1">Acronyn</span>
+														<input type="text" class="form-control" placeholder="Eg. ASB" style="width: 90px;">
+														<span class="mr-2 mt-1">Price</span>
+														<input type="text" class="form-control" style="width: 90px;">
+													</div>
+													<div class="d-flex align-items-center">
+														<span class="ml-2">Description:</span>
+														<input type="text" class="form-control">
+														<div class="ml-2">+</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="text-center mt-4">	
+											<button class="d-btn btn btn-warning" style="width: 248px;">START ID CARD DESIGN</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- step 6 end-->
+						<div class="step__6">
+							<div class="ticker__hdr mb-3 mt-4">
+								<h3 class="ticker_ttl">STEP 7: ORGANIZER INFORMATION</h3>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="row">
+									<div class="col-md-6">
+										<div class="fm-1 mb-2">
+											<input type="text" class="form-control" required="" placeholder="First Name">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="fm-1 mb-2">
+											<input type="text" class="form-control" required="" placeholder="Last Name">
+										</div>
+									</div>
+									</div>
+									<div class="step-6-form all-dv-m">
+										<div class="fm-1">
+											<input type="text" class="form-control" required="" placeholder="Company Name (if applicable)">
+										</div>
+										<div class="fm-1">
+											<input type="text" class="form-control" required="" placeholder="Website">
+										</div>
+										<div class="fm-1">
+											<input type="text" class="form-control" required="" placeholder="Address">
+										</div>
+										<div class="fm-1">
+											<select class="form-control">
+													<option>Country</option>
+													<option>India</option>
+													<option>England</option>
+													<option>Sri Lanka</option>
+													<option>U.S</option>
+												</select>
+										</div>
+										<div class="fm-1">
+											<select class="form-control">
+													<option>State</option>
+													<option>Demo</option>
+													<option>Demo</option>
+													<option>Demo</option>
+													<option>Demo</option>
+												</select>
+										</div>
+										<div class="fm-1">
+											<input type="text" class="form-control" required="" placeholder="City">
+										</div>
+									
+										<div class="fm-1">
+											<input type="text" class="form-control" required="" placeholder="Postal Code">
+										</div>
+										<div class="fm-1">
+											<input type="text" class="form-control" required="" placeholder="Telephone">
+										</div>
+
+									</div>
+							</div>
+							<!-- right side column -->
+							<div class="col-md-6">
+								<div class="info-add-file">
+									<div class="form-group d-flex justify-content-between">
+										<div id="upload_button" class=" align-self-center">
+											<label>
+												<input type="file" ngf-select="" ng-model="new_files" multiple="">
+												<button class="btn btn-warning">Browse...</button>
+												<span>No File Selected.</span>
+											</label>
+											<p class="up-text mb-2">Logo (jpg, gif, png)</p>
+												<p class="upload-text">Displayed size-maximum 200 x 200 px</p>
+										</div>
+											<div class="add-img"><img src="{% static 'assets/images/add-logo.png' %}" alt="pdf"></div>
+									</div>
+
+									<div class="form-group d-flex justify-content-between">
+										<div id="upload_button" class=" align-self-center">
+											<label>
+												<input type="file" ngf-select="" ng-model="new_files" multiple="">
+												<button class="btn btn-warning">Browse...</button>
+												<span>No File Selected.</span>
+											</label>
+												<p class="up-text mb-2">Business license-optional (jpg, gif, png)</p>
+												<p class="upload-text">Displaying business license will show customer the business is legitimate.</p>
+										</div>
+											<div class="add-img"><img src="{% static 'assets/images/upload.png' %}" alt="pdf"></div>
+									</div>
+									<div class="dash_2-testarea">
+										<textarea class="form-control" rows="6" placeholder="About Initiator"></textarea>
+									</div>
+
+								</div>
+							</div>
+
+							<!-- row -->
+							</div>
+						</div>
+					</div>
+					<!-- step 6 end -->
+					<!-- step 7 start -->
+					<div class="step__7">
+						<div class="ticker__hdr mb-3 mt-4">
+							<h3 class="ticker_ttl">STEP 8: INITIATOR TERMS</h3>
+						</div>
+						<div class="table-start my-4">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th  colspan="3" scope="col">Title</th>
+										<th scope="col" class="text-center">Text</th>
+										<th scope="col" class="text-center">Enable</th>
+										<th scope="col" style="color: #100cec; font-size: 18px;" class="text-center">+</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th colspan="3" class="th_text" scope="row">Damage and Defective Items</th>
+										<td class="text-center">Edit</td>
+										<td class="text-center">
+											<form>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												</div>
+											</form>
+										</td>
+										<td class="x text-center"><i class="fas fa-times"></i></td>
+									</tr>
+									<tr>
+										<th colspan="3" class="th_text"  scope="row">I did not recive my order</th>
+										<td class="text-center">Edit</td>
+										<td class="text-center">
+											<form>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												</div>
+											</form>
+										</td>
+										<td class="x text-center"><i class="fas fa-times"></i></td>
+									</tr>
+									<tr>
+										<th colspan="3" class="th_text" scope="row">Wrong Item</th>
+										<td class="text-center">Edit</td>
+										<td class="text-center">
+											<form>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												</div>
+											</form>
+										</td>
+										<td class="x text-center"><i class="fas fa-times"></i></td>
+									</tr>
+									<tr>
+										<th colspan="3" class="th_text" scope="row">Items can't be returned</th>
+										<td class="text-center">Edit</td>
+										<td class="text-center">
+											<form>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												</div>
+											</form>
+										</td>
+										<td class="x text-center"><i class="fas fa-times"></i></td>
+									</tr>
+									<tr>
+										<th colspan="3" class="th_text" scope="row">Restocking Fee</th>
+										<td class="text-center">Edit</td>
+										<td class="text-center">
+											<form>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												</div>
+											</form>
+										</td>
+										<td class="x text-center"><i class="fas fa-times"></i></td>
+									</tr>
+									<tr>
+										<th colspan="3" class="th_text" scope="row">Return shipping</th>
+										<td class="text-center">Edit</td>
+										<td class="text-center">
+											<form>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												</div>
+											</form>
+										</td>
+										<td class="x text-center"><i class="fas fa-times"></i></td>
+									</tr>
+									<tr>
+										<th colspan="3" class="th_text" scope="row">No refund policy</th>
+										<td class="text-center">Edit</td>
+										<td class="text-center">
+											<form>
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												</div>
+											</form>
+										</td>
+										<td class="x text-center"><i class="fas fa-times"></i></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- step 7 end -->
+					<!-- step 8 start -->
+					<div class="step__8">
+						<div class="ticker__hdr mb-3 mt-4">
+							<h3 class="ticker_ttl">STEP 9: PAYMENT AND TERMS</h3>
+						</div>
+						<div class="talle-start table-responsive">
+							<table class="table table-hover d2-tbl-bdr">
+							  <thead class="payment-hdr">
+							    <tr>
+							      <th scope="col" style="border-right: 1px solid #dee2e6;">Service Type / Service Fees</th>
+							      <th scope="col">Special $ / Students</th>
+							      <th scope="col" style="border-right: 1px solid #dee2e6;">Minimum / Students</th>
+							      <th scope="col">Regular $ / Students**</th>
+							      <th scope="col">Minimum Students</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							    <tr>
+							      <td scope="row" style="border-right: 1px solid #dee2e6;">Type 1</td>
+							      <td class="text-center">$0.40</td>
+							      <td class="text-center" style="border-right: 1px solid #dee2e6;">30</td>
+							      <td class="text-center">$1.00</td>
+							      <td class="text-center">15</td>
+							    </tr>
+							    <tr>
+							       <td scope="row" style="border-right: 1px solid #dee2e6;">Type 2</td>
+							      <td class="text-center">$0.60</td>
+							      <td class="text-center" style="border-right: 1px solid #dee2e6;">40</td>
+							      <td class="text-center">$2.00</td>
+							      <td class="text-center">15</td>
+							    </tr>
+							    <tr>
+							       <td scope="row" style="border-right: 1px solid #dee2e6;">Free Trail - Type 1 & 2</td>
+							      <td class="text-center">$0.00</td>
+							      <td class="text-center" style="border-right: 1px solid #dee2e6;">10 (Trail Maximum)</td>
+							      <td class="text-center">N.A.</td>
+							      <td class="text-center">N.A.</td>
+							    </tr>
+
+							  </tbody>
+							</table>
+						</div>
+						<div class="d2-note">
+							<p><b>Note:</b> Unused service fee is forfeited and irredeemable on event end date and time.</p>
+							<p>**Site sends 'Top Up' email reminder automatically when there are 30% left unused attendees to avoid freezing of your live posting. Regular Price shall apply.</p>
+						</div>
+						<div class="row">
+							<div class="col-md-5 my-4">
+								<div class="no-attend d-flex justify-content-between align-items-center">
+								<p>A.&nbsp;&nbsp;&nbsp;&nbsp;Total Number of Students</p>
+								<div style="width: 60px;"><input type="text" class="form-control" required=""></div>
+								</div>
+								<!-- second -->
+								<div class="no-attend d-flex justify-content-between align-items-center">
+								<p>B.&nbsp;&nbsp;&nbsp;&nbsp;Price per Students:</p>
+								<div>$0.60</div>
+								</div>
+								<!-- third -->
+								<div class="no-attend d-flex justify-content-between align-items-center">
+								<div style="width: 66%;">Cost of Posting (A multiply by B)</div>
+								<div><span>$24.60</span></div>
+								</div>
+							</div>
+							<div class="col-md-7 my-4">
+								<div style="margin-top: 6px;">
+									<b style="    font-size: 14px;"><u>Estimate Total Sales Calculator</u></b> <span style="font-size: 12px;">(Assuming each student orders a product)</span>
+								</div>
+								<p style="    font-size: 14px; margin: 10px 0;">(Yearbook + Portraiture + ID Card) x Students = $500.00</p>
+								<p style="    font-size: 14px;">(Yearbook + Portraiture + ID Card + Service icon ##) x Students = $755.00</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+						<div class="form-check">
+							<input class="form-check-input mt-2" type="radio" name="exampleRadios" id="exampleRadios11" value="option1" checked="">
+							<input type="text" class="form-control" placeholder="" for="exampleRadios11" required="">
+						</div>
+						<div class="form-check mt-3">
+							<input type="text" class="form-control" placeholder="" required="">
+						</div>
+						<p style="font-size: 12px; margin-left: 20px;">Paypal email is required to receive funds and posting.</p>
+						<div class="form-check my-3">
+							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios11" value="option1" checked="">
+							<label class="form-check-label" for="exampleRadios11">
+								I will enter my Paypal email later.
+							</label>
+						</div>
+					</div>
+					</div>
+
+					<div class="col-md-12">
+							<div class="btm-check-term mt-5">
+								<form>
+									<div class="form-check">
+									 <input type="checkbox" class="form-check-input" id="exampleCheck1">
+									 <label> I understand I will recive 100% of invitee's payment (less paypal fee) directly to my paypal account.</label>
+									</div>
+									<div class="form-check">
+									 <input type="checkbox" class="form-check-input" id="exampleCheck1">
+									 <label>I agree to seek a dispute resolution at Paypal Resolution Center when a dispute arises with any invitees.</label>
+									</div>
+									<div class="form-check">
+									 <input type="checkbox" class="form-check-input" id="exampleCheck1">
+									 <label>I agree with Domain.com <b>Terms.</b></label>
+									</div>
+								</form>
+							</div>
+					</div>
+
+					<!-- step 8 end -->
+					<div class="buttons-d2 mt-5 mb-4 text-center">
+						<button class="d-btn btn btn-warning btn-same-pay">Save / unpost</button>
+						<button class="d-btn btn btn-warning mr-4 btn-same-pay">Post now</button>
+					</div>
+					<!--Pro Portait Content End-->
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
