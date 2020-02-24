@@ -7,12 +7,32 @@ from core.models import Config
 from login.context_processors import getDomain
 from django.conf import settings
 from django.contrib import messages
+from datetime import date
+import json
+from user.tokens import account_activation_token
+from django.contrib.auth import login, authenticate, logout
 
+def todaydate(request):
+	today = date.today()
+	return today
+
+def mailSend(subject, recipient_list, message="", html_message=""):
+	try:
+		email_from = settings.EMAIL_HOST_USER
+		send_mail( subject, message, email_from, recipient_list, html_message=html_message )
+		return True
+	except Exception as e:
+		print(str(e))
+		return False
 
 class Registration(View):
 	template_name = 'public_login.html'
 
-	def get(self, request, *args, **kwargs):	
+	def get(self, request, *args, **kwargs):
+		next_ = request.GET.get('next')	
+		# if request.user.is_authenticated:
+		# 	return HttpResponseRedirect("/")
+
 		return render(request,self.template_name,locals())
 
 	def post(self, request, *args, **kwargs):
@@ -25,6 +45,8 @@ class Registration(View):
 		country=request.POST.get("parent_country")
 		state=request.POST.get("state")
 		terms = request.POST.get("terms")
+		request.session.modified = True
+
 
 		try:
 			user=User.objects.get(email=email)
