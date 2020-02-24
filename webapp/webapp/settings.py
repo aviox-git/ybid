@@ -26,7 +26,7 @@ SECRET_KEY = 'oqsr+hbiz+x*)y8d8&2-snn5%&if1!=fvqo#4w5!-(1d^7oaaj'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+CAN_UPDATE_SETTINGS = 1
 
 # Application definition
 
