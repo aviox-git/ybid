@@ -1,0 +1,87 @@
+{% extends 'Admin/admin-base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content container-fluid">
+      <div class="alert alert-danger text-center" role="alert" style="display: none;"></div>
+    	<!-- paypal content -->
+    	<div class="manage_admin">
+
+	    	<div class="s_paypal_struct">
+	      		<h4>Company Profile</h4>
+	      		<div class="mb-2">
+	      			<div class="row">
+	      				<div class="col-md-6">
+			      			<form action="{% url 'company_profile' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+			      				<div class="mt-2">
+				      				<label for="">Company Name</label>
+				      				<input type="text" name="company_name" value="{{company.company_name}}" required="" class="form-control">
+			      				</div>
+			      				<div class="mt-3">
+				      				<label for="">Address</label>
+				      				<input type="text" name="address" value="{{company.address}}" required  class="form-control">
+			      				</div>
+			      				<div class="mt-2">
+				      				<label for="">City</label>
+				      				<input type="text" name="city" required value="{{company.city}}"  class="form-control">
+			      				</div>
+                    <div class="mt-2">
+                      <label for="">State</label>
+                      <input type="text" name="state" required value="{{company.state}}"  class="form-control">
+                    </div>
+                     <div class="mt-2">
+                      <label for="">Zip</label>
+                      <input type="text" name="zip" maxlength="6" value="{{company.zip_code}}" required  class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    </div>
+                    <div class="mt-2">
+                      <label for="">TelePhone</label>
+                      <input type="text" maxlength="10" name="phone" value="{{company.telephone}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  class="form-control" required>
+                    </div>
+                    <div class="mt-2  mb-3">
+                      <label for="">Email</label>
+                      <input type="email" name="email" value="{{company.email}}" class="form-control" required>
+                    </div>
+			      			
+	      				</div>
+                <div class="col-md-6">
+                  <div class="mt-2">
+                      <label for="">Profile Picture</label>
+                      <div class="form-group d-flex justify-content-between">
+                        <div id="upload_button"  class=" align-self-center">
+                          <label>
+                            <input type="file" name="img" id="logo-img" ngf-select="" ng-model="new_files" multiple="">
+                          </label>
+                          <p class="up-text mb-2">Image size must be 160x160 px</p>
+                        </div>
+                        
+                        <div class="add-img">
+                          {% if company.profile_picture %}
+                          <img src="{{company.profile_picture.url}}"  id="preview" height="200" width="200" alt="add-logo">
+      
+                           {% endif %}
+                          
+                        </div>
+                       
+                      </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn save btn-success mr-3 ml-3">
+                   Update
+                </button>
+                </form>
+	      			</div>
+	      		</div>
+	    	</div>
+    	</div>
+    </section>
+    <!-- /.content -->
+  </div>
+ 
+{% endblock %}
+
+{% block extrascript %}
+<script src="{% static 'dist/js/core.js' %}"></script>
+{% endblock %}
