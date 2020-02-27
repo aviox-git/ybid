@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'login.context_processors.getDomain',
             ],
         },
     },
@@ -132,3 +133,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, '../static/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# e-mail settings
+BASE_URL="http://127.0.0.1:8000/"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'uic.17mca8160@gmail.com'
+EMAIL_HOST_PASSWORD = '17mca8160'

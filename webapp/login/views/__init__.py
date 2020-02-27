@@ -1,2 +1,2 @@
 from .registration import Registration
-from .login import ForgetPass, ResetPassword
+from .login import ForgetPass, ResetPassword, LoginView
