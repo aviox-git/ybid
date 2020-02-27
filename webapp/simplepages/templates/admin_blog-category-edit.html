@@ -1,0 +1,94 @@
+
+{% extends 'Admin/admin-base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="content-wrapper">
+  <!-- Main content -->
+  <section class="content container-fluid">
+    <div class="manage_admin">
+      <div class="alert alert-danger  text-center" role="alert" style="display: none;">
+      </div>
+     <div class="add_min d-flex justify-content-between"> 
+      <h3>Edit Blog Category</h3>
+    </div>
+    <form method="post" id="login_form">
+      {% csrf_token %}
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-6">
+
+        <div class="form-group">
+          <label>*Status</label>
+          <select class="form-control" name="status" required>
+            <option value="active"  {% if cat.status %} selected {% endif %}>Active</option>
+            <option value="deactive" {% if not cat.status %} selected {% endif %}>Deactive</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>*Sort Order</label>
+         <input type="number" min="1" class="form-control" name="order" value="{{cat.sort_order}}" required>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-6">
+
+        <div class="form-group">
+          <label>*Category</label>
+          <input type="text" class="form-control" maxlength="15" name="category" required placeholder="category name" value="{{cat.category_name}}">
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="edit  btn btn-success"><sapn><i class="fa fa-check" aria-hidden="true"></i></sapn> Save</button> 
+    <button type="button" class="delete btn btn-orange"><span><i class="fa fa-ban" aria-hidden="true"></i></span> Cancel</button>
+</form>
+  </div>
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+{% endblock %}
+
+{% block extrascript %}
+<script type="text/javascript">
+$('.edit').on("click", function() {
+
+var $inputs = $('#login_form :input');
+var values = {};
+$inputs.each(function() {
+  values[this.name] = $(this).val();
+});
+var error_list  =[];
+var submit = true;
+
+  if (values['category'] == null || values['category'] == "") {
+    nameError = "Please Enter Category Name";
+    error_list.push(nameError);
+    submit = false;
+  }
+
+  if (values['order'] == null || values['order'] == "") {
+    orderError = "Please Enter Sort Order";
+    error_list.push(orderError);
+    submit = false;
+  }
+  if (error_list.length > 0){
+    $('.alert-danger').show();
+    $('.alert-danger').html("");
+    var i;
+    for (i = 0; i<error_list.length; i++){
+      $('.alert-danger').append('<p>'+ error_list[i]+'</p>')
+      window.scrollTo(0,0);
+    }
+
+  }
+  return submit;
+});
+
+  $('.delete').on('click', function() {
+    window.history.back();
+  });
+</script>
+{% endblock %}

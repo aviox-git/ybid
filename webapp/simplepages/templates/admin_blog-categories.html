@@ -1,0 +1,80 @@
+
+{% extends 'Admin/admin-base.html' %}
+{% load static %}
+{% block content %}
+  <!-- Content Wrapper. Contains page content -->
+
+<div class="wrapper">
+ <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content container-fluid">
+      <div class="manage_admin">
+        <div class="add_min d-flex justify-content-between"> 
+    <h3>Blog Categories</h3>
+    <a href="{% url 'blog_category_add' %}">
+    <button class="btn btn-success"><sapn><i class="fa fa-plus" aria-hidden="true"></i></sapn> Add</button>
+  </a>
+    </div>
+        <table id="example" class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Sr.No</th>
+      <th scope="col">Category</th>
+      <th scope="col">Sort Order</th>
+      <th scope="col">Status</th>
+      <th scope="col">Created On</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cat in blog_cats %}
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{cat.category_name}}</td>
+      <td>{{cat.sort_order}}</td>
+      <td>{% if cat.status %} Active {% else %} Deactive {% endif %}</td>
+      <td>{{cat.created_on}}</td>
+      <td>
+      <a href="{% url 'blog_category_edit' cat.id %}">
+        <button class="edit  btn btn-primary"><sapn><i class="fa fa-pencil" aria-hidden="true"></i></sapn> Edit</button> 
+      </a>
+        <button class="delete btn btn-danger" data-id= {{cat.id}}><span><i class="fa fa-trash-o" aria-hidden="true"></i></span> Delete</button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+      {% endblock %}
+
+      {% block extrascript %}
+
+      <script type="text/javascript">
+
+        $('.delete').on('click',function() {
+
+          var row = $(this);
+          var value = row.data('id');
+
+          $.ajax({
+
+            url: '{{ request.path }}',
+            type: 'post',
+            data:{
+              'csrfmiddlewaretoken': '{{csrf_token}}',
+              'cat_id':value
+            },
+            success: function(response) {
+              row.parent().parent().remove();
+              window.location.reload();
+            }
+          });
+           return false;
+        });
+        
+      </script>
+{% endblock %}

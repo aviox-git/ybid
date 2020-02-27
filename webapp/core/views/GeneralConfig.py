@@ -40,7 +40,6 @@ class GeneralConfigView(View):
 				config.facebook_username = facebook
 				config.twitter_username = twitter
 				config.google_recaptcha_public_key = google
-				print(config.url_youtube_promo_video,config.facebook_username,config.twitter_username,config.google_recaptcha_public_key,'------------------------')
 				if files:
 					config.logo = files
 

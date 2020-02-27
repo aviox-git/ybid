@@ -1,0 +1,132 @@
+{% extends 'Admin/admin-base.html' %}
+{% load static %}
+{% block content %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+	<!-- Main content -->
+	<section class="content container-fluid">
+		<div class="manage_admin">
+	<div class="alert alert-danger  text-center" role="alert" style="display: none;">
+      </div>
+			<div class="s_paypal_struct">
+				<h4>Edit Blog</h4>
+				<div class="mb-2">
+					<div class="row">
+						<div class="col-md-6">
+							<form method="post" id="login_form" enctype="multipart/form-data">
+								{% csrf_token %}
+								<div class="mt-2">
+									<label for=""><span style="color: #ff0000;">*</span>Blog Category</label>
+									<select name="category" required class="form-control">
+										{% for cat in category %}
+										<option value="{{cat.id}}" {% if cat.id == blog.category.id %} selected {% endif %}>{{cat.category_name}} </option> 
+										 {% endfor %}
+									</select>
+								</div>
+								<div class="mt-3">
+									<label for=""><span style="color: #ff0000;">*</span>Title</label>
+									<input type="text" name="title" class="form-control" value="{{blog.title}}">
+								</div>
+								<div class="mt-2">
+									<label for="">Sort Order </label>
+									<input type="number" value="{{blog.sort_order}}"   name="order" min="1" class="form-control">
+								</div>
+								<div class="mt-2">
+									<label for=""><span style="color: #ff0000;">*</span>Cover Image</label>
+
+									<input type="file" name="image" class="form-control">
+									<span>Current image: <a href="{{blog.image.url}}"  style="color: black;" target="_blank">{{blog.image.url|slice:"13:"}}</a></span>
+
+
+								</div>
+						</div>
+						<div class="col-md-6">
+							<form action="">
+								<div class="mt-2">
+									<label for=""><span style="color: #ff0000;">*</span>Status </label>
+									<select name="status" class="form-control">
+										<option value="active" {% if blog.status %} selected {% endif %}>Active</option>
+										<option value="deactive" {% if not blog.status %} selected {% endif %}>Deactive</option>   
+									</select>
+								</div>
+								<div class="mt-2">
+									<label for="editor1"><span style="color: #ff0000;">*</span>Description</label>
+									<textarea name="description" id="editor1" rows="10" cols="80">{{blog.description}}
+									</textarea>
+								</div>
+						</div>
+						<button type="submit" class="edit btn btn-success mr-3 ml-3">
+							<i class="fa fa-check" aria-hidden="true"></i> Update
+						</button>
+						<button type="button" class="delete btn btn-warning">
+							<i class="fa fa-ban" aria-hidden="true"></i> Cancel
+						</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+{% endblock %}
+
+
+{% block extrascript %}
+
+<script>
+$('.edit').on("click", function() {
+
+var $inputs = $('#login_form :input');
+var values = {};
+$inputs.each(function() {
+  values[this.name] = $(this).val();
+});
+var error_list  =[];
+var submit = true;
+
+
+ if (values['title'] == null || values['title'] == "") {
+    titleError = "Please Enter Title";
+    error_list.push(titleError);
+    submit = false;
+  }
+	var description = CKEDITOR.instances.editor1.getData()
+  if (description == null || description == "") {
+    descriptionError = "Please Enter Descripition";
+    error_list.push(descriptionError);
+    submit = false;
+  }
+
+  if (values['order'] == null || values['order'] == "") {
+    orderError = "Please Enetr Sort Order";
+    error_list.push(orderError);
+    submit = false;
+  }
+ 
+
+  if (error_list.length > 0){
+    $('.alert-danger').show();
+    $('.alert-danger').html("");
+    var i;
+    for (i = 0; i<error_list.length; i++){
+      $('.alert-danger').append('<p>'+ error_list[i]+'</p>')
+      window.scrollTo(0,0);
+    }
+
+  }
+  return submit;
+});
+
+
+	CKEDITOR.replace( 'editor1' );
+
+	$('.delete').on('click', function() {
+		window.history.back();
+	});
+</script>
+
+{% endblock %}
+

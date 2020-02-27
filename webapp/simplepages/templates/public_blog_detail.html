@@ -1,0 +1,64 @@
+{% extends 'Front/main.html' %}
+{% load static %}
+
+
+	{% block content %}
+
+	<section>
+		<div class="blog_page">
+			<h1>Single Blog Page</h1>
+			<div class="border-bottom my-3"></div>
+		</div>
+		<div class="login_page_area">
+			<div class="container-fluid">
+				<div class="about_us_contain blog_pages">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="row my-5">
+								<a href="#">
+									<div class="blog_product">
+										<div class="single_blog">
+											<img src="{{blog.image.url}}" alt="events_opening" class="img-fluid">
+										</div>
+										<div class="blog_pd">
+											<div class="d-flex block_date">
+												<div class="blog_date mr-3">
+													{{blog.created_on|date}}
+												</div>
+												<h5 class="blog_date_heading">
+													{{blog.title}}
+												</h5>
+											</div>
+											<div class="blog_para">
+												<p>
+													{% autoescape off %}
+													{{blog.description}}
+													{% endautoescape %}
+												</p>
+											</div>
+											<div class="d-flex justify-content-between">
+												<div class="blog_cate">
+													<label>Categories:</label>
+													<span>{{blog.category.category_name}}</span>
+												</div>
+												<div class="blog_cate">
+													<label>Written by:</label>
+													<span>{{blog.author.username}}</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--Section End-->
+	<!-- Scroll Page-->
+	<div class="scroll_page">
+		<a href="javascript:" id="return-to-top"><i class="fas fa-sort-up"></i></a>
+	</div>
+	{% endblock %}

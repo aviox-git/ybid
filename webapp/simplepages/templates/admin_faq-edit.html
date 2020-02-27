@@ -1,0 +1,120 @@
+{% extends 'Admin/admin-base.html' %}
+{% load static %}
+{% block content %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+	<!-- Main content -->
+	<section class="content container-fluid">
+		<div class="manage_admin">
+	<div class="alert alert-danger  text-center" role="alert" style="display: none;">
+      </div>
+			<div class="s_paypal_struct">
+				<h4>Faq Add</h4>
+				<div class="mb-2">
+					<div class="row">
+						<div class="col-md-6">
+							<form method="post" id="login_form">
+								{% csrf_token %}
+								<div class="mt-2">
+									<label for=""><span style="color: #ff0000;">*</span>Faq Category</label>
+									<select name="category" required class="form-control">
+										{% for cat in category %}
+										<option value="{{cat.id}}" {% if cat.id == faq.category.id %} selected {% endif %}>{{cat.category_name}} </option>     {% endfor %}
+									</select>
+								</div>
+								<div class="mt-3">
+									<label for=""><span style="color: #ff0000;">*</span>Question</label>
+									<textarea name="question" rows="2" class="w-100">{{faq.question}}</textarea>
+								</div>
+								<div class="mt-2">
+									<label for="">Sort Order </label>
+									<input type="number" value="{{faq.sort_order}}"   name="order" min="1" class="form-control">
+								</div>
+						</div>
+						<div class="col-md-6">
+							<form action="">
+								<div class="mt-2">
+									<label for=""><span style="color: #ff0000;">*</span>Status </label>
+									<select name="status" class="form-control">
+										<option value="active" {% if faq.status %} selected {% endif %}>Active</option>
+										<option value="deactive" {% if not faq.status %} selected {% endif %}>Deactive</option>   
+									</select>
+								</div>
+								<div class="mt-2">
+									<label for="editor1"><span style="color: #ff0000;">*</span>Answer</label>
+									<textarea name="answer" id="editor1"  class="txt" rows="10" cols="80">{{faq.answer}}
+									</textarea>
+								</div>
+						</div>
+						<button type="submit" class="login btn btn-success mr-3 ml-3">
+							<i class="fa fa-check" aria-hidden="true"></i> Save
+						</button>
+						<button type="button" class="delete btn btn-warning">
+							<i class="fa fa-ban" aria-hidden="true"></i> Cancel
+						</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+{% endblock %}
+
+
+{% block extrascript %}
+
+<script>
+$('.login').on("click", function() {
+
+var $inputs = $('#login_form :input');
+var values = {};
+$inputs.each(function() {
+  values[this.name] = $(this).val();
+});
+var error_list  =[];
+var submit = true;
+
+ if (values['question'] == null || values['question'] == "") {
+    titleError = "Please Enter Question";
+    error_list.push(titleError);
+    submit = false;
+  }
+ var answer = CKEDITOR.instances.editor1.getData()
+if (answer == null || answer == "") {
+    ansError = "Please Enter Answer";
+    error_list.push(ansError);
+    submit = false;
+  }
+  console.log(answer);
+
+  if (values['order'] == null || values['order'] == "") {
+    orderError = "Please Enter Sort Order";
+    error_list.push(orderError);
+    submit = false;
+  }
+  if (error_list.length > 0){
+    $('.alert-danger').show();
+    $('.alert-danger').html("");
+    var i;
+    for (i = 0; i<error_list.length; i++){
+      $('.alert-danger').append('<p>'+ error_list[i]+'</p>')
+      window.scrollTo(0,0);
+    }
+
+  }
+  return submit;
+});
+
+	CKEDITOR.replace( 'editor1' );
+
+	$('.delete').on('click', function() {
+		window.history.back();
+	});
+</script>
+
+{% endblock %}
+

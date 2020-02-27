@@ -1,0 +1,58 @@
+{% extends 'Front/main.html' %}
+{% load static %}
+
+	{% block content %}
+	<section>
+		<div class="faq_page">
+			<h1>FAQ</h1>
+			<div class="border-bottom my-3"></div>
+		</div>
+		<div class="container-fluid">
+			<div class="about_us_contain faq_pages">
+				<h2>Frequently Asked Questions </h2>
+				<div class="border-bottom my-2 text-left" style="margin-left: 0;"></div>
+				<div class="row">
+					{% for cat in category %}
+					{% if cat.getFAQ %}
+					<div class="col-sm-12 col-md-6 col-lg-6">
+
+						<div class="faq_heading mt-5 mb-3">
+							<h5>{{cat.category_name}}</h5>
+							<div class="border-bottom my-2 text-left" style="margin-left: 0;"></div>
+						</div>
+						<div id="accordion1">
+							{% for obj in cat.getFAQ %}
+							<div class="card">
+								<div class="card-header" id="heading-{{obj.id}}">
+									<h5 class="mb-0">
+										<button class="btn btn-link" data-toggle="collapse" data-target="#collapse-{{obj.id}}" aria-expanded="false" aria-controls="collapse-{{obj.id}}">
+											{{forloop.counter}}. {{obj.question}}
+										</button>
+									</h5>
+								</div>
+
+								<div id="collapse-{{obj.id}}" class="collapse" aria-labelledby="heading-{{obj.id}}" data-parent="#accordion1">
+									<div class="card-body">
+										{% autoescape off %}
+										{{obj.answer}}
+										{% endautoescape %}
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+					{% endif %}
+					{% endfor %}	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--Section End-->
+	<!-- Scroll Page-->
+	<div class="scroll_page">
+		<a href="javascript:" id="return-to-top"><i class="fas fa-sort-up"></i></a>
+	</div>
+	{% endblock %}

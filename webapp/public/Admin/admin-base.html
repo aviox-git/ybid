@@ -18,7 +18,8 @@
 
   <link rel="stylesheet" href="{% static 'dist/css/skins/skin-blue.min.css' %}">
   <link rel="stylesheet" href="{% static 'dist/css/style.css' %}">
- 
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -39,9 +40,20 @@
 
 <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
 <script src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/js/jquery-datatable.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/js/datatable-bootstrap.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/js/adminapp.js' %}"></script>
+
 <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+<script  src="{% static 'bower_components/ckeditor/ckeditor.js' %}"></script>
+<script src="{% static 'dist/js/checkbox.js' %}"></script>
+<script src="{% static 'dist/js/required.js' %}"></script>
 {% block extrascript %}
 {% endblock %}
+
+<script type="text/javascript">
+  var token="{{csrf_token}}";
+</script>
 
 </body>
 </html>

@@ -1,0 +1,27 @@
+
+{% extends 'Front/main.html' %}
+{% load static %}
+
+{% block title %}
+{{page_html.title}}
+{% endblock %}
+{% block content %}
+<section>
+	
+		<div class="about_us" style="background-image: url({% if page_html.background_image %} {{page_html.background_image.url}}{% endif %}">
+			<h1>{{page_html.title}}</h1>
+			<div class="border-bottom my-3"></div>
+		</div>
+		<div class="container-fluid">
+			<div class="about_us_contain">
+				<!-- <h2></h2>
+				<div class="border-bottom my-2 text-left" style="margin-left: 0;"></div> -->
+				<div>
+					<p class="about_para">
+					{{page_html.content|safe}}
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

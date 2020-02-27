@@ -1,0 +1,141 @@
+{% extends 'Front/main.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<section>
+	<div class="blog_page">
+		<h1>Blog</h1>
+		<div class="border-bottom my-3"></div>
+	</div>
+	<div class="login_page_area">
+		<div class="container-fluid">
+			<div class="about_us_contain blog_pages">
+				<div class="blog_dropdown">
+					<label>Categories</label><br>
+					<form method="get" id="catform">
+						<select class="form-control" name="category" id="category">
+							<option {% if cate == 'all' %} selected {% endif %} value="all">All Categories</option>
+							{% for cat in categories %}
+							<option {% if cate == cat.id|stringformat:"i" %} selected {% endif %} value="{{cat.id}}">{{cat.category_name}}</option>
+							{% endfor %}
+						</select>
+					</form>
+				</div>
+				<div class="row">
+					{% for blog in blogs %}
+					<div class="col-lg-4 col-md-4 col-sm-6 col-12">
+						<div class="row my-5">
+							<a href="{% url 'single_blog' blog.id %}">
+								<div class="blog_product">
+									<div>
+										<img src="{{blog.image.url}}" alt="events_opening" class="img-fluid">
+									</div>
+									<div class="blog_pd">
+										<div class="d-flex block_date">
+											<div class="blog_date mr-3">
+												{{blog.created_on|date}}
+											</div>
+											<h5 class="blog_date_heading">
+												{{blog.title|title}}
+											</h5>
+										</div>
+										<div class="blog_para">
+											<p>{% autoescape off %}
+												{{blog.description|truncatewords:15}}
+												{% endautoescape %}
+											</p>
+											<div class="my-3">
+												<button type="button" class="btn btn-dark read_more" style="    background-color: #ea7904 !important;">Read More</button>
+											</div>
+										</div>
+										<div class="d-flex justify-content-between">
+											<div class="blog_cate">
+												<label>Categroy:</label>
+												<span>{{blog.category.category_name}}</span>
+											</div>
+											<div class="blog_cate">
+												<label>Written by:</label>
+												<span>{{blog.author}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+					{% endfor %}
+
+					{% if blogs.has_other_pages %}
+					<div class="w-100 blog_pagi">
+						<nav aria-label="Page navigation example">
+							<ul class="pagination justify-content-end">
+								{% if blogs.has_previous %}
+								<li class="page-item">
+									<a class="page-link" 
+									{% if cate %}
+									href="?category={{cate}}&page={{ blogs.previous_page_number }}"
+									{% else %} 
+									href="?page={{ blogs.previous_page_number }}"
+									{% endif %}
+									tabindex="-1">Previous</a>
+								</li>
+								{% else %}
+								<li class="page-item disabled">
+									<a class="page-link" href="#!" tabindex="-1">Previous</a>
+								</li>
+								{% endif %}
+
+								{% for i in blogs.paginator.page_range %}
+								{% if blogs.number == i %}
+
+								<li class="page-item active"><a class="page-link" href="#!">{{ i }}</a></li>
+								{% else %}
+								<li class="page-item"><a class="page-link" {% if cate %}
+									href="?category={{cate}}&page={{ i }}"
+									{% else %}
+									href="?page={{ i }}" 
+									{% endif %}>{{i}}</a></li>
+									{% endif %}
+									{% endfor %}
+									{% if blogs.has_next %}
+									<li class="page-item">
+										<a class="page-link" 
+										{% if cate %}
+										href="?category={{cate}}&page={{ blogs.next_page_number }}"
+										{% else %}
+										href="?page={{ blogs.next_page_number }}"
+										{% endif %}
+										>Next</a>
+									</li>
+									{% else %}
+									<li class="page-item disabled">
+										<a class="page-link" href="#!">Next</a>
+									</li>
+									{% endif %}
+								</ul>
+							</nav>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--Section End-->
+	<!-- Scroll Page-->
+	<div class="scroll_page">
+		<a href="javascript:" id="return-to-top"><i class="fas fa-sort-up"></i></a>
+	</div>
+	{% endblock %}
+
+	{% block extrascript %}
+	<script type="text/javascript">
+		$('#category').on('change',function(){
+			console.log('asdas');
+			$('#catform').submit()
+
+		});
+	</script>
+	{% endblock %}

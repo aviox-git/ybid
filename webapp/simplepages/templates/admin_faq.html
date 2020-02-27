@@ -1,0 +1,97 @@
+{% extends 'Admin/admin-base.html' %}
+{% load static %}
+{% block content %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+ <!-- Main content -->
+    <section class="content container-fluid">
+    	<!-- paypal content -->
+    	<div class="manage_admin">
+	    	<div class="s_paypal_struct">
+          <div class="d-flex justify-content-between">
+	      		<h4>Faqs Listing</h4>
+            <a href="{% url 'faq_add' %}">
+            <button type="button" class="btn btn-success">Add</button>
+            </a>
+          </div>
+	      		<div class="mb-2 blog_list_table">
+	      			<div class="mt-3 table-responsive">
+                <table id="example" class="table table-bordered">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Sr. No</th>
+                      <th scope="col">Question</th>
+                      <th scope="col">Answer</th>
+                      <th scope="col">Category Id</th>
+                      <th scope="col">Sort Order</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Created On</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  	{% for faq in faqs %}
+                    <tr>
+                      <th scope="row">{{forloop.counter}}</th>
+                      <td>{{faq.question}}</td>
+                      <td>{% autoescape off %}
+                      		{{faq.answer|truncatewords:15}}
+			              {% endautoescape %}
+			          </td>
+			          <td>{{faq.category.category_name}}</td>
+                      <td>{{faq.sort_order}}</td>
+                      <td>{% if faq.status %} Active {% else %} Deactive {% endif %}</td>
+                      <td>{{faq.created_on}}</td>
+                      <td>
+                        <a href="{% url 'faq_edit' faq.id %}">
+                        <button type="button" class="btn btn-primary mr-2"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
+                      </a>
+                        <button type="button" class="delete btn btn-danger" data-id="{{faq.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                    
+                  </tbody>
+                </table>    
+              </div>
+	      		</div>
+	    	</div>
+    	</div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+{% endblock %}
+
+
+      {% block extrascript %}
+
+      <script type="text/javascript">
+
+        $('.delete').on('click',function() {
+
+          var row = $(this);
+
+          var value = row.data('id');
+
+          $.ajax({
+
+            url: '{{ request.path }}',
+            type: 'post',
+            data:{
+              'csrfmiddlewaretoken': '{{csrf_token}}',
+              'faq_id':value
+            },
+            success: function(response) {
+              row.parent().parent().remove();
+              window.location.reload();
+            }
+          });
+           return false;
+        });
+        
+      </script>
+{% endblock %}
