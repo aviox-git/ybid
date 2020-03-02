@@ -1,0 +1,82 @@
+{% extends 'Admin/admin-base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="wrapper">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+   
+    <section class="content container-fluid">
+      <div class="manage_admin">
+        <div class="add_min d-flex justify-content-between"> 
+    <h3>Manage Admin</h3>
+      <a href="{% url 'add_staff' %}"><button class="btn btn-success" id="add-user">Add</button></a>
+    </div>
+    {% if users %}
+
+    <!-- <table class="table"> -->
+      <div class="posting_table">
+        <table id="example" class="table table-bordered" style="width:100%">
+      <thead>
+        
+        <tr>
+          <th scope="col">Sr.No</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Status</th>
+          <th scope="col">Created On</th>
+           <th scope="col">Change Status</th>
+          <th scope="col">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ user.first_name|title }}</td>
+          <td>{{ user.email }}</td>
+          <!-- <td>{{ user.groups.all.0|title }}</td> -->
+          <td>{% if user.is_active %}Active{% else %}Inactive{% endif %}</td>
+          <td>{{ user.date_joined|date:"Y-m-d H:i:s" }}</td>
+          
+            <td class="list_icon text-center">{% if user.is_active %}<i class="fa fa-unlock" aria-hidden="true" value="{{user.id}}"></i> {% else %} <i class="fa fa-lock" aria-hidden="true" value="{{user.id}}"></i> {% endif %}</td>
+          <td> <a href="{% url 'edit_admin' user.id %}"> <button type="submit" class="edit  btn btn-primary" data-id="{{ user.id }}"><sapn><i class="fa fa-pencil" aria-hidden="true"></i></sapn> Edit</button> </a>
+
+        
+              <!-- <a href="{% url 'delete_admin' user.id %}">    <button type="submit" class="delete btn btn-danger" data-id="{{ user.id }}"><span><i class="fa fa-trash-o" aria-hidden="true"></i></span> Delete</button> -->
+                </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <span>No records found</span>
+    {% endif %}
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  
+  {% endblock %}
+{% block extrascript %}
+
+<script type="text/javascript">
+ $('.list_icon').on('click', function(){
+    var value = $(this).find('i').attr('value');
+    $.ajax({
+      url: '{{request.path}}',
+      type: 'post',
+      data:{
+        'csrfmiddlewaretoken': '{{csrf_token}}',
+        'value':value
+      },
+      success: function(response){
+        window.location.reload();
+      }
+    });
+  });
+</script>
+{% endblock %}

@@ -69,6 +69,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'login.context_processors.getDomain',
+                'core.context_processors.getPublic_Config',
             ],
         },
     },
@@ -136,10 +137,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # e-mail settings
-BASE_URL="http://127.0.0.1:8000/"
+BASE_URL="http://localhost:8000"
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'uic.17mca8160@gmail.com'
-EMAIL_HOST_PASSWORD = '17mca8160'
+EMAIL_HOST_USER = 'redexsolutionspvtlmt@gmail.com'
+EMAIL_HOST_PASSWORD = 'rajinder@1994'
+
+# ybid
+# STRIPE_SECRET_KEY = 'sk_test_F99P0XZuQRplb8UN00YPVXRX00nwSaN3r0'
+# STRIPE_PUBLISHABLE_KEY = 'pk_test_v52JjzSVBUH1sSP1Q1OrFyMG00zL2moLLy'
+
+STRIPE_SECRET_KEY = 'sk_test_1m1rAekvcBiTxexGj3Rn27eW00HlBdxNjz'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_LU7i0JHPNB8k0A8AWmm32R7900ODIKZKPA'

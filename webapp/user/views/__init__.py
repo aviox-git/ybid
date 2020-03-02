@@ -1,1 +1,1 @@
-from .users import PhotoUpload, MyAccountInfo
+from .account_info import PhotoUpload, MyAccountInfo, ConfirmEmail

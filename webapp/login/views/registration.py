@@ -1,16 +1,23 @@
-from django.shortcuts import render, HttpResponseRedirect
+#imports
 from django.views.generic import View
 from django.contrib.auth.models import User
-from user.models import AccountInfo , UserAddress
+from django.conf import settings
+from django.contrib import messages
+from django.shortcuts import render, HttpResponseRedirect, redirect,HttpResponse
+from user.models import AccountInfo , UserAddress , CardsInfo , ForgetPassword
+from django.contrib.auth import login, authenticate, logout
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
+from django.contrib.sites.shortcuts import get_current_site
+from user.tokens import account_activation_token
+from django.template.loader import render_to_string, get_template
 from django.core.mail import send_mail
 from core.models import Config
 from login.context_processors import getDomain
-from django.conf import settings
-from django.contrib import messages
 from datetime import date
 import json
-from user.tokens import account_activation_token
-from django.contrib.auth import login, authenticate, logout
+from core.context_processors import getPublic_Config
+import urllib
 
 def todaydate(request):
 	today = date.today()
@@ -30,8 +37,8 @@ class Registration(View):
 
 	def get(self, request, *args, **kwargs):
 		next_ = request.GET.get('next')	
-		# if request.user.is_authenticated:
-		# 	return HttpResponseRedirect("/")
+		if request.user.is_authenticated:
+			return HttpResponseRedirect("/")
 
 		return render(request,self.template_name,locals())
 
@@ -49,12 +56,12 @@ class Registration(View):
 
 
 		try:
-			user=User.objects.get(email=email)
+			user = User.objects.get(email = email)
 			messages.info(request,"User already Exist.")
 			return HttpResponseRedirect('/login/')
 		except User.DoesNotExist:
-			if password == c_password and email == remail:
-				user=User.objects.create_user(
+			if len(password) > 0 and len(email) > 0 and password == c_password and email == remail:
+				user = User.objects.create_user(
 					username=email,
 					email=email,
 					password=password
@@ -93,7 +100,7 @@ class Registration(View):
 				recipients = [email]
 				email_from = settings.EMAIL_HOST_USER
 				subject = "Email verification"
-				send_status = mailSend(subject, recipients, html_message=content_html)
+				send_status = mailSend(subject, recipients, html_message = content_html)
 				link = 'email_verification/'+str(user.pk)
 
 				if send_status:
@@ -144,6 +151,7 @@ class EmailVerification(View):
 		else:
 			messages.error(request,'Some error occur. Retry or contact with administrator.')
 			return HttpResponseRedirect('/login/')
+
 		
 
 class CheckEmail(View):

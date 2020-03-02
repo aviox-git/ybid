@@ -1,5 +1,6 @@
+
 {% load static %}
- <aside class="control-sidebar control-sidebar-dark">
+  <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
       <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
@@ -42,7 +43,7 @@
             </a>
           </li>
         </ul>
-        <!-- /.control-sidebar-menu -->
+       
 
       </div>
       <!-- /.tab-pane -->
@@ -76,8 +77,7 @@
   <div class="control-sidebar-bg"></div>
 
 
-
-<aside class="main-sidebar">
+    <aside class="main-sidebar">
 
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -85,10 +85,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>{{request.user.username}}</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -108,8 +108,8 @@
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">Wellcome, Billy<br>
-        <span>Your last login was:2019-10-01 at 8:43:54</span>
+        <li class="header">Wellcome, {{request.user.username}}<br>
+        <span>Your last login was:{{request.user.last_login}}</span>
         </li>
         <!-- Optionally, you can add icons to the links -->
          <li class="">
@@ -123,7 +123,7 @@
           </ul> -->
         </li>
          <li class="">
-          <a href="9001-YBIDCARD-SUPER-ADMIN.html"><i class="fa fa-link"></i> <span>Super Admin</span>
+          <a href="{% url 'super_admin' %}"><i class="fa fa-link"></i> <span>Super Admin</span>
             <!-- <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span> -->
@@ -132,18 +132,27 @@
             <li><a href="#">Summary</a></li>
           </ul> -->
         </li>
+        
+        
         <li class="">
-          <a href="9002-ADD-STAFF.html"><i class="fa fa-link"></i> <span>Add Staff</span>
-            <!-- <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span> -->
+          <a href="{% url 'staff_list' %}"><i class="fa fa-link"></i> <span>Staff</span>
           </a>
-         <!--  <ul class="treeview-menu">
-            <li><a href="#">Summary</a></li>
-          </ul> -->
         </li>
+
+        <li class="">
+          <a href="{% url 'add_staff' %}"><i class="fa fa-link"></i> <span>Add Staff</span>
+          </a>
+        </li>
+       
+        {% if perms.auth.view_group %}
+        <li class="">
+          <a href="{% url 'role_list' %}"><i class="fa fa-link"></i> <span>Roles</span>
+          </a>
+        </li>
+        {% endif %}
+        {% if perms.auth.view_user %}
          <li class="">
-          <a href="9002-YBIDCARD-ADD-STAFF.html"><i class="fa fa-link"></i> <span>Users</span>
+          <a href="{% url 'webapp-users' %}"><i class="fa fa-link"></i> <span>Users</span>
             <!-- <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span> -->
@@ -152,6 +161,7 @@
             <li><a href="#">Summary</a></li>
           </ul> -->
         </li>
+        {% endif %}
          <li class="">
           <a href="{% url 'pages' %}"><i class="fa fa-link"></i> <span>Manage Content</span>
             <!-- <span class="pull-right-container">

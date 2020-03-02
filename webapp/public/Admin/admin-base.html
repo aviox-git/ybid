@@ -20,8 +20,7 @@
   <link rel="stylesheet" href="{% static 'dist/css/style.css' %}">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -29,9 +28,9 @@
   {% include 'Admin/admin-header.html' %}
   {% include 'Admin/admin-common.html' %}
   {% if messages %}
-        {% for message in messages %}
-            <div class="alert text-center {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
-        {% endfor %}
+      {% for message in messages %}
+        <div class="alert text-center {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+      {% endfor %}
     {% endif %}  
   {% block content %}
   {% endblock %}

@@ -1,0 +1,152 @@
+
+{% extends 'Admin/admin-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="content-wrapper">
+  <section class="content container-fluid">
+    <h1 class="text-center">List of User</h1>
+    <!-- dashboard content -->
+    <div class="manage_admin">
+      <div class="add_min d-flex justify-content-between"> 
+        <h3>Manage User</h3>
+        <ul class="mg_top_ic">
+          <li onclick="window.location.reload();"><i class="fa fa-refresh" aria-hidden="true"></i></li>
+          <li><a href="{% url 'add_web_user' %}"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
+          <li id="lock"><i class="fa fa-lock" aria-hidden="true"></i></li>
+          <li id="unlock"><i class="fa fa-unlock" aria-hidden="true"></i></li>
+        </ul>
+      </div>
+      <form>
+
+        <div class="posting_table">
+          <table id="example" class="table table-bordered" style="width:100%">
+            <thead>
+              <tr>
+                <th><label class="payment_gateway_checkbox"><input type="checkbox" id="all_check">
+                  <span class="checkmark"></span>
+                </label></th>
+                <th>Name</th>
+                <th>Email/User Name</th>
+                <th>Last Login</th>
+                <th>Last Payment / Date</th>
+                <th>CUM Total</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for user in users %}
+              <tr>
+                <td><label class="payment_gateway_checkbox"><input type="checkbox" name="check[]" value="{{user.id}}">
+                  <span class="checkmark"></span>
+                </label></td>
+                <td class="image_id">{{user.first_name|title}} {{user.last_name|title}}</td>
+                <td>{{user.email}}</td>
+                <td>{% if user.last_login == None %} Not logged in yet {% else %}{{user.last_login}}{% endif %}</td>
+                <td>
+                 {% for inv in invoice_list %}
+                 {% if inv.user.email == user.email %}   
+                      ${{inv.total_amount}} / {{inv.createdon}}
+                       {% endif %} 
+                    {% endfor %}
+                    </td> 
+
+                <td>{% for inv in invoice_list %} 
+                  {% if inv.user.email == user.email %} 
+                        ${{inv.total_amount}} 
+                       {% endif %} 
+                    {% endfor %}</td>
+                <td class="list_icon  is_active text-center">{% if user.is_active %}<i class="fa fa-unlock" aria-hidden="true" value="{{user.id}}"></i> {% else %} <i class="fa fa-lock" aria-hidden="true" value="{{user.id}}"></i> {% endif %}</td>
+                <td class="list_icon d-flex">
+                  <a href="{% url 'edit_webapp_users' user.id %}">
+                    <i class="fa fa-pencil-square-o" data-id="{{ user.id }}" aria-hidden="true"></i>
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+              
+            </tbody>
+          </table>
+        </div>
+      </form>
+    </div>
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+{% csrf_token %}
+
+{% endblock %}
+
+
+{% block extrascript %}
+
+<script type="text/javascript">
+
+  $('#all_check').on('change',function() {
+    if($(this).is(':checked')){
+      $('table > tbody').find('input[type="checkbox"]').attr('checked',true);
+    }
+    else{
+      $('table > tbody').find('input[type="checkbox"]').attr('checked',false);
+    }
+  });
+
+  function changeStatus(type){
+    var value_list = [];
+    $('table > tbody').find('input[type="checkbox"]').each(function() {
+      if ($(this).is(":checked")){
+        value_list.push($(this).val());
+      }
+    });
+    if (value_list.length == 0){
+      alert('Kindly select the checkbox')
+    }
+    else{
+      $.ajax({
+        url: '{{request.path}}',
+        type: 'post',
+        data:{
+          'csrfmiddlewaretoken': '{{csrf_token}}',
+          'value_list':value_list,
+          'type':type
+        },
+        success: function(response){
+          window.location.reload();
+        }
+      });
+    }
+  }
+
+  $('#unlock').on('click', function(){
+    changeStatus('deactive')
+  });
+
+  $('#lock').on('click', function(){
+    changeStatus('active')
+  });
+
+  $('.is_active').on('click', function(){
+    var value = $(this).find('i').attr('value');
+    
+    $.ajax({
+      url: '{{request.path}}',
+      type: 'post',
+      data:{
+        'csrfmiddlewaretoken': '{{csrf_token}}',
+        'value':value
+      },
+      success: function(response){
+        window.location.reload();
+      }
+    });
+  });
+</script>
+<script>
+  $('.delete').on('click', function() {
+    window.history.back();
+  });
+</script>
+
+{% endblock %}

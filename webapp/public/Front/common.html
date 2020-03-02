@@ -3,9 +3,14 @@
 		<div class="container-fluid">
 			<div class="nav_area">
 				<nav class="navbar navbar-expand-lg navbar-light">
-					<a class="navbar-brand" href="index.html">
+					<a class="navbar-brand" href="#">
 						<!-- <img src="./assets/images/ticket.png" alt="ticket"> -->
-						demo Logo
+					{% if public_logo %}
+					 <img src="{{public_logo.url}}" height="100px" width="100px" style="object-fit: contain;" alt="Logo">
+					 {% else %}
+					 demo Logo
+					{% endif %}
+
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -14,52 +19,61 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item active">
-								<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+								<a class="nav-link" href=" {% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="about.html">About Us</a>
+						<!-- 	<li class="nav-item">
+								<a class="nav-link" href="#">About Us</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="#why_us">Why Us</a>
+							</li> -->
+							<li class="nav-item">
+								<a class="nav-link" href="{% url 'faq_web' %}">FAQ</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">FAQ</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Blog</a>
+								<a class="nav-link" href="{% url 'blog' %}">Blog</a>
 							</li>
 							<!-- <li class="nav-item">
 								<a class="nav-link" href="#">Image Editor</a>
 							</li> -->
 							<li class="nav-item">
-								<a class="nav-link" href="contact.html">Contact</a>
+								<a class="nav-link" href="#">Contact</a>
 							</li>
 							<li class="nav-item align-self-center finder_code">
 								
 								<input class="text-center" type="text" name="email" placeholder="EVENT FINDER CODE">
 							</li>
-							<li class="nav-item dropdown"><!-- 
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Dashboard
-								</a> -->
-								<a href="#" class="nav-link">Dashboard</a>
-								<!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="#">Action</a>
-									<a class="dropdown-item" href="#">Another action</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Something else here</a>
-								</div> -->
+							<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Dashboard
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="{% url 'my_account_info' %}">My Account</a>
+							<!-- <a class="dropdown-item" href="#">Post and Sell</a>
+							<a class="dropdown-item" href="#">Manage Posting</a>
+							<a class="dropdown-item" href="#">My Order</a>
+							<a class="dropdown-item" href="#">Sales Order</a>
+							
+							<a class="dropdown-item" href="#">Refund</a>
+							<a class="dropdown-item" href="#">Chat</a> -->
+						
+							</div>
+						
 							</li>
-							<!-- <li class="nav-item">
-								<a class="nav-link" href="contact.html">Cust</a>
-							</li>
+						
 							<li class="d-flex nav-item login_sign_link">
-								<a class="nav-link sign_link" href="#">Sign Out</a>
-							</li> -->
-							<li class="d-flex nav-item ml-3 login_sign_link">
-								<a class="nav-link login_link" href="login.html">GOGO /&nbsp;</a>
-								<a class="nav-link sign_link" href="#"> Sign Up</a>
-							</li>
+							{% if user.is_authenticated %}
+							<a class="nav-link sign_link" href="#">{{request.user.first_name}} {{request.user.last_name}} /</a>
+						<a class="nav-link sign_link" href="{% url  'logout' %}">Log Out</a>
+							{% else %}  
+
+
+							<a class="nav-link login_link" href="{% url  'registration' %}">Login  /  </a>
+							<!-- <a class="nav-link " href="#">/</a> -->
+							<a class="nav-link sign_link" href="{% url 'registration' %}">Sign Up</a>
+							{% endif %}  
+						</li>
+
 						</ul>
 					</div>
 				</nav>

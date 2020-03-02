@@ -1,0 +1,119 @@
+{% extends 'Admin/admin-base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="content-wrapper">
+    <div class="alert alert-danger text-center" role="alert" style="display: none;">
+        </div>
+    <section class="content container-fluid">
+      <div class="manage_admin">
+         <div class="add_min d-flex justify-content-between"> 
+    <h3>Edit User</h3>
+    </div>
+    <form action="{% url 'edit_webapp_users' user.id %}" id="register" method="post">
+      {% csrf_token %}
+    <div class="row">
+    <div class="col-12 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <label>*Name</label>
+                    <input type="text" class="form-control" value="{{user.first_name}}" required="" name="name">
+                  </div>
+                  <div class="form-group">
+                    <label>Password</label><span class="not-verify">-Not verify yet</span>
+                    <input type="password" class="form-control" minlength="8" name="password" id="password" >
+                  </div>
+                  <div class="form-group">
+                    <label>Retype Password</label>
+                    <input type="password" class="form-control" minlength="8"  id="confirm_password" name="rpassword">
+                    <!--  <span style="display: none; color: red;" minlength="8", maxlength="32" id="mismatch_pass">Password does not match</span> -->
+                  </div>
+                </div>
+                  
+    <div class="col-12 col-sm-6 col-md-6">
+       <div class="form-group">
+                    <label>Status</label>
+                     <select class="form-control" name="status">
+          
+                      <option value="A" {% if user.is_active == True %} selected {% endif %}>Active</option>
+            
+                      <option value="I" {% if user.is_active == False %} selected {% endif %}>Inactive</option>
+                     
+                    </select>
+                  </div>
+      <div class="form-group">
+                    <label>*Email</label>
+                    <input type="text" class="form-control" value="{{user.email}}" required="" placeholder="gogobill737@gmail.com"  id="email" name="email">
+                  </div>
+                 </div>
+
+  </div>
+ 
+        <button type="submit" class="edit-user  btn btn-success"><sapn><i class="fa fa-check" aria-hidden="true"></i></sapn> Save</button> 
+        <button class="delete btn btn-orange"><span><i class="fa fa-ban" aria-hidden="true"></i></span> Cancel</button>
+     </form>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+ 
+     {% endblock %}
+
+{% block extrascript %}
+
+<script type="text/javascript"> 
+
+  $('.edit-user').on("click", function() {
+
+    var $inputs = $('#register :input');
+
+    var values = {};
+    $inputs.each(function() {
+      values[this.name] = $(this).val();
+    });
+  var error_list  =[];
+  var submit = true;
+  if (values['name'] == null || values['name'] == "") {
+    nameError = "Please enter  name";
+    error_list.push(nameError);
+    submit = false;
+ }
+  if (values['status'] == null || values['status'] == "") {
+  statusError = "Please select status";
+  error_list.push(statusError);
+  submit = false;
+ }
+var useremail = document.getElementById('email').value;
+var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+
+
+if(!pattern.test(useremail))
+  {
+   error_list.push('not a valid e-mail address');
+   submit = false;
+  }
+  if (values['password'] != values['rpassword']) {
+        passwordNotmatch = "Password does not match";
+        error_list.push(passwordNotmatch);
+        submit = false;
+  }
+  
+  if (error_list.length > 0){
+    $('.alert-danger').show();
+    $('.alert-danger').html("");
+    var i;
+    for (i = 0; i<error_list.length; i++){
+      $('.alert-danger').append('<p>'+ error_list[i]+'</p>')
+    }
+
+  }
+ return submit;
+
+  });
+</script>
+
+<script>
+  $('.delete').on('click', function() {
+    window.history.back();
+  });
+</script>
+{% endblock %}

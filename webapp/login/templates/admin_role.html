@@ -1,0 +1,66 @@
+
+{% extends 'Admin/admin-base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="content-wrapper">
+  
+    <section class="content container-fluid">
+      <div class="alert alert-danger text-center" role="alert" style="display: none;">
+      </div>
+      <div class="manage_admin">
+         <div class="add_min d-flex justify-content-between"> 
+          
+    <h3>Add Role</h3>
+    </div>
+    <form action="{% url 'add_role' %}" method="post" id="register_form">
+      {% csrf_token %}
+    <div class="row">
+    <div class="col-12 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <label>*Role</label>
+                    <input type="text" class="form-control name"  name="role">
+                  </div>
+  
+        <button type="submit" class="edit register  btn btn-success"><sapn><i class="fa fa-check" aria-hidden="true"></i></sapn> Save</button> 
+        <button type="button" class="delete btn btn-orange"><span><i class="fa fa-ban" aria-hidden="true"></i></span> Cancel</button>
+     </form>
+      </div>
+    </section>
+
+  </div>
+ 
+     {% endblock %}
+{% block extrascript %}
+     <script>
+  $('.delete').on('click', function() {
+    window.history.back();
+  });
+
+  $('.register').click(function(){
+      var error_list  =[];
+    var submit = true;
+    var name = $('.name').val();
+   if (name == null || name == "") {
+    nameError = "Please enter Role name";
+    error_list.push(nameError);
+    submit = false;
+   }
+
+  if (error_list.length > 0){
+    $('.alert-danger').show();
+    $('.alert-danger').html("");
+    var i;
+    for (i = 0; i<error_list.length; i++){
+      $('.alert-danger').append('<p>'+ error_list[i]+'</p>')
+      window.scrollTo(0,0);
+    }
+
+  }
+ return submit;
+
+  });
+
+
+</script>
+{% endblock %}

@@ -1783,3 +1783,22 @@ button:focus, button:active {
   font-size: 12px !important;
   line-height: 1.8 !important;
 }
+
+/*loader css*/
+.loader {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    bottom: 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999999;
+}
+.loader img {
+    z-index: 999999;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}

@@ -24,6 +24,7 @@ urlpatterns = [
     path('core/', include('core.urls')),
     path('post/', include('post_and_sell.urls')),
     path('users/', include('user.urls')),
+    path('payment/', include('payment.urls')),
     path('', include('simplepages.urls')), 
 
 ]

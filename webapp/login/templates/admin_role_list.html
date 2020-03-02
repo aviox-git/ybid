@@ -1,0 +1,51 @@
+{% extends 'Admin/admin-base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="wrapper">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">   
+    <section class="content container-fluid">
+      <div class="manage_admin">
+        <div class="add_min d-flex justify-content-between"> 
+    <h3>Manage Role</h3>
+    <a href="{% url 'add_role' %}"><button class="btn btn-success" id="add-user">Add</button></a>
+    </div>
+    {% if groups %}
+
+    <!-- <table class="table"> -->
+      <div class="posting_table">
+      <table id="example" class="table table-bordered" style="width:100%">
+      <thead>   
+        <tr>
+          <th scope="col">Sr.No</th>
+          <th scope="col">Role Name</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for group in groups %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ group.name|title }}</td>
+
+          <td>
+           <a href="{% url 'edit_role' group.id %}"> <button type="submit" class="edit  btn btn-primary" data-id="{{ group.id }}"><sapn><i class="fa fa-pencil" aria-hidden="true"></i></sapn> Edit</button> </a>
+      
+              <a href="{% url 'delete_role' group.id %}">    <button type="submit" class="delete btn btn-danger" data-id="{{ group.id }}"><span><i class="fa fa-trash-o" aria-hidden="true"></i></span> Delete</button>
+                </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <span>No records found</span>
+    {% endif %}
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  
+  {% endblock %}
+

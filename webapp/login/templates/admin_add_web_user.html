@@ -1,0 +1,139 @@
+
+{% extends 'Admin/admin-base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="content-wrapper">
+  
+    <section class="content container-fluid">
+      <div class="alert alert-danger text-center" role="alert" style="display: none;">
+      </div>
+      
+      <div class="manage_admin">
+         <div class="add_min d-flex justify-content-between"> 
+          
+    <h3>Add User</h3>
+    </div>
+    <form action="add_web_user" method="post" id="register_form">
+      {% csrf_token %}
+    <div class="row">
+    <div class="col-12 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <label>*Name</label>
+                    <input type="text" class="form-control" required="" maxlength="15" name="name">
+                  </div>
+                  <div class="form-group">
+                    <label>Password</label><span class="not-verify"></span>
+                    <input type="password" minlength="8" id="password" class="form-control"name="password" >
+                  </div>
+                  <div class="form-group">
+                    <label>Retype Password</label>
+                    <input type="password" minlength="8" class="form-control" id="confirm_password" name="confirm_password">
+                    
+                  </div>
+                </div>
+                  
+    <div class="col-12 col-sm-6 col-md-6">
+       <div class="form-group">
+                    <label>Status</label>
+                     <select class="form-control" name="status">
+                      <option value="" selected disabled="">select status</option>
+                      <option value="A">Active</option>
+            
+                      <option value="I">Inactive</option>
+                     
+                    </select>
+                  </div>
+      <div class="form-group">
+                    <label>*Email</label>
+                    <input type="email" class="form-control" value="" id="Email" required="" placeholder="gogobill737@gmail.com" name="email">
+                  </div>
+                 </div>
+
+  </div>
+
+       
+        <button type="submit" class="edit register  btn btn-success"><sapn><i class="fa fa-check" aria-hidden="true"></i></sapn> Save</button> 
+        <button type="button" class="delete btn btn-orange"><span><i class="fa fa-ban" aria-hidden="true"></i></span> Cancel</button>
+     </form>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+ 
+     {% endblock %}
+{% block extrascript %}
+<script type="text/javascript"> 
+
+  $('.register').on("click", function() {
+
+    var $inputs = $('#register_form :input');
+
+    var values = {};
+    $inputs.each(function() {
+      values[this.name] = $(this).val();
+    });
+  var error_list  =[];
+  var submit = true;
+
+  if (values['name'] == null || values['name'] == "") {
+    nameError = "Please enter  name";
+    error_list.push(nameError);
+    submit = false;
+  }
+if (values['status'] == null || values['status'] == "") {
+    statusError = "Please select status";
+    error_list.push(statusError);
+    submit = false;
+  }
+  if (values['email'] == null || values['email'] == "") {
+    emailError = "Please enter email";
+    error_list.push(emailError);
+    submit = false;
+  }
+var useremail = document.getElementById('Email').value;
+var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+
+if(!pattern.test(useremail))
+  {
+   error_list.push('not a valid e-mail address');
+  }
+  
+  if (values['password'] == null || values['password'] == "") {
+    passwordError = "Please enter password";
+    error_list.push(passwordError);
+    submit = false;
+  }
+  if (values['confirm_password'] == null || values['confirm_password'] == "") {
+    confirm_passwordError = "Please enter confirm password";
+    error_list.push(confirm_passwordError);
+    submit = false;
+  }
+
+  if (values['password'] != values['confirm_password']) {
+        passwordNotmatch = "Password does not match";
+        error_list.push(passwordNotmatch);
+        submit = false;
+  }
+  if (error_list.length > 0){
+    $('.alert-danger').show();
+    $('.alert-danger').html("");
+    var i;
+    for (i = 0; i<error_list.length; i++){
+      $('.alert-danger').append('<p>'+ error_list[i]+'</p>')
+      window.scrollTo(0,0);
+    }
+
+  }
+
+  return submit;
+
+  });
+</script>
+<script>
+  $('.delete').on('click', function() {
+    window.history.back();
+  });
+</script>
+
+{% endblock %}
