@@ -1,3 +1,3 @@
-from .payment import  StripeAccount, PaymentFailed, PaymentSuccessfull
+from .payment import  StripeCallBackUrl, PaymentFailed, PaymentSuccessfull
 
-_all__ = ['StripeAccount', 'PaymentFailed', 'PaymentSuccessfull']
+_all__ = ['StripeCallBackUrl', 'PaymentFailed', 'PaymentSuccessfull']

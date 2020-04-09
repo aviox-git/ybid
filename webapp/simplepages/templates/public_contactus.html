@@ -1,0 +1,220 @@
+{% extends 'Front/main.html' %}
+{% load static %}
+{% block title %} Contact Us {% endblock %}
+{% block content %}
+
+<section>
+		<div class="contact_us">
+			<h1>Contact Us</h1>
+			<div class="border-bottom my-3"></div>
+		</div>
+		<div class="container-fluid">
+			<div class="contact_us_contain">
+		<div class="alert alert-danger  text-center" role="alert" style="display: none;"></div>
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12">
+				<form action="{% url 'contact_us' %}" method="post" id="send_message" enctype="multipart/form-data">
+						 {% csrf_token %}
+						 {% if not ticket %}
+							<div class="row">
+								<div class="col-12 col-sm-6 col-md-6">
+									<div class="form-group">
+										<label>First Name  </label>
+										<input type="text" name="f_name" maxlength="15" class="form-control" required="">
+									</div>
+								</div>
+								<div class="col-12 col-sm-6 col-md-6">
+									<div class="form-group">
+										<label>Last Name </label>
+										<input type="text" name="l_name" maxlength="15" class="form-control" required="">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 col-sm-6 col-md-6">
+									<div class="form-group">
+										<label>Email </label>
+										<input type="email"  name="email" class="form-control" required="">
+									</div>
+								</div>
+								<!-- <div class="col-12 col-sm-6 col-md-6">
+									<div class="form-group">
+										<label>Subject </label>
+										<input type="text" class="form-control" required>
+									</div>
+								</div>
+							</div> -->
+							<div class="col-12 col-sm-6 col-md-6">
+							<div class="form-group">
+								<label>Type of Inquiry </label>
+								<select class="form-control inquiry_type" name="inquiry_type">
+									<option selected disabled>Select Inquiry Type</option>
+									{% for cate in contact_cats %}
+									<option value="{{cate.id}}">{{cate.category_name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+					</div>
+					{% endif %}
+							<div class="form-group">
+								<label>Message </label>
+								<textarea class="form-control msg" name="msg" rows="6s" style="height: 150px !important;"></textarea>
+							</div>
+							{% if ticket %}
+							<input type="hidden" name="ticket" value="{{ticket.inquiry}}">
+							{% endif %}
+
+							<div class="form-group py-3">
+								<div class="">
+									<div class="form-group py-3 mr-4 d-flex justify-content-between">
+										<div id="upload_button" class=" align-self-center">
+											<label>
+												<input type="file"  ngf-select="" id="logo-img" name="img" ng-model="new_files" multiple>
+												<button class="btn btn-warning">Browse...</button>
+												<span>No File Selected.</span>
+											</label>
+											<div class="showImg">
+											
+											</div>
+										</div>
+										<!-- <div class="cb-logo"><img src="./assets/images/com-logo.png" alt="company"></div> -->
+									</div>
+								</div>
+							</div>
+							<input type="hidden" name="deletedIndexes">
+							<!-- <div class="text-left">
+								<img src="./assets/images/capcha.png" class="img-fluid" alt="capcha">
+							</div> -->
+						
+					</div>
+				</div>
+			</div>
+			<div class="text-center send_btn pt-3 mb-5">
+				<button type="submit" class="btn btn-warning send_msg" >Send Message</button>
+			</div>
+			</form>
+		</div>
+	</section>
+
+{% endblock %}
+
+
+
+
+{% block extrascript %}
+
+<script type="text/javascript">
+	
+
+var fileArry = []
+	$("#logo-img").on('change',function() {
+			var image = $(this);
+			var getFiles = $(this).prop('files')
+			fileArry = []
+			Array.from(getFiles).forEach(file => { 
+				var num =  file.size/1024/1024;
+				if (num > 20){
+					$('.alert-danger').show();
+  					$('.alert-danger').html("");
+  					$('.alert-danger').append('<p>Maximum upload limit is 20 MB per file</p>');
+  					$('html, body').animate({ scrollTop: $("body").offset().top }, 1);
+  					return
+				}
+				fileArry.push(file)
+			});
+			$('.showImg').html('')
+			fileArry.forEach(function(value, key, fileArry) {
+			 var html = `
+			 <div><label>
+			 		<i class="fa fa-trash delete" data-id="${key}"> &nbsp;</i> 							
+					<span id="image-path">${value.name}</span>
+					
+				</label>
+				<br></div>`
+			$('.showImg').append(html)
+			    
+			});
+			$('#image-path').html(fileArry.length);
+		});
+
+	var deleteIndex = []
+	$('.showImg').on('click', '.delete', function(e){
+		var index = $(this).attr('data-id');
+		 var dt = e.dataTransfer;
+		var text = $('#image-path').text();
+		$('#image-path').text(parseInt(text) - 1);
+		$(this).closest('div').remove()
+		deleteIndex.push(fileArry[index].name)
+		fileArry.splice(index, 1);
+		
+	})
+
+
+
+$('.send_msg').on("click",function() {
+	var values = {};
+	var $inputs = $('#send_message :input');
+
+	$inputs.each(function() {
+	values[this.name] = $(this).val();
+		});
+	var error_list  =[];
+	var submit = true;
+
+	{% if not ticket %}
+	if (values['f_name'] == null || values['f_name'] == ""){
+ 	   emailError = "First name is required";
+ 	   error_list.push(emailError)
+ 	   submit = false;
+ 	}
+     if (values['l_name'] == null || values['l_name'] == ""){
+ 	   addressError = "Last name is required";
+ 	   error_list.push(addressError)
+ 	   submit = false;
+ 	}
+   
+	if (values['email'] == null || values['email'] == ""){
+ 	   countryError = "Email is required";
+ 	   error_list.push(countryError)
+ 	   submit = false;
+ 	}
+ 	// if (values['subject'] == null || values['subject'] == ""){
+ 	//    stateError = "Subject is required";
+ 	//    error_list.push(stateError)
+ 	//    submit = false;
+ 	// }
+ 	var inquiry_type = $('.inquiry_type').val();
+ 	if (values['inquiry_type'] == null || values['inquiry_type'] == ""){
+ 	   cityError = "Please select inquiry type";
+ 	   error_list.push(cityError)
+ 	   submit = false;
+ 	}
+ 	{% endif %}
+ 	var msgs = $('.msg').val();
+ 	if (msgs == "" || msgs == null){
+ 	   error_list.push('Message is required.')
+ 	   submit = false;
+ 	}
+
+ 	$('input[name="deletedIndexes"]').val(JSON.stringify(deleteIndex))
+ 	console.log($('input[name="deletedIndexes"]').val())
+
+  	if (error_list.length > 0){
+  	$('.alert-danger').show();
+  	$('.alert-danger').html("");
+  	var i;
+  	for (i = 0; i<error_list.length; i++){
+  		$('.alert-danger').append('<p>'+ error_list[i]+'</p>')
+  		$('html, body').animate({
+        scrollTop: $("body").offset().top
+    	}, 1);
+  	}
+
+  }
+  return submit;
+ });
+
+</script>
+
+{% endblock %}

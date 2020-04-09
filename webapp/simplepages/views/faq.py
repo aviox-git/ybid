@@ -12,10 +12,11 @@ from simplepages.models import FAQCategory, FAQ
 from login.helper_fun import StaffUserOnly
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
-class FAQWeb(LoginRequiredMixin,View):
+class FAQWeb(View):
 	login_url = '/login/'
 	template_name = 'public_faq.html'
 	def get(self, request, *args, **kwargs):
+		active_faq = "active"
 		category = FAQCategory.objects.filter(status = True).order_by('-sort_order')
 		return render(request,self.template_name,locals())
 

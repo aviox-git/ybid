@@ -75,11 +75,11 @@ class BlogCategoriesEditView(StaffUserOnly, View):
 		return HttpResponseRedirect('/blog-category')
 
 # ===================== Blogs ======================= #
-class BlogWebView(LoginRequiredMixin, View):
-	login_url = '/login/'
+class BlogWebView(View):
 	template_name = 'public_blog.html'
 
 	def get(self, request, *args, **kwargs):
+		active_blog = "active"
 		page = request.GET.get('page', 1)
 		cate = request.GET.get('category')
 		categories = BlogCategory.objects.filter(status = True).order_by('-sort_order')
@@ -102,10 +102,10 @@ class BlogWebView(LoginRequiredMixin, View):
 		return render(request,self.template_name,locals())
 
 
-class SingleBlog(LoginRequiredMixin, View):
-	login_url = '/login/'
+class SingleBlog(View):
 	template_name = 'public_blog_detail.html'
 	def get(self, request, blog_id):
+		active_blog = "active"
 		blog = Blog.objects.get(pk = blog_id)
 		return render(request,self.template_name,locals())
 

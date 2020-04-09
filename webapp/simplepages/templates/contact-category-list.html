@@ -1,0 +1,102 @@
+{% extends 'Admin/admin-base.html' %}
+{% load static %}
+
+{% block head %}
+<style type="text/css">
+   .btn{
+    font-size: 12px;
+    padding: 2px 3px;
+    padding-top: 1px;
+    padding-right: 3px;
+    padding-bottom: 1px;
+    padding-left: 3px;
+  }
+.table tr td {
+  padding: 3px 0px 3px 0px !important;
+  vertical-align: middle;
+  line-height: 1.2;
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+  <!-- Content Wrapper. Contains page content -->
+
+<div class="wrapper">
+ <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content container-fluid">
+      <div class="manage_admin">
+        <div class="add_min d-flex justify-content-between"> 
+    <h3>Contact Categories</h3>
+
+    <a href="{% url 'add_contact_category' %}">
+    <button class="btn btn-success"><sapn><i class="fa fa-plus" aria-hidden="true"></i></sapn> Add</button>
+  </a>
+    </div>
+   
+    <div class="posting_table table-responsive">
+          <table id="example" class="table table-bordered">
+    <thead>
+      <tr>
+        <th  class="text-center">Sr.No</th>
+        <th class="text-center">Category</th>
+        <th class="text-center">Status</th>
+        <th class="text-center">Created On</th>
+        <th class="text-center">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cat in contact_cats %}
+      <tr>
+        <td class="text-center">{{forloop.counter}}</td>
+        <td class="text-center">{{cat.category_name}}</td>
+        <td class="text-center">{% if cat.status %} Active {% else %} Deactive {% endif %}</td>
+        <td class="text-center">{{cat.created_on|date:"Y-m-d"}}</td>
+        <td class="text-center">
+        <a href="{% url 'contact_category_edit' cat.id %}">
+          <button class="edit  btn btn-primary"><sapn><i class="fa fa-pencil" aria-hidden="true"></i></sapn> Edit</button> 
+        </a>
+          <button class="delete btn btn-danger" data-id= {{cat.id}}><span><i class="fa fa-trash-o" aria-hidden="true"></i></span> Delete</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+      
+    </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+      {% endblock %}
+
+      {% block extrascript %}
+
+      <script type="text/javascript">
+
+        $('.delete').on('click',function() {
+
+          var row = $(this);
+          var value = row.data('id');
+
+          $.ajax({
+
+            url: '{{ request.path }}',
+            type: 'post',
+            data:{
+              'csrfmiddlewaretoken': '{{csrf_token}}',
+              'cat_id':value
+            },
+            success: function(response) {
+              row.parent().parent().remove();
+              window.location.reload();
+            }
+          });
+           return false;
+        });
+        
+      </script>
+{% endblock %}

@@ -105,11 +105,11 @@ class Registration(View):
 
 				if send_status:
 					logout(request)
-					messages.success(request,'Your request has been received. Please look for an email from ' + str(site_name) + ' for more details!. Thank you.')
+					messages.success(request,'Please check your email account for verification email.')
 					return HttpResponseRedirect('/login/')
 					
 				else:
-					messages.error(request,"Your account has not been verified. Please <a  href='"+link+"'>click here </a>to resend verification email.")
+					messages.error(request,"Your account has not been verified. Please <a  href='"+link+"'  class='ver_link'>click here </a>to resend verification email.")
 					return HttpResponseRedirect('/login/')
 					
 			else:
@@ -146,7 +146,7 @@ class EmailVerification(View):
 		subject = "Email verification"
 		send_status = mailSend(subject, recipients, html_message=content_html)
 		if send_status:
-			messages.success(request,'Your request has been received. Please look for an email from ' + str(site_name) + ' for more details!. Thank you.')
+			messages.success(request,'Please check your email account for verification email.')
 			return HttpResponseRedirect('/login/')
 		else:
 			messages.error(request,'Some error occur. Retry or contact with administrator.')

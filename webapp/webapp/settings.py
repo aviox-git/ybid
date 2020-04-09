@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'login.context_processors.getDomain',
                 'core.context_processors.getPublic_Config',
+                'simplepages.context_processors.getPages',
             ],
         },
     },
@@ -143,7 +144,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'redexsolutionspvtlmt@gmail.com'
-EMAIL_HOST_PASSWORD = 'rajinder@1994'
+EMAIL_HOST_PASSWORD = 'rajinder@1995'
 
 # ybid
 # STRIPE_SECRET_KEY = 'sk_test_F99P0XZuQRplb8UN00YPVXRX00nwSaN3r0'
@@ -151,3 +152,5 @@ EMAIL_HOST_PASSWORD = 'rajinder@1994'
 
 STRIPE_SECRET_KEY = 'sk_test_1m1rAekvcBiTxexGj3Rn27eW00HlBdxNjz'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_LU7i0JHPNB8k0A8AWmm32R7900ODIKZKPA'
+
+STRIPE_CLIENT_ID = 'ca_GMGRBvnm8NIk6PQ9LBLKqN5bQetSe1l5'

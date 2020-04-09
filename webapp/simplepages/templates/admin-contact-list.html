@@ -1,0 +1,294 @@
+{% extends 'Admin/admin-base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style type="text/css">
+   .btn{
+    font-size: 12px;
+    padding: 2px 3px;
+    padding-top: 1px;
+    padding-right: 3px;
+    padding-bottom: 1px;
+    padding-left: 3px;
+  }
+
+  .table tr td {
+    padding: 0.30rem!important;
+    padding-top: 5px!important;
+    padding-right: 0.3rem !important;
+    padding-bottom: 6px!important;
+    padding-left: 0.3rem !important;
+    vertical-align: initial;
+    padding-top: 5px!important;
+    padding-bottom: 6px!important;
+}
+
+ .msg_history {
+    height: 400px;
+    overflow-y: auto;
+}
+.received_msg {
+    display: inline-block;
+    padding: 0 0 0 10px;
+    vertical-align: top;
+    width: 92%;
+}
+.received_withd_msg {
+    width: 80%;
+}
+.received_withd_msg > div {
+    background: #ebebeb none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #646464;
+    font-size: 14px;
+    margin: 0;
+    padding: 8px 10px 8px 12px;
+    width: 100%;
+}
+.time_date {
+    color: #000000;
+    display: block;
+    font-size: 12px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+.outgoing_msg {
+    overflow: hidden;
+    margin: 15px 0 15px;
+}
+.sent_msg {
+    float: right;
+    max-width: 78%;
+}
+.sent_msg > div {
+    background: #0000 none repeat scroll 0 0;
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 0;
+    color: #000;
+    padding: 8px 10px 8px 12px;
+    width: 100%;
+}
+.bottom_button {
+    display: flex;
+    justify-content: space-between;
+    margin: 9px 2px 15px;
+}
+.msg__btn {
+    background: #000;
+    color: #ffff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 13px;
+}
+.input_msg_write {
+    padding: 0 11px;
+}
+button.msg_send_btn, button.msg_cancel_btn {
+    width: 105px;
+}
+.modal-header {
+    border-bottom: none !important;
+}
+.incoming_msg{
+  margin-bottom: 5px;
+}
+
+p{
+  margin-bottom: 0px;
+}
+
+.img_p p a {
+  font-size: 10px; 
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+  <!-- Content Wrapper. Contains page content -->
+
+<div class="wrapper">
+ <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content container-fluid">
+      <div class="manage_admin">
+    <div class="add_min d-flex justify-content-between"> 
+    <h3>Contacts</h3>
+   <!--  <a href="{% url 'add_contact_category' %}">
+    <button class="btn btn-success"><sapn><i class="fa fa-plus" aria-hidden="true"></i></sapn> Add</button>
+  </a>
+ -->    </div>
+ <div class="posting-table table-responsive">
+        <table id="example" class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th>Case#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Inquiry</th>
+      <th scope="col">Reply</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cat in contacts %}
+    <tr>
+      <td>{{cat.created_on|date:"Y-m-d"}}</td>
+      <td class="inquiry">{{cat.inquiry}}</td>
+      <td>{{cat.first_name}} {{cat.last_name}}</td>
+       <td class="email">{{cat.email}}</td>
+       <td>{{cat.category.category_name}}</td>    
+      <td data-id="{{cat.id}}" class="showModal" data-value="modal_{{cat.id}}">
+
+{% if cat.getLatestReply.status %}
+   Reply {{cat.getLatestReply.time|date:'Y-m-d h:i a'}}
+{% else %}
+   <span style="color: red">Reply </span>
+{% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% for cat in contacts %}
+ <form method="post" enctype='multipart/form-data'>
+<div class="modal fade add-address-modal bd-example-modal-lg1" id="modal_{{cat.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+          <h4> Ticket: {{cat.inquiry}}</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+         <div class="mesgs">
+                <div class="msg_history">
+                  <div class="incoming_msg">
+                    <div class="received_msg">
+                      <div class="received_withd_msg">
+                          <div>
+                            {% csrf_token %}
+                               <span class="time_date"> {{cat.created_on|date:"Y-m-d"}} / {{cat.created_on|date:"H:i"}} - {{cat.first_name}}</span>
+                                <p>{{cat.message}}</p>
+                                {% if cat.contactattachment_set.all %}
+                                <div class="img_p">
+                                    {% for image in cat.contactattachment_set.all %}
+                                        <p><a href="{{image.attachment.url}}" target="_blank">{{image.attachment.name|slice:"8:"}}</a></p>
+                                        {% endfor %}
+                                </div>
+                                {% endif %}
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+                   {% for reply in cat.getReplies %}
+                       {% if reply.replied %}
+                       <div class="outgoing_msg">
+                        <div class="sent_msg">
+                            <div>
+                                <span class="time_date" style="text-align: right;"> {{reply.created_on|date:"Y-m-d"}} / {{reply.created_on|date:"H:i"}} - Admin</span>
+                            <p style="text-align: justify;">{{reply.message}}</p>
+                            {% if reply.adminreplyattachment_set.all %}
+                                      <div class="img_p">
+                                          {% for image in reply.adminreplyattachment_set.all %}
+                                              <p><a href="{{image.attachment.url}}" target="_blank">{{image.attachment.name|slice:"8:"}}</a></p>
+                                              {% endfor %}
+                                      </div>
+                                      {% endif %}
+    
+                            </div>
+                           </div>
+                      </div>
+                      
+                        {% else %}
+                    
+                     <div class="incoming_msg">
+                        <div class="received_msg">
+                            <div class="received_withd_msg">
+                                <div>
+                                     <span class="time_date"> {{reply.created_on|date:"Y-m-d"}} / {{reply.created_on|date:"H-i"}} - {{cat.first_name}}</span>
+                                      <p >{{reply.message}}</p>
+                                      {% if reply.adminreplyattachment_set.all %}
+                                      <div class="img_p">
+                                          {% for image in reply.adminreplyattachment_set.all %}
+                                              <p><a href="{{image.attachment.url}}" target="_blank">{{image.attachment.name|slice:"8:"}}</a></p>
+                                              {% endfor %}
+                                      </div>
+                                      {% endif %}
+                                </div>
+                          </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="type_msg">
+                  <input type="hidden" name="id">
+                  <div class="input_msg_write">
+                   <textarea id="war" name="message" rows="4" style="width: 100%" ></textarea>
+                   <div class="bottom_button">
+                      <div>
+                          <label class="msg_attch_btn msg__btn">  <input type="file" name="attach" style="display: none;" multiple>Attach</label>
+                      </div>
+                      <div>
+                        <button type="submit" class="msg_send_btn msg__btn">Send</button>
+                        <button type="button" class="msg_cancel_btn msg__btn" data-dismiss="modal">Cancel</button>
+                      </div>
+                   </div>
+                  </div>
+                </div>
+          </div>
+        </div>
+    </div>
+</div>
+</form>
+{% endfor %}
+   
+ </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+      {% endblock %}
+
+      {% block extrascript %}
+      <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+      <script type="text/javascript">
+
+        var table = $(".table-bordered").DataTable({
+            "responsive": true,
+            "lengthMenu": [[10, 20, 30, 50, -1], [10, 20, 30, 50, "All"]],
+            "ordering": true,
+             "order": [[ 5, "asc" ]]
+            
+             });
+
+         $('.showModal').on('click', function() {
+          var email = $(this).closest('tr').find('.email').text();
+          var inquiry = $(this).closest('tr').find('.inquiry').text();
+
+          $('#sender').text(email)
+          $('input[name="id"]').val($(this).attr('data-id'));
+          var id = $(this).attr('data-value');
+          $(".msg_history").scrollTop(300);
+          $('#' + id).modal('show');
+
+        });
+
+        $('td').on('click','.read_more',function() {
+            var row = $(this).parent('td').parent('tr').find('input[type="hidden"]').val();
+           $(this).parent('td').html(row);
+         
+        });
+        
+        $('td').on('click','.read_less',function(){
+            var data = $(this).parent('td').html().slice(0,20) + '....<a class="read_more">read more</a>';
+           $(this).parent('td').html(data);
+        });
+      </script>
+{% endblock %}

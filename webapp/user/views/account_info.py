@@ -41,6 +41,8 @@ class MyAccountInfo(View):
 	template_name = 'public_account_info.html'
 
 	def get(self,request,*args,**kwargs):
+		active_dashboard = "active_dash"
+		active_account = "active_account"
 		profile = AccountInfo.objects.get(user=request.user)
 		add = UserAddress.objects.get(info=request.user.accountinfo)
 		domain_name =  getDomain(request)
@@ -126,7 +128,7 @@ class MyAccountInfo(View):
 						user.save()
 						link = 'email_verification/'+str(user.pk)
 						
-						messages.error(request,"Your account has not been verified. Please <a  href='"+link+"'>click here </a>to resend verification email.")
+						messages.error(request,"Your account has not been verified. Please <a  href='"+link+"' class='ver_link'>click here </a>to resend verification email.")
 						return HttpResponseRedirect('/login/')
 
 		except Exception as e:

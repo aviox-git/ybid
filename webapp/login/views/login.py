@@ -93,11 +93,11 @@ class LoginView(View):
 							return HttpResponseRedirect(next_)
 						return HttpResponseRedirect('/')
 					else:
-						messages.info(request,'Invalid password.')
+						messages.error(request,'Invalid credentials.')
 						return HttpResponseRedirect('/login/')
 				else:
 					link = 'email_verification/'+str(user.pk)
-					messages.success(request,"Your account has not been verified. Please <a href='"+link+"'>click here </a>to resend verification email.")
+					messages.success(request,"Your account has not been verified. Please <a href='"+link+"' class='ver_link'>click here </a>to resend verification email.")
 					return HttpResponseRedirect('/login/')
 			else:
 				messages.info(request,'Invalid Email and Password.')
@@ -139,7 +139,7 @@ class ForgetPass(View):
 			send_status = mailSend(subject, recipients, html_message=content_html)
 			
 			if send_status:
-				messages.success(request,'Your request has been received. Please look for an email from ' + str(site_name) + ' for more details!. Thank you.')
+				messages.success(request,'Please check your email now to reset password.')
 			else:
 				messages.error(request,'Some error occur. Retry or contact with administrator.')
 		
@@ -168,7 +168,7 @@ class ResetPassword(View):
 				u = ForgetPassword.objects.get(code=code)
 				u.user.set_password(password)
 				u.user.save()
-				messages.success(request,'Password Changed successfully please sign in.')
+				messages.success(request,'Password changed successfully.')
 				return HttpResponseRedirect('/login/')
 			except  ForgetPassword.DoesNotExist:
 				messages.error(request,'Some error occur please try again later.')

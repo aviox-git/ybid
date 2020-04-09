@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>demo</title>
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+   </head>
+   <body style="background-color: #f7f7f7;">
+      <div style="margin: auto; width: 60%; margin-bottom: 30px;">
+         <div style="background-color: #afadad; padding: 12px 15px; border-bottom: 2px solid #7103b5;">
+            <div style="float: left;" ><img src="{{current_site}}{{public_logo.url}}" alt="email-logo" height="70" width="70"></div>
+            <div style="float: right; color: #000; margin-top: 20px; font-family: 'Open Sans', sans-serif;"><b>Ticket / </b> {{contact.inquiry}}</div>
+            <div style="clear: both;"></div>
+         </div>
+         <div style="background-color: #fff; border: 1px solid #e8e8e8; margin-top: 14px; padding: 15px 12px;">
+            <h4 style="margin: 6px 0 10px 0; font-family: 'Open Sans', sans-serif; font-size: 12px;">{{contact.first_name}} {% if contact.last_name %} {{contact.last_name}} {% endif %} <a target="_blank" href="{{current_site}}contact_us?ticket={{contact.inquiry}}" style="font-weight: bold; float: right;">
+               <button type="button" style="background-color: black; color: white;"> Reply</button> </a></h4>
+             <!--  <p style="margin-top: -28px; text-align: right; color: #353535; font-family: 'Open Sans', sans-serif; font-size: 10px; font-weight: bold;"></p> -->
+            <p style="margin: 20px 0 6px 0; color: #000; font-family: 'Open Sans', sans-serif; font-size: 12px;">Thank you for contacting support. Your request ({{contact.inquiry}}) has been updated.</p>
+            <div style="width: 100%; margin: 12px 0;">
+               <p style="width: 50%; float: left; font-family: 'Open Sans', sans-serif; font-weight: bold; font-size: 12px;">{{site_name}} Support {{date_now|date:'Y-m-d'}} / {{date_now|date:'h:i a'}}</p>
+               <p style="float: right; font-family: 'Open Sans', sans-serif; font-weight: bold; font-size: 12px;">Type of Inquiry: {{contact.category.category_name|title}}</p>
+            </div>
+            <div style="clear: both;"></div>
+            <div style="color: #353535; font-family: 'Open Sans', sans-serif; font-size: 12px;">{{message}}</div>
+            <div style="clear: both;"></div>
+          
+            <!-- </p> -->
+             <p style="color: #353535; font-weight: bold; margin: 5px 0; font-family: 'Open Sans', sans-serif; font-size: 12px;">Thank You,</p>
+            <p style="color: #353535; font-weight: bold;  margin: 5px 0; font-family: 'Open Sans', sans-serif; font-size: 12px;">Customer Service</p>
+            <p style="color: #000; font-weight: bold;  margin: 5px 0; font-family: 'Open Sans', sans-serif; font-size: 12px;">{{site_name}}</p>
+            
+         </div>
+      </div>
+   </body>
+</html>

@@ -13,7 +13,7 @@ $('.update_info').on("click",function() {
 	var submit = true;
 
 	if (values['email'] == null || values['email'] == ""){
- 	   emailError = "Email Is Required";
+ 	   emailError = "Email is required";
  	   error_list.push(emailError)
  	   submit = false;
  	}
@@ -24,7 +24,7 @@ $('.update_info').on("click",function() {
 	var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
 
 	if(!pattern.test(email)){
-	 error_list.push('Not a Valid Email Address');
+	 error_list.push('Not a valid email address');
 	 submit = false;
 	}
 
@@ -39,7 +39,7 @@ $('.update_info').on("click",function() {
 		}
 
 		if (conf_password.length == 0){
-			error_list.push('Confirm Password is required');
+			error_list.push('Confirm password is required');
 	 		submit = false;
 		}
 
@@ -54,53 +54,53 @@ $('.update_info').on("click",function() {
  	// var pattern = /^\+(?:[0-9] ?){6,11}[0-9]$/;
 
     if (venue_telephone.length!=10){
- 		error_list.push('Not a Valid Telephone Number')
+ 		error_list.push('Not a valid telephone number')
  		submit = false;
     } 
      if (values['billing_add'] == null || values['billing_add'] == ""){
- 	   addressError = "Billing Address Is Required";
+ 	   addressError = "Billing address Is required";
  	   error_list.push(addressError)
  	   submit = false;
  	}
    
 	if (values['country'] == null || values['country'] == ""){
- 	   countryError = "Country Is Required";
+ 	   countryError = "Country is required";
  	   error_list.push(countryError)
  	   submit = false;
  	}
  	if (values['state'] == null || values['state'] == ""){
- 	   stateError = "State Is Required";
+ 	   stateError = "State is required";
  	   error_list.push(stateError)
  	   submit = false;
  	}
  	if (values['city'] == null || values['city'] == ""){
- 	   cityError = "City Is Required";
+ 	   cityError = "City is required";
  	   error_list.push(cityError)
  	   submit = false;
  	}
  	if (values['zip'] == null || values['zip'] == ""){
- 	   zipError = "Zip Is Required";
+ 	   zipError = "Zip is required";
  	   error_list.push(zipError)
  	   submit = false;
  	}
  	if (values['cc_number'] == null || values['cc_number'] == ""){
- 	   cc_numberError = "Credit Card Number Is Required";
+ 	   cc_numberError = "Credit card number is required";
  	   error_list.push(cc_numberError)
  	   submit = false;
  	}
  	if (values['month'] == null || values['month'] == ""){
- 	   cc_numberError = "Credit Card Expiration Month is required";
+ 	   cc_numberError = "Credit card expiration month is required";
  	   error_list.push(cc_numberError)
  	   submit = false;
  	}
  	if (values['year'] == null || values['year'] == ""){
- 	   cc_numberError = "Credit Card Expiration Year is required";
+ 	   cc_numberError = "Credit card expiration year is required";
  	   error_list.push(cc_numberError)
  	   submit = false;
  	}
  	
  	// if (values['about_seller'] == null || values['about_seller'] == ""){
- 	//    about_sellerError = "About Seller is Required";
+ 	//    about_sellerError = "About Seller is required";
  	//    error_list.push(about_sellerError)
  	//    submit = false;
  	// }
@@ -108,7 +108,7 @@ $('.update_info').on("click",function() {
  	
 	var terms = $('input[name="terms"]:checked').val();
  	if (terms  == null || terms == "" || terms == undefined){
- 			termsError = "Please agree with Terms";
+ 			termsError = "Please agree with terms";
 		 	error_list.push(termsError)
 		 	submit = false;
  	  
@@ -136,7 +136,11 @@ $("#logo-img").on('change',function() {
 			img.onload = () => {
 
 				if (img.width > 200 || img.height > 200){
-						alert(`Invalid Image: width:${img.width} and height:${img.height}`);
+						$('.alert-danger').append('<p>' +  "Image dimension must be 200px X 200px" + '</p>')
+						$('.alert-danger').show();
+						$('html, body').animate({
+			        		scrollTop: $(".alert-danger").offset().top
+			    		}, 1);
 						image.val("");
 					}
 				else{

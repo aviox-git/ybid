@@ -1,9 +1,17 @@
 from django.urls import path
-from .views import Homepage, FAQWeb, FAQCategoryView, AddFAQCategoryView, EditFAQCategoryView, FAQView, AddFAQView, EditFAQView,  BlogCategoriesView, BlogCategoriesAddView, BlogCategoriesEditView, BlogWebView, BlogView, AddBlogView, EditBlogView, Pages, AddPage,PageStatus, DeletePage, EditPage,SelectedPagesStatus,SingleBlog,GetPages
+from .views import Homepage, FAQWeb, FAQCategoryView,ContactCategoriesView, AdminContactList, ContactCategoriesEditView, AddFAQCategoryView,ContactCategoryAdd, EditFAQCategoryView, FAQView, AddFAQView, EditFAQView,  BlogCategoriesView, BlogCategoriesAddView, BlogCategoriesEditView, BlogWebView, BlogView, AddBlogView, EditBlogView, Pages, AddPage,PageStatus, DeletePage, EditPage,SelectedPagesStatus,SingleBlog,GetPages, Contact
 
 
 urlpatterns = [
 	path('', Homepage.as_view(), name="homepage"),
+	path('contact_us', Contact.as_view(), name="contact_us"),
+
+
+
+	path('add-contact-category', ContactCategoryAdd.as_view(), name="add_contact_category"),
+	path('contact-category', ContactCategoriesView.as_view(), name="contact_category"),
+	path('contact-category-edit/<int:cat_id>', ContactCategoriesEditView.as_view(), name="contact_category_edit"),
+	path('public-contact-list', AdminContactList.as_view(), name="public_contact_list"),
 
 	# Pages
 	path('pages',Pages.as_view(), name='pages'),

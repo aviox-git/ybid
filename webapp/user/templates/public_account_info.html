@@ -1,10 +1,39 @@
 {% extends 'Front/main.html' %}
 {% load static %}
+{% block title %} My Account {% endblock %}
+{% block head %}
+
+<style type="text/css">
+	
+	.req{
+			display: none;
+		}
+	.pass{
+	    height: 15px !important;
+	    width: 15px !important;
+	    position: absolute;
+	    top: 6px;
+	    right: 8px;
+		}
+
+	.eye{
+		position: relative;
+	}
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+
+</style>
+{% endblock %}
 {% block content %}
 	<section style="background-color: #f7f7f7;" class="pb-3">
 		<div class="container">
 		<div class="my-frofile-form">
-			<h1 class="my-account-heading">MY ACCOUNT / MY PROFILE<span class="not-verify">-Not verify yet</span></h1>
+			<h1 class="my-account-heading">MY ACCOUNT / MY PROFILE<span class="not-verify">-Verified</span></h1>
 			<div class="alert alert-danger  text-center" role="alert" style="display: none;"></div>
 			<form action="{% url 'my_account_info' %}" id="update_info_form" method="post" enctype="multipart/form-data">
 				{% csrf_token %}
@@ -26,7 +55,9 @@
 						</div>
 						<div class="form-group">
 							<label>Password <span class="req">*</span></label>
+							<div class="eye">
 							<input type="password" class="form-control" name="pass" id="password" minlength="8">
+							<img class="pass show" src="{% static 'assets/images/show_pass.png' %}"></div>
 						</div>
 						<div class="form-group">
 							<label>Company Name</label>
@@ -37,11 +68,11 @@
 							{% endif %}
 						</div>
 						<div class="form-group">
-							<label>Stripe Number</label>
+							<label>Stripe Number{% if not request.user.accountinfo.strip_number %} <a href="https://dashboard.stripe.com/oauth/authorize?response_type=code&client_id={{stripe_client_id}}&scope=read_write" class="reg_stripe"> (Register a stripe account.)</a> {% endif %}</label>
 							{% if request.user.accountinfo.strip_number %}
 							<input type="text" class="form-control" id="payemail" name="pay_email" value="{{request.user.accountinfo.strip_number}}" readonly>
 							{% else %}
-							<input type="text" class="form-control" id="payemail" name="pay_email" value="">
+							<input type="text" class="form-control" id="payemail" name="pay_email" value="" readonly>
 							<!-- <a href="#" target="_blank">Click for Create Account Stripe and Connect</a> -->
 				
 							{% endif %}
@@ -61,8 +92,13 @@
 						</div>
 						<div class="form-group">
 							<label>City *</label>
-							<select name="city"  class=" form-control cities order-alpha" id="cityId">
-							</select>
+							<!-- <select name="city"  class=" form-control cities order-alpha" id="cityId">
+							</select> -->
+							{% if request.user.accountinfo.get_latest_address.city %}
+							<input type="text" class="form-control" name="city" value="{{request.user.accountinfo.get_latest_address.city}}" id="cityId">
+							{% else %}
+							<input type="text" class="form-control" name="city"  value="" id="cityId">
+							{% endif %}
 						</div>
 						<div class="form-group">
 							<label>Credit Card Number</label>
@@ -77,12 +113,16 @@
 						</div>
 						<div class="form-group">
 							<label>Old Password <span class="req">*</span></label>
+							<div class="eye">
 							<input type="password" class="form-control" name="old_pass">
+							<img class="pass show" src="{% static 'assets/images/show_pass.png' %}"></div>
 						</div>
 						<div class="form-group">
 							<label>Confirm Password <span class="req">*</span></label>
-							
+							<div class="eye">
+
 							<input type="password" class="form-control" name="conf_password" id="confirm_password"  minlength="6">
+							<img class="pass show" src="{% static 'assets/images/show_pass.png' %}"></div>
 						</div>
 						<div class="form-group">
 							<label>Website</label>
@@ -95,9 +135,9 @@
 						<div class="form-group">
 							<label>Phone *</label>
 							{% if request.user.accountinfo.phone %}
-							<input type="text" maxlength="10" class="form-control" name="phone" value="{{request.user.accountinfo.phone}}" id="telephone_number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+							<input type="text" maxlength="10" class="form-control" name="phone" value="{{request.user.accountinfo.phone}}" id="telephone_number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="10">
 							{% else %}
-							<input type="text" class="form-control" id="telephone_number" name="phone" value="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+							<input type="text" class="form-control" id="telephone_number" name="phone" value="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="10">
 							{% endif %}
 						</div>
 						<div class="form-group">
@@ -111,8 +151,13 @@
 						</div>
 						<div class="form-group">
 							<label class="">State *</label>
-								<select name="state" class=" form-control states order-alpha" id="stateId">
-							</select>
+								<!-- <select name="state" class=" form-control states order-alpha" id="stateId">
+							</select> -->
+							{% if request.user.accountinfo.get_latest_address.state %}
+							<input type="text" class="form-control" name="state" value="{{request.user.accountinfo.get_latest_address.state}}" id="stateId">
+							{% else %}
+							<input type="text" class="form-control" name="state"  value=""  id="stateId">
+							{% endif %}
 						</div>
 						<div class="form-group">
 							<label>Zip *</label>
@@ -153,9 +198,7 @@
 								{% if profile.company_logo %}
 									<img style="max-height:200px;
 									max-width:200px;" class="cb-logo" src="{{MEDIA_URL}} {{profile.company_logo.url}}" id="preview"  alt="company">
-									{% else %}
-									<img class="cb-logo" id="preview" src="{% static 'assets/images/com-logo.png' %}" alt="company">
-									{% endif %}
+								{% endif %}
 								</div>
 							</div>
 							<div class="form-group py-3 mr-4 d-flex justify-content-between">
@@ -170,9 +213,11 @@
 								</div>
 								<div class="cb-logo" {% if not profile.business_license %} style="display: none;"
 								{% endif %}>
-								<a href="{{profile.business_license}}" download>
+								{% if profile.business_license %}
+								<a href="{{profile.business_license.url}}" download>
 									<img class="cb-log"  src="{% static 'assets/images/adobe.png' %}" alt="pdf">
 								</a>
+								{% endif %}
 								</div>
 							</div>
 						</div>
@@ -180,9 +225,9 @@
 							<div class="form-group">
 								<label>About Seller</label>
 								{% if request.user.accountinfo.about_seller %}
-								<textarea class="form-control" name="about_seller" rows="6" placeholder="Enter message here">{{request.user.accountinfo.about_seller}}</textarea>
+								<textarea class="form-control" name="about_seller" rows="6" placeholder="Enter message here"  style='height: 150px !important;'>{{request.user.accountinfo.about_seller}}</textarea>
 								{% else %}
-								<textarea class="form-control" name="about_seller" rows="6" placeholder="Enter message here"></textarea>
+								<textarea class="form-control" name="about_seller" rows="6" placeholder="Enter message here"  style='height: 150px !important;'></textarea>
 								{% endif %}
 							</div>
 						</div>
@@ -194,7 +239,7 @@
 								<label class="checkbox-label">
 									<input type="checkbox" name="terms">
 									<span class="checkbox-custom rectangular"></span>
-									<span class="input-title">I agree with<span class="d-domain">{{site_name}}</span>terms</span>
+									<span class="input-title">I agree with<a href="/terms" target="_blank" style="color: black;"> {{site_name}}<b>  terms </b></a>
 								</label>
 								<input type="hidden" name="add_id" value="{{add.id}}">
 								
@@ -237,13 +282,7 @@
             .attr("value",'{{request.user.accountinfo.get_latest_address.country}}')
             .text('{{request.user.accountinfo.get_latest_address.country}}'));
 
-            $('#stateId') .append($("<option></option>")
-            .attr("value",'{{request.user.accountinfo.get_latest_address.state}}')
-            .text('{{request.user.accountinfo.get_latest_address.state}}'));
-            $('#cityId') .append($("<option></option>")
-            .attr("value",'{{request.user.accountinfo.get_latest_address.city}}')
-            .text('{{request.user.accountinfo.get_latest_address.city}}'));
-		});
+           })
 		{% endif %}
 
 
@@ -259,6 +298,10 @@
 		var end = 12;
 		var selected = ('{{request.user.accountinfo.card_details.expiration_date}}').split('/');
 		$('#year').val(selected[1]);
+		if (selected[1]==null || selected[1] == undefined){
+			$('#year').prepend("<option selected='true' disabled>Year</option>");
+		}
+
 
 		var options = "";
 		for(var month = start ; month <= end; month++){
@@ -268,11 +311,29 @@
 	document.getElementById("month").innerHTML = options;
 	$('#month').val(selected[0]);
 
+	if (selected[0]==null||selected[0]==undefined || selected[0] == ''){
+		$('#month').prepend("<option selected disabled>Mth</option>")
+	}
+
 	$('#credit-card').on('keypress change', function () {
 		$(this).val(function (index, value) {
 			return value.replace(/\W/gi, '').replace(/(.{4})/g, '$1 ');
 		});
 	});
+
+
+	$('.pass').on('click', function(){
+
+	if ($(this).hasClass('show')){
+		$(this).attr('src', "{% static 'assets/images/hide_pass.png' %}");
+		$(this).closest('div').find('input').attr('type', 'text');	
+	}
+	else{
+		$(this).attr('src', "{% static 'assets/images/show_pass.png' %}");
+		$(this).closest('div').find('input').attr('type', 'password');	
+	}
+	$(this).toggleClass('show');
+});
 
 </script>
 

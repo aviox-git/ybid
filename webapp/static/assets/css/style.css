@@ -1802,3 +1802,24 @@ button:focus, button:active {
     top: 50%;
     left: 50%;
 }
+
+
+
+/*new css arsh */
+
+
+.form-control{
+    height: 30px !important;
+    font-size: 12px;
+}
+
+label{
+    font-size: 14px;
+}
+
+textarea{
+    height: 150px !important;
+}
+p{
+    font-size: 12px !important;
+}

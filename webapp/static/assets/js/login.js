@@ -18,7 +18,7 @@ var error_list  =[];
 var submit = true;
 
 if (values['email'] == null || values['email'] == "") {
-  passwordError = "Please enter Email";
+  passwordError = "Please enter email";
   error_list.push(passwordError);
   submit = false;
 }
@@ -66,24 +66,16 @@ $('.register').on("click", function() {
     nameError = "Please enter first name";
     error_list.push(nameError);
     submit = false;
+    
   }
-   var f_length = (values['first_name']) 
-  if (f_length.length < 2) {
-    nameError = "Please enter  minimum 2 character in First Name";
-    error_list.push(nameError);
-    submit = false;
-  }
+  
   if (values['last_name'] == null || values['last_name'] == "") {
     last_nameError = "Please enter last name";
     error_list.push(last_nameError);
     submit = false;
+   
   }
-   var lastname_length = (values['last_name']) 
-  if (lastname_length.length < 2) {
-    nameError = "Please enter  minimum 2 character in Last Name";
-    error_list.push(nameError);
-    submit = false;
-  }
+   
 
    if (values['email'] == null || values['email'] == "") {
     emailError = "Please enter email";
@@ -92,11 +84,12 @@ $('.register').on("click", function() {
   }
   var useremail = $('#Email').val();
   var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
-
-if(!pattern.test(useremail))
-  {
-   error_list.push('not a valid e-mail address');
+if (values['email'].length > 0 || values['remail'].length > 0){
+  if(!pattern.test(useremail))
+    {
+     error_list.push('not a valid e-mail address');
   }
+}
 
 
 if (values['remail'] == null || values['remail'] == "") {
@@ -110,7 +103,7 @@ if (values['remail'] == null || values['remail'] == "") {
     submit = false;
   }
   if (values['check_email'] == "false") {
-    repeat_emailError = "Email Already Exist";
+    repeat_emailError = "Email already exist";
     error_list.push(repeat_emailError);
     submit = false;
   }
@@ -131,13 +124,13 @@ if (values['remail'] == null || values['remail'] == "") {
   }
   var country = $('#countryId').val();
   if (country  == null || country == "" || country == undefined){
-  countryError = "Please Select Country";
+  countryError = "Please select country";
   error_list.push(countryError)
   submit = false;     
   } 
   var state = $('#stateId').val();
   if (state  == null || state == "" || state == undefined){
-  stateError = "Please Select State";
+  stateError = "Please enter state";
   error_list.push(stateError)
   submit = false;     
   } 
@@ -210,7 +203,7 @@ var submit = true;
 var forget_email = $('.forget-email').val();
 
  if (forget_email == null || forget_email=="") {
-  	passwordError = "Please Enter Email";
+  	passwordError = "Please enter email";
   	error_list.push(passwordError);
   	submit = false;
   }

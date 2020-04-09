@@ -3,63 +3,73 @@
 		<div class="container-fluid">
 			<div class="nav_area">
 				<nav class="navbar navbar-expand-lg navbar-light">
-					<a class="navbar-brand" href="#">
-						<!-- <img src="./assets/images/ticket.png" alt="ticket"> -->
 					{% if public_logo %}
-					 <img src="{{public_logo.url}}" height="100px" width="100px" style="object-fit: contain;" alt="Logo">
-					 {% else %}
-					 demo Logo
-					{% endif %}
-
+					<a class="navbar-brand" href="{{public_logo.url}}" target="_blank">
+					 <img src="{{public_logo.url}}" style="object-fit: contain; width: 100px; height: 100px;" alt="Logo">
 					</a>
+					 {% else %}
+					 <a class="navbar-brand" href="#" target="_blank">
+					 demo Logo
+					</a>
+					{% endif %}
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
-							<li class="nav-item active">
+							<li class="nav-item {{active_home}}">
 								<a class="nav-link" href=" {% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
 							</li>
+							{% for page in dynamic_pages %}
+								{% if page.postion == 't' %}
+								<li class="nav-item {{active_page}}">
+									<a class="nav-link" href="/{{page.url}}">{{page.title}}</a>
+								</li>
+								{% endif %}
+								{% endfor %}
 						<!-- 	<li class="nav-item">
 								<a class="nav-link" href="#">About Us</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="#why_us">Why Us</a>
 							</li> -->
-							<li class="nav-item">
+							<li class="nav-item {{active_faq}}">
 								<a class="nav-link" href="{% url 'faq_web' %}">FAQ</a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item {{active_blog}}">
 								<a class="nav-link" href="{% url 'blog' %}">Blog</a>
 							</li>
 							<!-- <li class="nav-item">
 								<a class="nav-link" href="#">Image Editor</a>
 							</li> -->
-							<li class="nav-item">
-								<a class="nav-link" href="#">Contact</a>
+							<li class="nav-item {{active_contact}}">
+								<a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
 							</li>
 							<li class="nav-item align-self-center finder_code">
 								
 								<input class="text-center" type="text" name="email" placeholder="EVENT FINDER CODE">
 							</li>
+							{% if user.is_authenticated %}
+
 							<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle {{active_dashboard}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" {% if active_dashboard %} style="color: #ea7904 !important;" {% endif %} >
 								Dashboard
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="{% url 'my_account_info' %}">My Account</a>
-							<!-- <a class="dropdown-item" href="#">Post and Sell</a>
-							<a class="dropdown-item" href="#">Manage Posting</a>
-							<a class="dropdown-item" href="#">My Order</a>
-							<a class="dropdown-item" href="#">Sales Order</a>
+							<a class="dropdown-item {{active_account}}" href="{% url 'my_account_info' %}" {% if active_account %} style="color: #ea7904 !important;" {% endif %}>My Account</a>
+							<a class="dropdown-item {{active_post}}" href="{% url 'post' %}" {% if active_post %} style="color: #ea7904 !important;" {% endif %}>Post and Sell</a>
+							<a class="dropdown-item {{active_manage_posting}}" href="{% url 'post_list' %}"  {% if active_manage_posting %} style="color: #ea7904 !important;" {% endif %}>Manage Posting</a>
+							<a class="dropdown-item {{active_history}}" href="{% url 'public_order_history' %}" {% if active_history %} style="color: #ea7904 !important;" {% endif %}>My Order</a>
+							<a class="dropdown-item  {{active_sales}}" href="{% url 'public_sales_order' %}"  {% if active_sales %} style="color: #ea7904 !important;" {% endif %}>Sales Order</a>
 							
-							<a class="dropdown-item" href="#">Refund</a>
+							<!-- <a class="dropdown-item" href="#">Refund</a>
 							<a class="dropdown-item" href="#">Chat</a> -->
 						
 							</div>
 						
 							</li>
+							{% endif %}
 						
 							<li class="d-flex nav-item login_sign_link">
 							{% if user.is_authenticated %}

@@ -34,24 +34,26 @@
 						<div class="col-md-6">
 							<div class="footer_list_links mt-4 mb-2">
 								<ul class="d-flex justify-content-start">
-									<li class="mr-3">
-										<a href="#">ABOUT</a>
+									
+									<li class="mr-3 {{active_faq}}">
+										<a href="{% url 'faq_web' %}">FAQ</a>
 									</li>
-									<li class="mr-3">
-										<a href="#why_us">WHY US</a>
+									<li class="mr-3 {{active_contact}}">
+										<a href="{% url 'contact_us' %}">CONTACT</a>
 									</li>
-									<li class="mr-3">
-										<a href="#">FAQ</a>
-									</li>
-									<li class="mr-3">
-										<a href="contact.html">CONTACT</a>
-									</li>
-									<li class="mr-3">
+									<!-- <li class="mr-3">
 										<a href="#">TERMS</a>
 									</li>
 									<li class="mr-3">
 										<a href="#">PRIVACY</a>
+									</li> -->
+									{% for page in dynamic_pages %}
+									{% if page.postion == 'b' %}
+									<li class="mr-3">
+										<a href=" {% url 'page' page.url  %}">{{page.title}}</a>
 									</li>
+									{% endif %}
+									{% endfor %}
 								</ul>
 							</div>
 						</div>
@@ -62,7 +64,7 @@
 										<a href="#">© Copyright 2019</a>
 									</li>
 									<li class="mr-3">
-										<a href="#">DOMAIN.COM</a>
+										<a href="#">{{public_site_name}}</a>
 									</li>
 									<li class="mr-3">
 										<a href="#">All Rights Reserved</a>
