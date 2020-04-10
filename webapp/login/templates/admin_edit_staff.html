@@ -1,29 +1,29 @@
 {% extends 'Admin/admin-base.html' %}
 {% load static %}
+{% block title %} Edit Staff {% endblock %} 
 {% block content %}
 <div class="wrapper">
 
   <div class="content-wrapper">
-  <div class="alert alert-danger text-center" role="alert" style="display: none;">
+  <div class="alert alert-danger text-center" style="display: none;" role="alert">
       </div>
     <section class="content container-fluid">
-     
+    
       <div class="manage_admin">
 
          <div class="add_min d-flex justify-content-between"> 
-          
             
-    <h3>Edit Admin</h3>
+    <h3>Edit Staff</h3>
     </div>
-    <form action="{% url 'edit_admin' user.id %}" method="post" id="registration_form">
-     {% csrf_token %}
+    <form action="{% url 'edit_staff' user.id %}" method="post" id="registration_form">
+        {% csrf_token %}
     <div class="row">
     <div class="col-12 col-sm-6 col-md-6">
 
                   <div class="form-group">
                     <label>*Role</label>
                     <select class="form-control" name="role">
-                      <option value="super_admin" selected>Super Admin</option>
+                      <option value="super_admin">Super Admin</option>
                     {% for group in groups %}
                       <option value="{{ group.id }}" {% if group.id == current_id %} selected {% endif %} >{{ group.name|title }}</option>
                       
@@ -36,9 +36,8 @@
                   </div>
                   <div class="form-group">
                     <label>Password</label><span class="not-verify">-Not verify yet</span>
-                    <input type="password" class="form-control" minlength="8", maxlength="32" id="password" name="password" >
+                    <input type="password" class="form-control" minlength="8" maxlength="32" id="password" name="password" >
                   </div>
-                 
                 </div>
                   
     <div class="col-12 col-sm-6 col-md-6">
@@ -99,63 +98,68 @@
 
 {% block extrascript %}
 <script type="text/javascript"> 
+
   $('.edit-user').on("click", function() {
 
-      var $inputs = $('#registration_form :input');
+    var $inputs = $('#registration_form :input');
 
-      var values = {};
-      $inputs.each(function() {
-        values[this.name] = $(this).val();
-      });
-      var error_list  =[];
-      var submit = true;
-      if (values['role'] == null || values['role'] == "") {
+    var values = {};
+    $inputs.each(function() {
+      values[this.name] = $(this).val();
+    });
+  var error_list  =[];
+  var submit = true;
+ if (values['role'] == null || values['role'] == "") {
       roleError = "Please select Role";
       error_list.push(roleError);
       submit = false;
-      }
-       if (values['status'] == null || values['status'] == "") {
-        statusError = "Please select status";
-        error_list.push(statusError);
-        submit = false;
-       }
-        if (values['name'] == null || values['name'] == "") {
-          nameError = "Please enter  name";
-          error_list.push(nameError);
-          submit = false;
-        }
-        if (values['email'] == null || values['email'] == "") {
-          emailError = "Please enter email";
-          error_list.push(emailError);
-          submit = false;
-        }
-        var useremail = document.getElementById('email').value;
-        var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+ }
+ if (values['status'] == null || values['status'] == "") {
+  statusError = "Please select status";
+  error_list.push(statusError);
+  submit = false;
+ }
+if (values['name'] == null || values['name'] == "") {
+    nameError = "Please enter name";
+    error_list.push(nameError);
+    submit = false;
+ }
+ if (values['email'] == null || values['email'] == "") {
+    emailError = "Please enter email";
+    error_list.push(emailError);
+    submit = false;
+ }
 
-        if(!pattern.test(useremail))
-        {
-         error_list.push('not a valid e-mail address');
-       }
-       if (values['password'] != values['repassword']) {
+
+var useremail = document.getElementById('email').value;
+var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+
+
+if(!pattern.test(useremail)) {
+   error_list.push('not a valid e-mail address');
+   submit = false;
+  }
+if (values['password'] != values['repassword']) {
         passwordNotmatch = "Password does not match";
         error_list.push(passwordNotmatch);
         submit = false;
-       }
-      if (error_list.length > 0){
-        $('.alert-danger').show();
-        $('.alert-danger').html("");
-        var i;
-        for (i = 0; i<error_list.length; i++){
-          $('.alert-danger').append('<p>'+ error_list[i]+'</p>')
-          window.scrollTo(0,0);
-        }
+  }
 
-      }
+  if (error_list.length > 0){
+    $('.alert-danger').show();
+    $('.alert-danger').html("");
+    var i;
+    for (i = 0; i<error_list.length; i++){
+      $('.alert-danger').append('<p>'+ error_list[i]+'</p>')
+      window.scrollTo(0,0);
+    }
 
-      return submit;
+  }
+ return submit;
 
-    });
+  });
 </script>
+
 <script>
   $('.delete').on('click', function() {
     window.history.back();

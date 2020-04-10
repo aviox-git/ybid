@@ -32,8 +32,8 @@ def mailSend(subject, recipient_list, message="", html_message=""):
 		print(str(e))
 		return False
 
-class Registration(View):
-	template_name = 'public_login.html'
+class PublicRegistration(View):
+	template_name = 'public_login_registration.html'
 
 	def get(self, request, *args, **kwargs):
 		next_ = request.GET.get('next')	
@@ -87,7 +87,7 @@ class Registration(View):
 				public =  getPublic_Config(request)
 				public_logo = (public['public_logo'])
 
-				content_html = render_to_string('email_verification.html', {
+				content_html = render_to_string('email_registration_verification.html', {
 		                'user': user,
 		                'domain': current_site,
 		                'uid':urlsafe_base64_encode(force_bytes(user.pk)),
@@ -130,7 +130,7 @@ class EmailVerification(View):
 		public =  getPublic_Config(request)
 		public_logo = (public['public_logo'])
 		
-		content_html = render_to_string('email_verification.html', {
+		content_html = render_to_string('email_registration_verification.html', {
                 'user': user,
                 'domain': current_site,
                 'uid':urlsafe_base64_encode(force_bytes(user.pk)),
@@ -160,7 +160,7 @@ class CheckEmail(View):
 		email = request.POST.get('email').lower()
 		try:
 			user_email = User.objects.get(email = email)
-			response['message'] = "Email Already Exist"
+			response['message'] = "Email already exist"
 			response['status'] = True
 			
 		except User.DoesNotExist:

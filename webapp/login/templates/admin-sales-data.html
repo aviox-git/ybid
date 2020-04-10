@@ -1,0 +1,149 @@
+  {% extends 'Admin/admin-base.html' %}
+{% load static %}
+{% block title %} Sales Data {% endblock %} 
+{% block content %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+ <section class="content container-fluid">
+      <h1 class="text-center">Sales Data</h1>
+    <!-- dashboard content -->
+    <div class="manage_admin">
+      <!-- <div class="add_min d-flex justify-content-between"> 
+    <h3>Manage User</h3>
+    <ul class="mg_top_ic">
+      <li><i class="fa fa-refresh" aria-hidden="true"></i></li>
+      <li><i class="fa fa-plus" aria-hidden="true"></i></li>
+      <li><i class="fa fa-lock" aria-hidden="true"></i></li>
+      <li><i class="fa fa-unlock" aria-hidden="true"></i></li>
+      <li><i class="fa fa-trash-o" aria-hidden="true"></i></li>
+    </ul>
+    </div> -->
+      <form>
+              <!-- <div class="d-flex justify-content-center">
+                <div class="mr-3">
+                  <label for="" class="mb-1">From</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="mr-3">
+                  <label for="" class="mb-1">To</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+ -->
+          <div class="history_detail">
+                    <div class="d-flex justify-content-center">
+                      <div class="mr-3">
+                        <label for="" class="mb-1">From</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="mr-3">
+                        <label for="" class="mb-1">To</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+
+              <div class="posting_table">
+                <table id="example" class="table table-bordered content-table">
+        <thead>
+            <tr>
+              
+                <th>Invoice</th>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Name</th>
+                <th>Type / Students</th>
+                <th>Fee</th>
+                <th>Discount</th>
+                <th>Total<span class="total-sale">$5165.25</span></th>
+            </tr>
+        </thead>
+        <tbody>
+
+          
+            <tr>
+                
+                <td class="image_id">EP36331052</td>
+                <td>2018-03-27  09:09 pm</td>
+                 <td>2018-03-27 Test</td>
+                <td>CUST CUST</td>
+                <td>Self / 350</td>
+                <td>$30.00</td>
+                <td>($0)</td>
+                <td>$55.00</td>
+                
+            </tr>
+             <tr>
+                
+                <td class="image_id">EP36331052</td>
+                <td>2018-03-27  09:09 pm</td>
+                 <td>2018-03-27 Test</td>
+                <td>CUST CUST</td>
+                <td>Self / 3000</td>
+                <td>$30.00</td>
+                <td>($0)</td>
+                <td>$55.00</td>
+                
+            </tr>
+             <tr>
+                
+                <td class="image_id">EP36331052</td>
+                <td>2018-03-27  09:09 pm</td>
+                 <td>2018-03-27 Test</td>
+                <td>CUST CUST</td>
+                <td>Self / 1500</td>
+                <td>$30.00</td>
+                <td>($0)</td>
+                <td>$55.00</td>
+                
+            </tr>
+                <tr>
+                
+                <td class="image_id">EP36331052</td>
+                <td>2018-03-27  09:09 pm</td>
+                 <td>2018-03-27 Test</td>
+                <td>CUST CUST</td>
+                <td>Self / 1567</td>
+                <td>$30.00</td>
+                <td>($0)</td>
+                <td>$55.00</td>
+                
+            </tr>
+                <tr>
+                
+                <td class="image_id">EP36331052</td>
+                <td>2018-03-27  09:09 pm</td>
+                 <td>2018-03-27 Test</td>
+                <td>CUST CUST</td>
+                <td>Self / 1575</td>
+                <td>$30.00</td>
+                <td>($0)</td>
+                <td>$55.00</td>
+                
+            </tr>
+           
+           
+        </tbody>
+       <!--  <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot> -->
+    </table>
+              </div>
+              
+            
+            </form>
+    </div>
+      
+    </section>
+    <!-- /.content -->
+  </div>
+
+  {% endblock %}

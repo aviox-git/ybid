@@ -1197,7 +1197,7 @@ button {
 
 
 .form-control{
-    height: 30px !important;
+    /*height: 30px !important;*/
     font-size: 12px !important;
 }
 
@@ -1205,7 +1205,7 @@ label{
     font-size: 14px;
 }
 
-textarea{
+.txt-area{
     height: 150px !important;
 }
 
@@ -1217,4 +1217,169 @@ span.input-title {
 
 p{
     font-size: 12px !important;
+}
+
+
+
+.req{
+    display: none;
+}
+.pass{
+    height: 15px !important;
+    width: 15px !important;
+    position: absolute;
+    top: 6px;
+    right: 8px;
+}
+
+.eye{
+    position: relative;
+    }
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.account-section{
+    background-color: #f7f7f7;
+}
+
+.exp-date{
+    width: 90px !important;
+}
+.company-logo{
+    max-height:200px !important;
+    max-width:200px !important;
+}
+
+.terms-title{
+    color: black;
+}
+
+.photo-border{
+    border: 0
+}
+.manage-table{
+width:100%;
+}
+.left-spc{
+margin-left: 0;
+}
+.manage-post{
+display: flex; 
+align-self: center;
+width: 100%; 
+ margin-top: 11px;
+}
+
+.multi-event-li{
+padding: 20px 0;
+}
+.evt-dtls{
+padding: 0;
+}
+.multi-events{
+    background-image: inherit; 
+    padding: 20px 0;
+}
+.order-his{
+    margin-left: 0; 
+    border-bottom: 3px solid #000 !important;
+}
+
+.fund-banner{
+    margin-bottom: 0;
+}
+
+.y-photo-dim{
+    white-space: nowrap;
+}
+
+.erl-price{
+    width: 70%; 
+    color: #024279; 
+    white-space: nowrap;
+}
+.erl__{
+    width: 42%; 
+    white-space: nowrap;
+}
+.regu__{
+    width: 42%; 
+}
+.ad-file{
+width: 248px;
+}
+
+.check-box{
+    margin-top: 10px; 
+    margin-right: 12px;
+}
+.service-area{
+    width: 90px !important;
+}
+.srt-id-btn{
+    width: 248px;
+}
+.plus{
+    color: #100cec; font-size: 18px;
+}
+.bdr{
+    border-right: 1px solid #dee2e6;
+}
+
+.post-cost{
+    width: 66%;
+}
+.est-div{
+margin-top: 6px;
+}
+.est-sale{
+    font-size: 14px;
+}
+.est-spn{
+    font-size: 12px;
+}
+.ybook-port{
+    font-size: 14px;
+    margin: 10px 0;"
+}
+.stripe_{
+    font-size: 12px; 
+    margin-left: 20px;
+}
+.init-plus{
+    color: #100cec; 
+    font-size: 18px;
+}
+
+.y-book-size{
+    width: 50%;
+}
+.st-num-in{
+    width: 60px;
+}
+.add__{
+    width: 166px;
+}
+.evet-sch{
+    width: 34%;
+}
+.payment_popup {
+    border: 1px solid;
+    width: 56%;
+    margin: auto;
+}
+.congo_page_popup {
+    border: 1px solid;
+    width: 56%;
+    margin: auto;
+}
+.payment-img{
+    width: 50px;
+}
+.back-order{
+    width: 172px;
 }

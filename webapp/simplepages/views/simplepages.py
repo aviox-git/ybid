@@ -58,7 +58,7 @@ def CreateTicekt(number):
 	return ticket
 
 
-class Contact(TemplateView):
+class PublicContact(TemplateView):
 	template_name = 'public_contactus.html'
 	def get(self, request, *args, **kwargs):
 		active_contact = "active"
@@ -139,7 +139,7 @@ class Contact(TemplateView):
 		public =  getPublic_Config(request)
 		public_logo = (public['public_logo'])
 		static_url = settings.STATIC_URL
-		content_html = render_to_string("contact-mail.html", locals())
+		content_html = render_to_string("emai-contact-mail.html", locals())
 		recipients = [email]
 		if company != None:
 			recipients.append(company.email)
@@ -153,7 +153,7 @@ class Contact(TemplateView):
 class ContactCategoryAdd(PermissionRequiredMixin,StaffUserOnly, View):
 	permission_required = "simplepages.view_contactcategory"
 	def get(self,request):
-		return render(request,'contact-category.html',locals())
+		return render(request,'admin_add_contact_category.html',locals())
 
 	def post(self,request):
 		status =  request.POST.get('status')
@@ -174,12 +174,11 @@ class ContactCategoriesEditView(PermissionRequiredMixin,StaffUserOnly,View):
 	permission_required = "simplepages.view_contactcategory"
 	def get(self, request,cat_id):
 		cat = ContactCategory.objects.get(pk = cat_id)
-		return render(request,'contact-category-edit.html',locals())
+		return render(request,'admin_contact_category_edit.html',locals())
 
 	def post(self,request,cat_id):
 		cat_id = cat_id
 		status =  request.POST.get('status')
-		# order =  request.POST.get('order')
 		name =  request.POST.get('category')
 		try:
 			if cat_id:
@@ -205,7 +204,7 @@ class ContactCategoriesView(PermissionRequiredMixin,StaffUserOnly,View):
 	permission_required = "simplepages.view_contactcategory"
 	def get(self,request):
 		contact_cats = ContactCategory.objects.all()
-		return render(request,'contact-category-list.html',locals())
+		return render(request,'admin_contact_category_list.html',locals())
 
 	def post(self,request):
 		cat_id = request.POST.get('cat_id')
@@ -253,7 +252,7 @@ class AdminContactList(PermissionRequiredMixin,StaffUserOnly,View):
 		public =  getPublic_Config(request)
 		public_logo = (public['public_logo'])
 		static_url = settings.STATIC_URL
-		content_html = render_to_string("admin-reply_email.html", locals())
+		content_html = render_to_string("email_admin-reply_email.html", locals())
 		email = admin_reply.contact.email
 		recipients = [email]
 
@@ -267,16 +266,16 @@ class AdminContactList(PermissionRequiredMixin,StaffUserOnly,View):
 		return HttpResponseRedirect('/public-contact-list')
 
 
-class Pages(PermissionRequiredMixin, StaffUserOnly, TemplateView):
+class ManagePages(PermissionRequiredMixin, StaffUserOnly, TemplateView):
 	permission_required = 'simplepages.view_page'
-	template_name = '9011-TICKETS-MANAGE-CONTENT.html'
+	template_name = 'admin_manage_pages.html'
 	def get(self, request, *args, **kwargs):
 		pages=Page.objects.filter(delete_status=False).order_by('-id')
 		return render(request,self.template_name,locals())
 		
 class AddPage(PermissionRequiredMixin, StaffUserOnly, TemplateView):
 	permission_required = 'simplepages.view_page'
-	template_name = '9012-TICKETS-ADD-PAGES.html'
+	template_name = 'admin_add_pages.html'
 	def get(self, request, *args, **kwargs):
 		return render(request,self.template_name,locals())
 
@@ -334,7 +333,7 @@ class DeletePage(PermissionRequiredMixin, StaffUserOnly, View):
 # edit page
 class EditPage(PermissionRequiredMixin, StaffUserOnly, TemplateView):
 	permission_required = 'simplepages.view_page'
-	template_name = '9013-TICKETS-EDIT-PAGE.html'
+	template_name = 'admin_edit_pages.html'
 	def get(self, request, *args, **kwargs):
 		page_id=kwargs.get('page_id')
 		try:

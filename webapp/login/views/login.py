@@ -75,7 +75,7 @@ class AdminLogout(StaffUserOnly, View):
 
 
 
-class LoginView(View):
+class PublicLoginView(View):
 	def post(self, request, *args, **kwargs):
 		email = request.POST.get('email')
 		password = request.POST.get('password')
@@ -109,7 +109,7 @@ class LoginView(View):
 			return HttpResponseRedirect('/login/')
 		
 
-class ForgetPass(View):
+class PublicForgetPass(View):
 	template_name = 'public_forget_password.html'
 
 	def get(self, request, *args, **kwargs):
@@ -132,7 +132,7 @@ class ForgetPass(View):
 			public_logo = (public['public_logo'])
 			static_url = settings.STATIC_URL
 			link = str(current_site)+"login/reset_password/"+str(code)
-			content_html = render_to_string("forget_password.html", locals())
+			content_html = render_to_string("email_forget_password.html", locals())
 			recipients = [email]
 			email_from = settings.EMAIL_HOST_USER
 			subject = "Reset Password"
@@ -152,7 +152,7 @@ class ForgetPass(View):
 		return HttpResponseRedirect('forget_password')
 
 
-class ResetPassword(View):
+class PublicResetPassword(View):
 	template_name = 'public_new_password.html'
 
 	def get(self, request, *args, **kwargs):

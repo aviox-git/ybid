@@ -1,0 +1,12 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #f7f7f7;">
+	<div style="margin: auto; width: 60%;"><div style="background-color: #afadad; padding: 12px 15px; border-bottom: 2px solid #7103b5;">{% if public_logo %}<div style="float: left;"><img src="{{domain}}{{public_logo.url}}" height="70" width="70" alt="email-logo"></div>{% endif %}<div style="float: right; color: #848282; margin-top: 20px; font-family: 'Open Sans', sans-serif;">{{date}}</div><div style="clear: both;"></div></div><div style="background-color: #fff; border: 1px solid #e8e8e8; margin-top: 14px; padding: 15px 12px;"><h4 style="margin: 6px 0 10px 0; font-family: 'Open Sans', sans-serif; font-size: 15px;">{{user.first_name}} {{user.last_name}}</h4><p style="margin: 20px 0 6px 0; color: #000; font-family: 'Open Sans', sans-serif; font-size: 14px;">Please click the following link to complete your registration.</p><p style="margin: 20px 0 6px 0; color: #000; font-family: 'Open Sans', sans-serif; font-size: 14px;"><a href="{{ domain }}{% url 'confirm' uidb64=uid token=token %}">{{ domain }}{% url 'confirm' uidb64=uid token=token %}</a></p><p style="margin: 45px 0 35px 0; color: #353535; font-family: 'Open Sans', sans-serif; font-size: 14px;">Please do not reply to this message, it was sent from a notification-only address that cannon accept incoming email.</p><p style="color: #353535; font-weight: bold; margin: 5px 0; font-family: 'Open Sans', sans-serif; font-size: 15px;">Thank You,</p><p style="color: #353535; font-weight: bold;  margin: 5px 0; font-family: 'Open Sans', sans-serif; font-size: 15px;">Customer Service</p><p style="color: #000; font-weight: bold;  margin: 5px 0; font-family: 'Open Sans', sans-serif;">{{site_name}}</p></div></div>
+</body>
+</html>

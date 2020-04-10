@@ -264,3 +264,164 @@ sapn.sap_img img {
 .image_id {
     color: #117ad3;
 }
+
+
+
+
+
+
+/*NEW CSS BY ARSH */
+
+  .btn{
+    font-size: 12px;
+    padding: 2px 3px;
+    padding-top: 1px;
+    padding-right: 3px;
+    padding-bottom: 1px;
+    padding-left: 3px;
+  }
+
+  .table tr td {
+    padding: 0.30rem!important;
+    padding-top: 5px!important;
+    padding-right: 0.3rem !important;
+    padding-bottom: 6px!important;
+    padding-left: 0.3rem !important;
+    vertical-align: initial;
+    padding-top: 5px!important;
+    padding-bottom: 6px!important;
+}
+
+ .msg_history {
+    height: 400px;
+    overflow-y: auto;
+}
+.received_msg {
+    display: inline-block;
+    padding: 0 0 0 10px;
+    vertical-align: top;
+    width: 92%;
+}
+.received_withd_msg {
+    width: 80%;
+}
+.received_withd_msg > div {
+    background: #ebebeb none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #646464;
+    font-size: 14px;
+    margin: 0;
+    padding: 8px 10px 8px 12px;
+    width: 100%;
+}
+.time_date {
+    color: #000000;
+    display: block;
+    font-size: 12px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+.outgoing_msg {
+    overflow: hidden;
+    margin: 15px 0 15px;
+}
+.sent_msg {
+    float: right;
+    max-width: 78%;
+}
+.sent_msg > div {
+    background: #0000 none repeat scroll 0 0;
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 0;
+    color: #000;
+    padding: 8px 10px 8px 12px;
+    width: 100%;
+}
+.bottom_button {
+    display: flex;
+    justify-content: space-between;
+    margin: 9px 2px 15px;
+}
+.msg__btn {
+    background: #000;
+    color: #ffff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 13px;
+}
+.input_msg_write {
+    padding: 0 11px;
+}
+button.msg_send_btn, button.msg_cancel_btn {
+    width: 105px;
+}
+.modal-header {
+    border-bottom: none !important;
+}
+.incoming_msg{
+  margin-bottom: 5px;
+}
+
+p{
+  margin-bottom: 0px;
+}
+
+.img_p p a {
+  font-size: 10px; 
+}
+
+.date_span{
+    text-align: right;
+}
+
+.rep_msg{
+    text-align: justify;
+}
+
+.msg_txt{
+    width: 100%;
+}
+
+.attch-file{
+    display: none;
+}
+.reply-btn{
+    color: red;
+}
+.btn{
+    font-size: 12px;
+}
+
+.lbl_span{
+    color: #ff0000;
+}
+
+.current_img_a{
+    color: black;
+}
+
+.btn{
+    font-size: 12px;
+    padding: 2px 3px;
+    padding-top: 1px;
+    padding-right: 3px;
+    padding-bottom: 1px;
+    padding-left: 3px;
+  }
+.table tr td {
+  padding: 3px 0px 3px 0px !important;
+  vertical-align: middle;
+  line-height: 1.2;
+}
+
+.content-table{
+    width:100%;
+}
+.order-div{
+    background-color: #fff; 
+    box-shadow: 0 0 4px 0px #c3bebe;
+}
+.total-sale{
+    color: #ff0000;
+}

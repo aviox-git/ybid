@@ -1,5 +1,5 @@
-from .simplepages import Homepage, Pages,AddPage,PageStatus,DeletePage,EditPage,SelectedPagesStatus,GetPages, Contact, ContactCategoryAdd,ContactCategoriesView,ContactCategoriesEditView, AdminContactList
-from .faq import FAQWeb, FAQCategoryView, AddFAQCategoryView, EditFAQCategoryView, FAQView, AddFAQView, EditFAQView
+from .simplepages import Homepage, ManagePages,AddPage,PageStatus,DeletePage,EditPage,SelectedPagesStatus,GetPages, PublicContact, ContactCategoryAdd,ContactCategoriesView,ContactCategoriesEditView, AdminContactList
+from .faq import PublicFAQWeb, FAQCategoryView, AddFAQCategoryView, EditFAQCategoryView, FAQView, AddFAQView, EditFAQView
 from .blog import BlogCategoriesView, BlogCategoriesAddView, BlogCategoriesEditView, BlogWebView, BlogView, AddBlogView, EditBlogView, SingleBlog
 
 __all__ = ['Homepage']

@@ -1,109 +1,9 @@
 {% extends 'Admin/admin-base.html' %}
 {% load static %}
-
+{% block title %} Contact List {% endblock %} 
 {% block head %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<style type="text/css">
-   .btn{
-    font-size: 12px;
-    padding: 2px 3px;
-    padding-top: 1px;
-    padding-right: 3px;
-    padding-bottom: 1px;
-    padding-left: 3px;
-  }
 
-  .table tr td {
-    padding: 0.30rem!important;
-    padding-top: 5px!important;
-    padding-right: 0.3rem !important;
-    padding-bottom: 6px!important;
-    padding-left: 0.3rem !important;
-    vertical-align: initial;
-    padding-top: 5px!important;
-    padding-bottom: 6px!important;
-}
-
- .msg_history {
-    height: 400px;
-    overflow-y: auto;
-}
-.received_msg {
-    display: inline-block;
-    padding: 0 0 0 10px;
-    vertical-align: top;
-    width: 92%;
-}
-.received_withd_msg {
-    width: 80%;
-}
-.received_withd_msg > div {
-    background: #ebebeb none repeat scroll 0 0;
-    border-radius: 3px;
-    color: #646464;
-    font-size: 14px;
-    margin: 0;
-    padding: 8px 10px 8px 12px;
-    width: 100%;
-}
-.time_date {
-    color: #000000;
-    display: block;
-    font-size: 12px;
-    margin-bottom: 4px;
-    font-weight: 600;
-}
-.outgoing_msg {
-    overflow: hidden;
-    margin: 15px 0 15px;
-}
-.sent_msg {
-    float: right;
-    max-width: 78%;
-}
-.sent_msg > div {
-    background: #0000 none repeat scroll 0 0;
-    border-radius: 3px;
-    font-size: 14px;
-    margin: 0;
-    color: #000;
-    padding: 8px 10px 8px 12px;
-    width: 100%;
-}
-.bottom_button {
-    display: flex;
-    justify-content: space-between;
-    margin: 9px 2px 15px;
-}
-.msg__btn {
-    background: #000;
-    color: #ffff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 13px;
-}
-.input_msg_write {
-    padding: 0 11px;
-}
-button.msg_send_btn, button.msg_cancel_btn {
-    width: 105px;
-}
-.modal-header {
-    border-bottom: none !important;
-}
-.incoming_msg{
-  margin-bottom: 5px;
-}
-
-p{
-  margin-bottom: 0px;
-}
-
-.img_p p a {
-  font-size: 10px; 
-}
-
-</style>
 {% endblock %}
 
 {% block content %}
@@ -145,7 +45,7 @@ p{
 {% if cat.getLatestReply.status %}
    Reply {{cat.getLatestReply.time|date:'Y-m-d h:i a'}}
 {% else %}
-   <span style="color: red">Reply </span>
+   <span class="reply-btn">Reply </span>
 {% endif %}
       </td>
     </tr>
@@ -187,8 +87,8 @@ p{
                        <div class="outgoing_msg">
                         <div class="sent_msg">
                             <div>
-                                <span class="time_date" style="text-align: right;"> {{reply.created_on|date:"Y-m-d"}} / {{reply.created_on|date:"H:i"}} - Admin</span>
-                            <p style="text-align: justify;">{{reply.message}}</p>
+                                <span class="time_date date_span"> {{reply.created_on|date:"Y-m-d"}} / {{reply.created_on|date:"H:i"}} - Admin</span>
+                            <p class="rep_msg">{{reply.message}}</p>
                             {% if reply.adminreplyattachment_set.all %}
                                       <div class="img_p">
                                           {% for image in reply.adminreplyattachment_set.all %}
@@ -226,10 +126,10 @@ p{
                 <div class="type_msg">
                   <input type="hidden" name="id">
                   <div class="input_msg_write">
-                   <textarea id="war" name="message" rows="4" style="width: 100%" ></textarea>
+                   <textarea id="war" name="message" rows="4" class="msg_txt" ></textarea>
                    <div class="bottom_button">
                       <div>
-                          <label class="msg_attch_btn msg__btn">  <input type="file" name="attach" style="display: none;" multiple>Attach</label>
+                          <label class="msg_attch_btn msg__btn">  <input type="file" class="attch-file" name="attach" multiple>Attach</label>
                       </div>
                       <div>
                         <button type="submit" class="msg_send_btn msg__btn">Send</button>

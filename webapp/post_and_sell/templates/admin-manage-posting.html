@@ -1,0 +1,289 @@
+ {% extends 'Admin/admin-base.html' %}
+{% load static %}
+{% block title %} Manage Postings {% endblock %} 
+{% block content %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+<section class="content container-fluid">
+      <h1 class="text-center">Manage Postings</h1>
+    <!-- dashboard content -->
+    <div class="manage_admin">
+      <!-- <div class="add_min d-flex justify-content-between"> 
+    <h3>Manage User</h3>
+    <ul class="mg_top_ic">
+      <li><i class="fa fa-refresh" aria-hidden="true"></i></li>
+      <li><i class="fa fa-plus" aria-hidden="true"></i></li>
+      <li><i class="fa fa-lock" aria-hidden="true"></i></li>
+      <li><i class="fa fa-unlock" aria-hidden="true"></i></li>
+      <li><i class="fa fa-trash-o" aria-hidden="true"></i></li>
+    </ul>
+    </div> -->
+      <form>
+              <!-- <div class="d-flex justify-content-center">
+                <div class="mr-3">
+                  <label for="" class="mb-1">From</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="mr-3">
+                  <label for="" class="mb-1">To</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+ -->
+          <div class="history_detail">
+                    <div class="d-flex justify-content-center">
+                      <div class="mr-3">
+                        <label for="" class="mb-1">From</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="mr-3">
+                        <label for="" class="mb-1">To</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+
+              <div class="posting_table">
+                <table id="example" class="table table-bordered manage-table">
+        <thead>
+            <tr>
+                  <th scope="col">Posting Date</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Event Date / Start Time</th>
+                  <th scope="col" class="text-center">Student</th>
+                  <th scope="col">Event Finder Code</th>
+                  <th scope="col">Actions</th>
+                  <th scope="col">Enable</th>
+                </tr>
+        </thead>
+        <tbody>
+
+               <tr>
+                  <td scope="row">2016-05-16</td>
+                  <td>
+                    <a href="#">Barclay Dance Recital</a>
+                  </td>
+                  <td>2016-04-15/ 2:00 pm</td>
+                  <td class="text-center"><a href="#" data-toggle="modal" data-target="#Guest_modal" data-target=".bd-example-modal-lg">30</a></td>
+                  <td>EP58PUH3234K</td>
+                  <td>
+                    
+                    <a href="#">
+                      <i class="fa fa-download mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-edit mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-copy mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-times mr-2"></i>
+                    </a>
+                    <a href="#" data-toggle="modal" data-target="">
+                      <span class="font-weight-bold">$</span>
+                    </a>
+                    <a href="#">
+                      <span class="font-weight-bold">P</span>
+                    </a>
+                  </td>
+                  <td><label class="payment_gateway_checkbox"><input type="checkbox">
+                <span class="checkmark"></span>
+              </label></td>
+                </tr>
+                 <tr>
+                  <td scope="row">2016-05-16</td>
+                  <td>
+                    <a href="#">Barclay Dance Recital</a>
+                  </td>
+                  <td>2016-04-15/ 2:00 pm</td>
+                  <td class="text-center"><a href="#" data-toggle="modal" data-target="#Guest_modal" data-target=".bd-example-modal-lg">30</a></td>
+                  <td>EP58PUH3234K</td>
+                  <td>
+                    
+                    <a href="#">
+                      <i class="fa fa-download mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-edit mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-copy mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-times mr-2"></i>
+                    </a>
+                    <a href="#" data-toggle="modal" data-target="">
+                      <span class="font-weight-bold">$</span>
+                    </a>
+                    <a href="#">
+                      <span class="font-weight-bold">P</span>
+                    </a>
+                  </td>
+                  <td><label class="payment_gateway_checkbox"><input type="checkbox">
+                <span class="checkmark"></span>
+              </label></td>
+                </tr>
+                 <tr>
+                  <td scope="row">2016-05-16</td>
+                  <td>
+                    <a href="#">Barclay Dance Recital</a>
+                  </td>
+                  <td>2016-04-15/ 2:00 pm</td>
+                  <td class="text-center"><a href="#" data-toggle="modal" data-target="#Guest_modal" data-target=".bd-example-modal-lg">30</a></td>
+                  <td>EP58PUH3234K</td>
+                  <td>
+                    
+                    <a href="#">
+                      <i class="fa fa-download mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-edit mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-copy mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-times mr-2"></i>
+                    </a>
+                    <a href="#" data-toggle="modal" data-target="">
+                      <span class="font-weight-bold">$</span>
+                    </a>
+                    <a href="#">
+                      <span class="font-weight-bold">P</span>
+                    </a>
+                  </td>
+                  <td><label class="payment_gateway_checkbox"><input type="checkbox">
+                <span class="checkmark"></span>
+              </label></td>
+                </tr>
+                 <tr>
+                  <td scope="row">2016-05-16</td>
+                  <td>
+                    <a href="#">Barclay Dance Recital</a>
+                  </td>
+                  <td>2016-04-15/ 2:00 pm</td>
+                  <td class="text-center"><a href="#" data-toggle="modal" data-target="#Guest_modal" data-target=".bd-example-modal-lg">30</a></td>
+                  <td>EP58PUH3234K</td>
+                  <td>
+                    
+                    <a href="#">
+                      <i class="fa fa-download mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-edit mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-copy mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-times mr-2"></i>
+                    </a>
+                    <a href="#" data-toggle="modal" data-target="">
+                      <span class="font-weight-bold">$</span>
+                    </a>
+                    <a href="#">
+                      <span class="font-weight-bold">P</span>
+                    </a>
+                  </td>
+                  <td><label class="payment_gateway_checkbox"><input type="checkbox">
+                <span class="checkmark"></span>
+              </label></td>
+                </tr>
+                 <tr>
+                  <td scope="row">2016-05-16</td>
+                  <td>
+                    <a href="#">Barclay Dance Recital</a>
+                  </td>
+                  <td>2016-04-15/ 2:00 pm</td>
+                  <td class="text-center"><a href="#" data-toggle="modal" data-target="#Guest_modal" data-target=".bd-example-modal-lg">30</a></td>
+                  <td>EP58PUH3234K</td>
+                  <td>
+                    
+                    <a href="#">
+                      <i class="fa fa-download mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-edit mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-copy mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-times mr-2"></i>
+                    </a>
+                    <a href="#" data-toggle="modal" data-target="">
+                      <span class="font-weight-bold">$</span>
+                    </a>
+                    <a href="#">
+                      <span class="font-weight-bold">P</span>
+                    </a>
+                  </td>
+                  <td><label class="payment_gateway_checkbox"><input type="checkbox">
+                <span class="checkmark"></span>
+              </label></td>
+                </tr>
+                 <tr>
+                  <td scope="row">2016-05-16</td>
+                  <td>
+                    <a href="#">Barclay Dance Recital</a>
+                  </td>
+                  <td>2016-04-15/ 2:00 pm</td>
+                  <td class="text-center"><a href="#" data-toggle="modal" data-target="#Guest_modal" data-target=".bd-example-modal-lg">30</a></td>
+                  <td>EP58PUH3234K</td>
+                  <td>
+                    
+                    <a href="#">
+                      <i class="fa fa-download mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-edit mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-copy mr-2"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-times mr-2"></i>
+                    </a>
+                    <a href="#" data-toggle="modal" data-target="">
+                      <span class="font-weight-bold">$</span>
+                    </a>
+                    <a href="#">
+                      <span class="font-weight-bold">P</span>
+                    </a>
+                  </td>
+                  <td><label class="payment_gateway_checkbox"><input type="checkbox">
+                <span class="checkmark"></span>
+              </label></td>
+                </tr>
+          
+           
+             
+        
+           
+           
+        </tbody>
+       <!--  <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot> -->
+    </table>
+              </div>
+              
+            
+            </form>
+    </div>
+      
+    </section>
+    <!-- /.content -->
+  </div>
+
+  {% endblock %}

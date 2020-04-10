@@ -1,12 +1,13 @@
 {% extends 'Admin/admin-base.html' %}
 {% load static %}
+{% block title %} Add Faq {% endblock %} 
 {% block content %}
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Main content -->
 	<section class="content container-fluid">
 		<div class="manage_admin">
-	<div class="alert alert-danger  text-center" role="alert" style="display: none;">
+	<div class="alert alert-danger  text-center" role="alert">
       </div>
 			<div class="s_paypal_struct">
 				<h4>Faq Add</h4>
@@ -16,7 +17,7 @@
 							<form method="post" id="login_form">
 								{% csrf_token %}
 								<div class="mt-2">
-									<label for=""><span style="color: #ff0000;">*</span>Faq Category</label>
+									<label for=""><span class="lbl_span">*</span>Faq Category</label>
 									<select name="category" required class="form-control" required>
 										<option value="" disabled selected>Select Category</option>
 										{% for cat in category %}
@@ -24,7 +25,7 @@
 									</select>
 								</div>
 								<div class="mt-3">
-									<label for=""><span style="color: #ff0000;">*</span>Question</label>
+									<label for=""><span class="lbl_span">*</span>Question</label>
 									<textarea name="question" rows="2" class="w-100" required></textarea> 
 								</div>
 								<div class="mt-2">
@@ -35,7 +36,7 @@
 						<div class="col-md-6">
 							<form action="">
 								<div class="mt-2">
-									<label for=""><span style="color: #ff0000;">*</span>Status</label>
+									<label for=""><span class="lbl_span">*</span>Status</label>
 									<select name="status" class="form-control" required id="status">
 										<option value="" disabled selected>Select Status</option>
 										<option value="active">Active</option>
@@ -43,7 +44,7 @@
 									</select>
 								</div>
 								<div class="mt-2">
-									<label for="editor1"><span style="color: #ff0000;">*</span>Answer</label>
+									<label for="editor1"><span class="lbl_span">*</span>Answer</label>
 									<textarea name="answer" class="txt" id="editor1"  rows="10" cols="80"></textarea>
 								</div>
 						</div>

@@ -17,13 +17,13 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 class PaymentFailed(LoginRequiredMixin, View):
 	login_url = '/login/'
-	template_name = 'payment_failed.html'
+	template_name = 'public_payment_failed.html'
 	def get(self,request):
 		return render(request,self.template_name,locals())
 
 class PaymentSuccessfull(LoginRequiredMixin, View):
 	login_url = '/login/'
-	template_name = 'payment_successful.html'
+	template_name = 'public_payment_successful.html'
 	
 	def get(self, request):
 		return render(request,self.template_name,locals())

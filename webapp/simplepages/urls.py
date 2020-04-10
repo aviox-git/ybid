@@ -1,10 +1,10 @@
 from django.urls import path
-from .views import Homepage, FAQWeb, FAQCategoryView,ContactCategoriesView, AdminContactList, ContactCategoriesEditView, AddFAQCategoryView,ContactCategoryAdd, EditFAQCategoryView, FAQView, AddFAQView, EditFAQView,  BlogCategoriesView, BlogCategoriesAddView, BlogCategoriesEditView, BlogWebView, BlogView, AddBlogView, EditBlogView, Pages, AddPage,PageStatus, DeletePage, EditPage,SelectedPagesStatus,SingleBlog,GetPages, Contact
+from .views import Homepage, PublicFAQWeb, FAQCategoryView,ContactCategoriesView, AdminContactList, ContactCategoriesEditView, AddFAQCategoryView,ContactCategoryAdd, EditFAQCategoryView, FAQView, AddFAQView, EditFAQView,  BlogCategoriesView, BlogCategoriesAddView, BlogCategoriesEditView, BlogWebView, BlogView, AddBlogView, EditBlogView, ManagePages, AddPage,PageStatus, DeletePage, EditPage,SelectedPagesStatus,SingleBlog,GetPages, PublicContact
 
 
 urlpatterns = [
 	path('', Homepage.as_view(), name="homepage"),
-	path('contact_us', Contact.as_view(), name="contact_us"),
+	path('contact_us', PublicContact.as_view(), name="contact_us"),
 
 
 
@@ -14,7 +14,7 @@ urlpatterns = [
 	path('public-contact-list', AdminContactList.as_view(), name="public_contact_list"),
 
 	# Pages
-	path('pages',Pages.as_view(), name='pages'),
+	path('pages',ManagePages.as_view(), name='pages'),
     path('add-page',AddPage.as_view(), name='ticket-add-pages'),
     path('page-status',PageStatus.as_view()),
     path('delete-page',DeletePage.as_view()),
@@ -23,7 +23,7 @@ urlpatterns = [
 
 
 	#faq categories
-	path('faqs', FAQWeb.as_view(), name="faq_web"),
+	path('faqs', PublicFAQWeb.as_view(), name="faq_web"),
 	path('faq-category', FAQCategoryView.as_view(), name = 'faq_category'),
     path('faq-category-add', AddFAQCategoryView.as_view(),name='faq_category_add' ),
     path('faq-category-edit/<int:cat_id>', EditFAQCategoryView.as_view(),name='faq_category_edit' ),

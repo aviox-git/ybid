@@ -1,0 +1,312 @@
+{% extends 'Front/main.html' %}
+{% load static %}
+{% block title %} My Account {% endblock %}
+
+{% block content %}
+	<section class="pb-3 account-section">
+		<div class="container">
+		<div class="my-frofile-form">
+			<h1 class="my-account-heading">MY ACCOUNT / MY PROFILE<span class="not-verify">-Verified</span></h1>
+			<div class="alert alert-danger  text-center" role="alert" style="display: none;"></div>
+			<form action="{% url 'my_account_info' %}" id="update_info_form" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				 
+				<div class="row dropd">
+					<div class="col-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<label>First Name *</label>
+							<input type="text" class="form-control" name="fname" value="{{request.user.first_name}}" disabled >
+						</div>
+						<div class="form-group">
+							<label>Email Address *</label>
+							{% if request.user.email %}
+							<input type="email" class="form-control" id="Email" name="email" value="{{request.user.email}}" >
+							{% else %}
+							<input type="email" class="form-control" id="Email" name="email" value="" >
+							{% endif %}
+
+						</div>
+						<div class="form-group">
+							<label>Password <span class="req">*</span></label>
+							<div class="eye">
+							<input type="password" class="form-control" name="pass" id="password" minlength="8">
+							<img class="pass show" src="{% static 'assets/images/show_pass.png' %}"></div>
+						</div>
+						<div class="form-group">
+							<label>Company Name</label>
+							{% if request.user.accountinfo.company_name %}
+							<input type="text" class="form-control" minlength="8" name="company_name"  value="{{request.user.accountinfo.company_name }}">
+							{% else %}
+							<input type="text" class="form-control" minlength="8" name="company_name"  value="">
+							{% endif %}
+						</div>
+						<div class="form-group">
+							<label>Stripe Number{% if not request.user.accountinfo.strip_number %} <a href="https://dashboard.stripe.com/oauth/authorize?response_type=code&client_id={{stripe_client_id}}&scope=read_write" class="reg_stripe"> (Register a stripe account.)</a> {% endif %}</label>
+							{% if request.user.accountinfo.strip_number %}
+							<input type="text" class="form-control" id="payemail" name="pay_email" value="{{request.user.accountinfo.strip_number}}" readonly>
+							{% else %}
+							<input type="text" class="form-control" id="payemail" name="pay_email" value="" readonly>
+							<!-- <a href="#" target="_blank">Click for Create Account Stripe and Connect</a> -->
+				
+							{% endif %}
+						</div>
+						<div class="form-group">
+							<label class="font-weight-bold">Billing Address *</label>
+							{% if request.user.accountinfo.get_latest_address.billing_address %}
+							<input type="text" class="form-control" maxlength="40" name="billing_add" value="{{request.user.accountinfo.get_latest_address.billing_address}}" required="false">
+							{% else %}
+							<input type="text" class="form-control" maxlength="40" name="billing_add" value="" required="false">
+							{% endif %}
+						</div>
+						<div class="form-group">
+							<label>Country*</label>
+							<select name="country" class="form-control countries order-alpha" id="countryId">
+							</select>
+						</div>
+						<div class="form-group">
+							<label>City *</label>
+							<!-- <select name="city"  class=" form-control cities order-alpha" id="cityId">
+							</select> -->
+							{% if request.user.accountinfo.get_latest_address.city %}
+							<input type="text" class="form-control" name="city" value="{{request.user.accountinfo.get_latest_address.city}}" id="cityId">
+							{% else %}
+							<input type="text" class="form-control" name="city"  value="" id="cityId">
+							{% endif %}
+						</div>
+						<div class="form-group">
+							<label>Credit Card Number</label>
+							<input type="text" id="credit-card" class="form-control" name="cc_number" maxlength="19" value="{{cards.credit_card_number}}">
+
+						</div>
+					</div>
+					<div class="col-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<label>Last Name *</label>
+							<input type="text" class="form-control" disabled name="last_name" value="{{profile.user.last_name}}" >
+						</div>
+						<div class="form-group">
+							<label>Old Password <span class="req">*</span></label>
+							<div class="eye">
+							<input type="password" class="form-control" name="old_pass">
+							<img class="pass show" src="{% static 'assets/images/show_pass.png' %}"></div>
+						</div>
+						<div class="form-group">
+							<label>Confirm Password <span class="req">*</span></label>
+							<div class="eye">
+
+							<input type="password" class="form-control" name="conf_password" id="confirm_password"  minlength="6">
+							<img class="pass show" src="{% static 'assets/images/show_pass.png' %}"></div>
+						</div>
+						<div class="form-group">
+							<label>Website</label>
+							{% if request.user.accountinfo.website %}
+							<input type="url" class="form-control" name="website" value="{{request.user.accountinfo.website}}">
+							{% else %}
+							<input type="url" class="form-control" name="website" value="">
+							{% endif %}
+						</div>
+						<div class="form-group">
+							<label>Phone *</label>
+							{% if request.user.accountinfo.phone %}
+							<input type="text" maxlength="10" class="form-control" name="phone" value="{{request.user.accountinfo.phone}}" id="telephone_number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="10">
+							{% else %}
+							<input type="text" class="form-control" id="telephone_number" name="phone" value="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="10">
+							{% endif %}
+						</div>
+						<div class="form-group">
+							<label class="">Address 2</label>
+							
+							{% if request.user.accountinfo.get_latest_address.address %}
+							<input type="text" class="form-control" name="address" value="{{request.user.accountinfo.get_latest_address.address}}">
+							{% else %}
+							<input type="text" class="form-control" name="address"  value="">
+							{% endif %}
+						</div>
+						<div class="form-group">
+							<label class="">State *</label>
+								<!-- <select name="state" class=" form-control states order-alpha" id="stateId">
+							</select> -->
+							{% if request.user.accountinfo.get_latest_address.state %}
+							<input type="text" class="form-control" name="state" value="{{request.user.accountinfo.get_latest_address.state}}" id="stateId">
+							{% else %}
+							<input type="text" class="form-control" name="state"  value=""  id="stateId">
+							{% endif %}
+						</div>
+						<div class="form-group">
+							<label>Zip *</label>
+								{% if request.user.accountinfo.zipcode %}
+							<input type="text" class="form-control" maxlength="6" name="zip" value="{{request.user.accountinfo.zipcode}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="{{request.user.accountinfo.zipcode}}" >
+							{% else %}
+							<input type="text" class="form-control" maxlength="6" name="zip" value="" value="{{request.user.accountinfo.phone}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+							{% endif %}
+						</div>
+						<div class="d-flex">
+							<div class="form-group expitation">
+								<label>Expiration Date</label>
+								<div class="d-flex">
+									<select name="month" class="form-control exp-date mr-2" id="month">
+									</select>
+
+									<select class="form-control exp-date mr-2" name="year" id="year"></select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="form-second-section">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group py-3 mr-4 d-flex justify-content-between">
+								<div id="upload_button" class=" align-self-center">
+									<label>
+										<input type="file" id="logo-img" ngf-select ng-model="new_files" name="logo" accept="image/x-png,image/gif,image/jpeg">
+										<button class="btn btn-warning">Browse...</button>
+										<span>No File Selected.</span>
+									</label>
+									<p class="upload-text">Profile / Company Logo (200 x 200px)</p>
+								</div>
+								<div class="cb-logo">
+								{% if profile.company_logo %}
+									<img class="cb-logo company-logo" src="{{MEDIA_URL}} {{profile.company_logo.url}}" id="preview"  alt="company">
+								{% endif %}
+								</div>
+							</div>
+							<div class="form-group py-3 mr-4 d-flex justify-content-between">
+								<div id="upload_button"  class=" align-self-center">
+									<label>
+										<input type="file" id="pdf" accept="application/pdf" ngf-select ng-model="new_files"  name="license" value="" multiple>
+										<button class="btn btn-warning">Browse...</button>
+										<!-- <span>No File Selected.</span> -->
+									</label>
+									<p class="upload-text mb-2">Business License - optional</p>
+									<p class="upload-text">Displaying business license will show customer<br>the business is legitimate</p>
+								</div>
+								<div class="cb-logo" {% if not profile.business_license %} style="display: none;"
+								{% endif %}>
+								{% if profile.business_license %}
+								<a href="{{profile.business_license.url}}" download>
+									<img class="cb-log"  src="{% static 'assets/images/adobe.png' %}" alt="pdf">
+								</a>
+								{% endif %}
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>About Seller</label>
+								{% if request.user.accountinfo.about_seller %}
+								<textarea class="form-control txt-area" name="about_seller" rows="6" placeholder="Enter message here">{{request.user.accountinfo.about_seller}}</textarea>
+								{% else %}
+								<textarea class="form-control txt-area" name="about_seller" rows="6" placeholder="Enter message here"></textarea>
+								{% endif %}
+							</div>
+						</div>
+						
+						
+						<div class="text-left send_btn pt-3">
+							<!-- file source -->
+							<div class="checkbox-container mb-3">
+								<label class="checkbox-label">
+									<input type="checkbox" name="terms">
+									<span class="checkbox-custom rectangular"></span>
+									<span class="input-title terms-title">I agree with<a href="/terms" target="_blank"> {{site_name}}<b>  terms </b></a>
+								</label>
+								<input type="hidden" name="add_id" value="{{add.id}}">
+								
+							</div>
+							<button class="d-btn btn btn-warning btn-same-pay update_info" type="submit">Submit</button>
+							<button type="button" class="d-btn mr-4 delete btn btn-warning btn-same-pay">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+
+	<div class="scroll_page">
+		<a href="javascript:" id="return-to-top"><i class="fas fa-angle-double-up"></i></i></a>
+	</div>
+{% endblock %}
+
+
+
+{% block extrascript %}
+<script src="{% static 'assets/js/user.js' %}"></script>
+
+<script type="text/javascript">
+
+	$('.req').hide();
+	$('input[name="old_pass"]').on('keyup',function(){
+		if ($(this).val().length > 0){
+			$('.req').show();
+		}
+		else{
+			$('.req').hide();
+		}
+	})
+
+	
+		{% if request.user.accountinfo.get_latest_address %}
+		$(window).on('load',function(){
+			$('#countryId') .append($("<option></option>")
+            .attr("value",'{{request.user.accountinfo.get_latest_address.country}}')
+            .text('{{request.user.accountinfo.get_latest_address.country}}'));
+
+           })
+		{% endif %}
+
+
+		var start = 2020;
+		var end = 2050;
+		var options = "";
+		for(var year = start ; year <=end; year++){
+			options += "<option>"+ year +"</option>";
+		}
+		document.getElementById("year").innerHTML = options;
+
+		var start = 1;
+		var end = 12;
+		var selected = ('{{request.user.accountinfo.card_details.expiration_date}}').split('/');
+		$('#year').val(selected[1]);
+		if (selected[1]==null || selected[1] == undefined){
+			$('#year').prepend("<option selected='true' disabled>Year</option>");
+		}
+
+
+		var options = "";
+		for(var month = start ; month <= end; month++){
+			options += "<option value= '"+ month +"'>"+ month +"</option>";
+	}
+
+	document.getElementById("month").innerHTML = options;
+	$('#month').val(selected[0]);
+
+	if (selected[0]==null||selected[0]==undefined || selected[0] == ''){
+		$('#month').prepend("<option selected disabled>Mth</option>")
+	}
+
+	$('#credit-card').on('keypress change', function () {
+		$(this).val(function (index, value) {
+			return value.replace(/\W/gi, '').replace(/(.{4})/g, '$1 ');
+		});
+	});
+
+
+	$('.pass').on('click', function(){
+
+	if ($(this).hasClass('show')){
+		$(this).attr('src', "{% static 'assets/images/hide_pass.png' %}");
+		$(this).closest('div').find('input').attr('type', 'text');	
+	}
+	else{
+		$(this).attr('src', "{% static 'assets/images/show_pass.png' %}");
+		$(this).closest('div').find('input').attr('type', 'password');	
+	}
+	$(this).toggleClass('show');
+});
+
+</script>
+
+{% endblock %}

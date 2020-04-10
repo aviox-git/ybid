@@ -3,7 +3,7 @@ from django.views.generic import View
 
 
 
-class PostView(View):
+class PostAndSell(View):
 	template_name = 'public_post_and_sell.html'
 
 	def get(self, request, *args, **kwargs):
@@ -22,7 +22,7 @@ class ManagePosting(View):
 
 
 
-class SalesOrder(View):
+class PublicSalesOrder(View):
 	template_name = 'public_sales_order.html'
 
 	def get(self, request, *args, **kwargs):
@@ -31,10 +31,19 @@ class SalesOrder(View):
 		return render(request,self.template_name,locals())
 
 
-class OrderHistory(View):
+class PublicOrderHistory(View):
 	template_name = 'public_order_history.html'
 
 	def get(self, request, *args, **kwargs):
 		active_dashboard = "active_dash"
 		active_history = "active_history"
 		return render(request,self.template_name,locals())
+
+class AdminManagePostings(View):
+	template_name = 'admin-manage-posting.html'
+
+	def get(self, request, *args, **kwargs):
+		return render(request,self.template_name,locals())
+
+
+		

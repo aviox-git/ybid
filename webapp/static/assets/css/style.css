@@ -1817,9 +1817,43 @@ label{
     font-size: 14px;
 }
 
-textarea{
+.txt-area{
     height: 150px !important;
 }
 p{
     font-size: 12px !important;
+}
+
+.faq-div{
+  margin-left: 0;
+}
+
+.heading__{
+color: #ea7904; 
+text-align: center !important;
+}
+
+.user_heading{
+  color: #ea7904; 
+  text-transform: uppercase;
+}
+
+.border-line{
+  border-bottom: 3px solid #000 !important;
+}
+
+.home-why{
+  margin-top: 16px;
+  margin-bottom: 27px;
+}
+
+.home-why-join{
+  position: relative; z-index: 99;    
+margin-right: -31px;
+}
+.terms-title{
+    color: black;
+}
+.forget-bdr{
+  border: 0 !important;
 }

@@ -35,7 +35,7 @@ class AdminSummary(StaffUserOnly,View):
 
 class WebAppUsers(PermissionRequiredMixin,StaffUserOnly,View):
 	permission_required = "auth.view_user"
-	template_name = 'admin_users.html'
+	template_name = 'admin_webapp_users.html'
 
 	def get(self,request):
 		users = User.objects.all().exclude(is_staff = True)
@@ -71,7 +71,7 @@ class WebAppUsers(PermissionRequiredMixin,StaffUserOnly,View):
 
 class EditWebAppUsers(PermissionRequiredMixin,StaffUserOnly,View):
 	permission_required = "auth.view_user"
-	template_name = 'edit_users.html'
+	template_name = 'edit_webapp_users.html'
 	def get(self,request,*args, **kwargs):
 		user_id = kwargs.get('user_id')
 		user = User.objects.get(id = user_id)
@@ -183,7 +183,7 @@ class SuperAdmin(PermissionRequiredMixin, StaffUserOnly,TemplateView):
 
 class EditAdmin(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 	permission_required = "auth.view_user"
-	template_name = 'edit-admin.html'
+	template_name = 'admin_edit_admin.html'
 	def get(self, request, *args, **kwargs):
 		user_id = kwargs.get('user_id')
 		user = User.objects.get(id=user_id)
@@ -274,7 +274,6 @@ class AddStaff(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 	template_name = 'admin_add_admin.html'
 	
 	def get(self, request, *args, **kwargs):
-		print(request.user.user_permissions.all().values_list('codename', flat=True))
 		group_list = Group.objects.all()
 		model_list = ContentType.objects.exclude(app_label__in=["auth","contenttypes","sessions","social_django","admin"])
 		return render(request,self.template_name,locals())
@@ -363,7 +362,7 @@ class StaffList(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 
 class EditStaff(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 	permission_required = "auth.view_user"
-	template_name = 'edit-staff.html'
+	template_name = 'admin_edit_staff.html'
 	def get(self, request, *args, **kwargs):
 		user_id = kwargs.get('user_id')
 		user = User.objects.get(id=user_id)
@@ -439,7 +438,7 @@ class EditStaff(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 # add group 
 class AddRole(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 	permission_required = "auth.view_group"
-	template_name = "admin_role.html"
+	template_name = "admin_add_role.html"
 	def get(self,request, *args, **kwargs):
 		return render(request,self.template_name,locals())
 
@@ -481,7 +480,7 @@ class DeleteRole(PermissionRequiredMixin,StaffUserOnly,View):
 
 class EditRole(PermissionRequiredMixin,StaffUserOnly,View):
 	permission_required = "auth.view_group"
-	template_name = 'edit-role.html'
+	template_name = 'admin_edit_role.html'
 	def get(self, request, *args, **kwargs):
 		group_id = kwargs.get('group_id')
 		group = Group.objects.get(id=group_id)
@@ -501,3 +500,15 @@ class EditRole(PermissionRequiredMixin,StaffUserOnly,View):
 			print(str(e))	
 			messages.error(request,"Something Went Wrong")	
 			return HttpResponseRedirect('/login/edit_role'+str(group_id))
+
+
+class AdminSalesData(StaffUserOnly,View):
+	template_name = 'admin-sales-data.html'
+	def get(self, request, *args, **kwargs):
+		return render(request,self.template_name,locals())
+
+		
+class AdminOrderHistory(StaffUserOnly,View):
+	template_name = 'admin-order-history.html'
+	def get(self, request, *args, **kwargs):
+		return render(request,self.template_name,locals())

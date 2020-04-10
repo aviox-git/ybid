@@ -10,7 +10,7 @@
 		</div>
 		<div class="container-fluid">
 			<div class="contact_us_contain">
-		<div class="alert alert-danger  text-center" role="alert" style="display: none;"></div>
+		<div class="alert alert-danger  text-center" role="alert"></div>
 				<div class="row">
 					<div class="col-sm-12 col-md-12 col-lg-12">
 				<form action="{% url 'contact_us' %}" method="post" id="send_message" enctype="multipart/form-data">
@@ -59,7 +59,7 @@
 					{% endif %}
 							<div class="form-group">
 								<label>Message </label>
-								<textarea class="form-control msg" name="msg" rows="6s" style="height: 150px !important;"></textarea>
+								<textarea class="form-control txt-area msg" name="msg" rows="6s"></textarea>
 							</div>
 							{% if ticket %}
 							<input type="hidden" name="ticket" value="{{ticket.inquiry}}">

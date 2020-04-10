@@ -1,6 +1,7 @@
 
 {% extends 'Admin/admin-base.html' %}
 {% load static %}
+{% block title %} Manage Pages {% endblock %} 
 {% block content %}
   <!-- Content Wrapper. Contains page content -->
 <div class="wrapper">
@@ -19,7 +20,7 @@
                </ul>
             </div>
               <div class="posting_table">
-               <table id="example" class="table table-bordered" style="width:100%">
+               <table id="example" class="table table-bordered content-table">
                   <thead>
                      <tr>
                         <th><label class="payment_gateway_checkbox"><input onclick="selectAllBoxes(this);" type="checkbox">

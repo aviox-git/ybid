@@ -38,7 +38,7 @@ def mailSend(subject, recipient_list, message="", html_message=""):
 		return False
 
 class MyAccountInfo(View):
-	template_name = 'public_account_info.html'
+	template_name = 'public_my_account_info.html'
 
 	def get(self,request,*args,**kwargs):
 		active_dashboard = "active_dash"
@@ -155,7 +155,7 @@ class ConfirmEmail(View):
 			public_logo = (public['public_logo'])
 
 			static_url = settings.STATIC_URL
-			content_html = render_to_string('successfully_register.html',locals())
+			content_html = render_to_string('email_successfully_register.html',locals())
 			recipients = [user.email]
 			email_from = settings.EMAIL_HOST_USER
 			subject = "successfully register"

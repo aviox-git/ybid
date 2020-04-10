@@ -12,7 +12,7 @@ from simplepages.models import FAQCategory, FAQ
 from login.helper_fun import StaffUserOnly
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
-class FAQWeb(View):
+class PublicFAQWeb(View):
 	login_url = '/login/'
 	template_name = 'public_faq.html'
 	def get(self, request, *args, **kwargs):
