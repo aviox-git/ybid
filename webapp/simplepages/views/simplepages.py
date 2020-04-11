@@ -1,6 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect,HttpResponse
 from django.views.generic import View,TemplateView
-from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from login.helper_fun import StaffUserOnly
 from simplepages.models import Page, ContactCategory, ContactUs, AdminReply, ContactAttachment, AdminReplyAttachment
@@ -150,8 +149,7 @@ class PublicContact(TemplateView):
 		return HttpResponseRedirect("/contact_us")
 
 
-class ContactCategoryAdd(PermissionRequiredMixin,StaffUserOnly, View):
-	permission_required = "simplepages.view_contactcategory"
+class ContactCategoryAdd(StaffUserOnly, View):
 	def get(self,request):
 		return render(request,'admin_add_contact_category.html',locals())
 
@@ -170,8 +168,7 @@ class ContactCategoryAdd(PermissionRequiredMixin,StaffUserOnly, View):
 		return HttpResponseRedirect('/contact-category')
 
 
-class ContactCategoriesEditView(PermissionRequiredMixin,StaffUserOnly,View):
-	permission_required = "simplepages.view_contactcategory"
+class ContactCategoriesEditView(StaffUserOnly,View):
 	def get(self, request,cat_id):
 		cat = ContactCategory.objects.get(pk = cat_id)
 		return render(request,'admin_contact_category_edit.html',locals())
@@ -200,8 +197,7 @@ class ContactCategoriesEditView(PermissionRequiredMixin,StaffUserOnly,View):
 
 
 
-class ContactCategoriesView(PermissionRequiredMixin,StaffUserOnly,View):
-	permission_required = "simplepages.view_contactcategory"
+class ContactCategoriesView(StaffUserOnly,View):
 	def get(self,request):
 		contact_cats = ContactCategory.objects.all()
 		return render(request,'admin_contact_category_list.html',locals())
@@ -214,8 +210,7 @@ class ContactCategoriesView(PermissionRequiredMixin,StaffUserOnly,View):
 
 
 
-class AdminContactList(PermissionRequiredMixin,StaffUserOnly,View):
-	permission_required = "simplepages.view_contactcategory"
+class AdminContactList(StaffUserOnly,View):
 	def get(self,request):
 		contacts = ContactUs.objects.all()
 		return render(request,'admin-contact-list.html',locals())
@@ -266,15 +261,13 @@ class AdminContactList(PermissionRequiredMixin,StaffUserOnly,View):
 		return HttpResponseRedirect('/public-contact-list')
 
 
-class ManagePages(PermissionRequiredMixin, StaffUserOnly, TemplateView):
-	permission_required = 'simplepages.view_page'
+class ManagePages(StaffUserOnly, TemplateView):
 	template_name = 'admin_manage_pages.html'
 	def get(self, request, *args, **kwargs):
 		pages=Page.objects.filter(delete_status=False).order_by('-id')
 		return render(request,self.template_name,locals())
 		
-class AddPage(PermissionRequiredMixin, StaffUserOnly, TemplateView):
-	permission_required = 'simplepages.view_page'
+class AddPage(StaffUserOnly, TemplateView):
 	template_name = 'admin_add_pages.html'
 	def get(self, request, *args, **kwargs):
 		return render(request,self.template_name,locals())
@@ -297,8 +290,7 @@ class AddPage(PermissionRequiredMixin, StaffUserOnly, TemplateView):
 
 
 # Change single page status	
-class PageStatus(PermissionRequiredMixin, StaffUserOnly, View):
-	permission_required = 'simplepages.view_page'
+class PageStatus(StaffUserOnly, View):
 	def get(self,request):
 		page_id = request.GET.get('page_id')
 		response={}
@@ -315,8 +307,7 @@ class PageStatus(PermissionRequiredMixin, StaffUserOnly, View):
 			response['status']=False
 		return HttpResponse(json.dumps(response), content_type="application/json")
 # Delete single page 	
-class DeletePage(PermissionRequiredMixin, StaffUserOnly, View):
-	permission_required = 'simplepages.view_page'
+class DeletePage(StaffUserOnly, View):
 	def get(self,request):
 		page_id = request.GET.get('page_id')
 		response={}
@@ -331,8 +322,7 @@ class DeletePage(PermissionRequiredMixin, StaffUserOnly, View):
 		return HttpResponse(json.dumps(response), content_type="application/json")
 
 # edit page
-class EditPage(PermissionRequiredMixin, StaffUserOnly, TemplateView):
-	permission_required = 'simplepages.view_page'
+class EditPage(StaffUserOnly, TemplateView):
 	template_name = 'admin_edit_pages.html'
 	def get(self, request, *args, **kwargs):
 		page_id=kwargs.get('page_id')
@@ -362,8 +352,7 @@ class EditPage(PermissionRequiredMixin, StaffUserOnly, TemplateView):
 		return HttpResponseRedirect("/pages")
 
 # Change selected page status	
-class SelectedPagesStatus(PermissionRequiredMixin, StaffUserOnly, View):
-	permission_required = 'simplepages.view_page'
+class SelectedPagesStatus(StaffUserOnly, View):
 	def post(self,request):
 		selected = request.POST.getlist('selected_pages[]')
 		status=request.POST.get('status')

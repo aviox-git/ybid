@@ -10,10 +10,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 import json
 from simplepages.models import FAQCategory, FAQ
 from login.helper_fun import StaffUserOnly
-from django.contrib.auth.mixins import PermissionRequiredMixin
+
 
 class PublicFAQWeb(View):
-	login_url = '/login/'
 	template_name = 'public_faq.html'
 	def get(self, request, *args, **kwargs):
 		active_faq = "active"
@@ -22,8 +21,7 @@ class PublicFAQWeb(View):
 
 
 # Create your views here.
-class FAQCategoryView(PermissionRequiredMixin,StaffUserOnly,View):
-	permission_required = "simplepages.view_faqcategory"
+class FAQCategoryView(StaffUserOnly,View):
 	template_name = 'admin_faq-category.html'
 
 	def get(self,request):
@@ -38,8 +36,7 @@ class FAQCategoryView(PermissionRequiredMixin,StaffUserOnly,View):
 		return HttpResponse(json.dumps(response), content_type="application/json")
 
 
-class AddFAQCategoryView(PermissionRequiredMixin,StaffUserOnly,View):
-	permission_required = "simplepages.view_faqcategory"
+class AddFAQCategoryView(StaffUserOnly,View):
 
 	def get(self,request):
 		return render(request,'admin_faq-category-add.html',locals())
@@ -60,8 +57,7 @@ class AddFAQCategoryView(PermissionRequiredMixin,StaffUserOnly,View):
 		return HttpResponseRedirect('/faq-category')
 
 
-class EditFAQCategoryView(PermissionRequiredMixin,StaffUserOnly,View):
-	permission_required = "simplepages.view_faqcategory"
+class EditFAQCategoryView(StaffUserOnly,View):
 	def get(self,request, cat_id):
 		cat = FAQCategory.objects.get(pk = cat_id)
 		return render(request,'admin_faq-category-edit.html',locals())
@@ -90,8 +86,7 @@ class EditFAQCategoryView(PermissionRequiredMixin,StaffUserOnly,View):
 			messages.error(request,'Something Went Wrong')
 		return HttpResponseRedirect('/faq-category')
 
-class FAQView(PermissionRequiredMixin,StaffUserOnly,View):
-	permission_required = "simplepages.view_faq"
+class FAQView(StaffUserOnly,View):
 	template_name = 'admin_faq.html'
 
 	def get(self,request):
@@ -106,8 +101,7 @@ class FAQView(PermissionRequiredMixin,StaffUserOnly,View):
 		return HttpResponse(json.dumps(response), content_type="application/json")
 
 
-class AddFAQView(PermissionRequiredMixin,StaffUserOnly,View):
-	permission_required = "simplepages.view_faq"
+class AddFAQView(StaffUserOnly,View):
 	def get(self,request):
 		category = FAQCategory.objects.all()
 		return render(request,'admin_faq-add.html',locals())
@@ -130,8 +124,7 @@ class AddFAQView(PermissionRequiredMixin,StaffUserOnly,View):
 		return HttpResponseRedirect('/faq')
 
 
-class EditFAQView(PermissionRequiredMixin,StaffUserOnly,View):
-	permission_required = "simplepages.view_faq"
+class EditFAQView(StaffUserOnly,View):
 	def get(self,request, faq_id):
 		category = FAQCategory.objects.all()
 		faq = FAQ.objects.get(pk = faq_id)

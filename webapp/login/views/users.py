@@ -18,7 +18,6 @@ from django.core.mail import send_mail, EmailMultiAlternatives, EmailMessage
 from email.mime.image import MIMEImage
 from django.template.loader import render_to_string, get_template
 from core.context_processors import getPublic_Config
-from django.contrib.auth.mixins import PermissionRequiredMixin
 
 
 def todaydate(request):
@@ -33,8 +32,7 @@ class AdminSummary(StaffUserOnly,View):
 		return render(request,self.template_name,locals())
 
 
-class WebAppUsers(PermissionRequiredMixin,StaffUserOnly,View):
-	permission_required = "auth.view_user"
+class WebAppUsers(StaffUserOnly,View):
 	template_name = 'admin_webapp_users.html'
 
 	def get(self,request):
@@ -69,8 +67,7 @@ class WebAppUsers(PermissionRequiredMixin,StaffUserOnly,View):
 		return HttpResponse(json.dumps({}),content_type = 'application/json')
 
 
-class EditWebAppUsers(PermissionRequiredMixin,StaffUserOnly,View):
-	permission_required = "auth.view_user"
+class EditWebAppUsers(StaffUserOnly,View):
 	template_name = 'edit_webapp_users.html'
 	def get(self,request,*args, **kwargs):
 		user_id = kwargs.get('user_id')
@@ -120,9 +117,7 @@ class EditWebAppUsers(PermissionRequiredMixin,StaffUserOnly,View):
 			return HttpResponseRedirect('/login/edit-webapp-users/'+str(user_id))
 
 
-class AddWebAppUsers(PermissionRequiredMixin,StaffUserOnly,TemplateView):
-	permission_required = "auth.view_user"
-	template_name = 'admin_add_web_user.html'
+class AddWebAppUsers(StaffUserOnly,TemplateView):
 	def get(self,request,*args, **kwargs):
 		print(request.user)
 		return render(request,self.template_name,{})
@@ -162,8 +157,7 @@ class AddWebAppUsers(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 
 
 # super admin
-class SuperAdmin(PermissionRequiredMixin, StaffUserOnly,TemplateView):
-	permission_required = "auth.view_user"
+class SuperAdmin(StaffUserOnly,TemplateView):
 	template_name = 'admin_super_admin.html'
 	def get(self, request, *args, **kwargs):
 		users = User.objects.filter(is_superuser=True).exclude(pk=request.user.id)
@@ -181,8 +175,7 @@ class SuperAdmin(PermissionRequiredMixin, StaffUserOnly,TemplateView):
 		return HttpResponse(json.dumps({}),content_type = 'application/json')
 
 
-class EditAdmin(PermissionRequiredMixin,StaffUserOnly,TemplateView):
-	permission_required = "auth.view_user"
+class EditAdmin(StaffUserOnly,TemplateView):
 	template_name = 'admin_edit_admin.html'
 	def get(self, request, *args, **kwargs):
 		user_id = kwargs.get('user_id')
@@ -192,9 +185,9 @@ class EditAdmin(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 		if user_groups:
 			current_id = user_groups[0].id
 		groups = Group.objects.all()
-		model_items = ContentType.objects.exclude(app_label__in=["auth","contenttypes","sessions","social_django","admin"])
-		selected_permissions = set(Permission.objects.filter(user=user_id).values_list('content_type__model',flat=True).distinct())
-		model_list = map(lambda model_item: {"id":model_item.id,"name":model_item.name,"slug":(model_item.name).replace(" ","")}, model_items) 
+		user_per = Permission.objects.filter(user = user).values_list('pk', flat = True)
+		excludeist = ['add_config', 'delete_config', 'view_config', 'change_config']
+		permissions = Permission.objects.filter(content_type__app_label='core', content_type__model='config').exclude(codename__in = excludeist).order_by('pk')
 		return render(request,self.template_name,locals())
 
 
@@ -234,7 +227,7 @@ class EditAdmin(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 				group = Group.objects.get(id=role) 
 				group.user_set.add(user)
 				group.save()
-				permission_list = Permission.objects.filter(content_type_id__in = selected_models)
+				permission_list = Permission.objects.filter(pk__in = selected_models)
 				user.user_permissions.set(permission_list)
 				user.save()
 
@@ -255,8 +248,7 @@ class EditAdmin(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 			return HttpResponseRedirect('/login/edit_admin/'+str(user_id))
 
 
-class DeleteAdmin(PermissionRequiredMixin,StaffUserOnly,View):
-	permission_required = "auth.view_user"
+class DeleteAdmin(StaffUserOnly,View):
 	def get(self, request, *args, **kwargs):
 		user_id = kwargs.get('user_id')
 		try:
@@ -269,13 +261,14 @@ class DeleteAdmin(PermissionRequiredMixin,StaffUserOnly,View):
 			return HttpResponseRedirect('/login/super_admin')
 
 
-class AddStaff(PermissionRequiredMixin,StaffUserOnly,TemplateView):
-	permission_required = "auth.view_user"
+class AddStaff(StaffUserOnly,TemplateView):
 	template_name = 'admin_add_admin.html'
 	
 	def get(self, request, *args, **kwargs):
 		group_list = Group.objects.all()
 		model_list = ContentType.objects.exclude(app_label__in=["auth","contenttypes","sessions","social_django","admin"])
+		excludeist = ['add_config', 'delete_config', 'view_config', 'change_config']
+		permissions = Permission.objects.filter(content_type__app_label='core', content_type__model='config').exclude(codename__in = excludeist).order_by('pk')
 		return render(request,self.template_name,locals())
 
 
@@ -330,7 +323,7 @@ class AddStaff(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 					group = Group.objects.get(id=role) 
 					group.user_set.add(user)
 					group.save()
-					permission_list = Permission.objects.filter(content_type_id__in = selected_models)
+					permission_list = Permission.objects.filter(pk__in = selected_models)
 					user.user_permissions.set(permission_list)
 					user.save()
 					messages.success(request, 'Staff entry successfully done.')
@@ -341,8 +334,7 @@ class AddStaff(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 
 
 
-class StaffList(PermissionRequiredMixin,StaffUserOnly,TemplateView):
-	permission_required = "auth.view_user"
+class StaffList(StaffUserOnly,TemplateView):
 	template_name = 'admin_staff_list.html'
 	def get(self, request, *args, **kwargs):
 		users = User.objects.filter(is_staff=True).exclude(is_superuser=True)
@@ -360,8 +352,7 @@ class StaffList(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 		return HttpResponse(json.dumps({}),content_type = 'application/json')
 
 
-class EditStaff(PermissionRequiredMixin,StaffUserOnly,TemplateView):
-	permission_required = "auth.view_user"
+class EditStaff(StaffUserOnly,TemplateView):
 	template_name = 'admin_edit_staff.html'
 	def get(self, request, *args, **kwargs):
 		user_id = kwargs.get('user_id')
@@ -371,9 +362,9 @@ class EditStaff(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 		if user_groups:
 			current_id = user_groups[0].id
 		groups = Group.objects.all()
-		model_items = ContentType.objects.exclude(app_label__in=["auth","contenttypes","sessions","social_django","admin"])
-		selected_permissions = set(Permission.objects.filter(user=user_id).values_list('content_type__model',flat=True).distinct())
-		model_list = map(lambda model_item: {"id":model_item.id,"name":model_item.name,"slug":(model_item.name).replace(" ","")}, model_items) 
+		user_per = Permission.objects.filter(user = user).values_list('pk', flat = True)
+		excludeist = ['add_config', 'delete_config', 'view_config', 'change_config']
+		permissions = Permission.objects.filter(content_type__app_label='core', content_type__model='config').exclude(codename__in = excludeist).order_by('pk')
 		return render(request,self.template_name,locals())
 
 
@@ -412,7 +403,7 @@ class EditStaff(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 				group = Group.objects.get(id=role)
 				group.user_set.add(user)
 				group.save()
-				permission_list = Permission.objects.filter(content_type_id__in = selected_models)
+				permission_list = Permission.objects.filter(pk__in = selected_models)
 				user.user_permissions.set(permission_list)
 				user.save()
 		
@@ -436,8 +427,7 @@ class EditStaff(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 
 
 # add group 
-class AddRole(PermissionRequiredMixin,StaffUserOnly,TemplateView):
-	permission_required = "auth.view_group"
+class AddRole(StaffUserOnly,TemplateView):
 	template_name = "admin_add_role.html"
 	def get(self,request, *args, **kwargs):
 		return render(request,self.template_name,locals())
@@ -455,8 +445,7 @@ class AddRole(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 			return HttpResponseRedirect('/login/role_list')
 
 
-class RoleList(PermissionRequiredMixin,StaffUserOnly,TemplateView):
-	permission_required = "auth.view_group"
+class RoleList(StaffUserOnly,TemplateView):
 	template_name = "admin_role_list.html"
 
 	def get(self,request, *args, **kwargs):
@@ -464,8 +453,7 @@ class RoleList(PermissionRequiredMixin,StaffUserOnly,TemplateView):
 		return render(request,self.template_name,locals())
 
 
-class DeleteRole(PermissionRequiredMixin,StaffUserOnly,View):
-	permission_required = "auth.view_group"
+class DeleteRole(StaffUserOnly,View):
 	def get(self, request, *args, **kwargs):
 		group_id = kwargs.get('group_id')
 		try:
@@ -478,8 +466,7 @@ class DeleteRole(PermissionRequiredMixin,StaffUserOnly,View):
 			return HttpResponseRedirect('/login/role_list')
 	
 
-class EditRole(PermissionRequiredMixin,StaffUserOnly,View):
-	permission_required = "auth.view_group"
+class EditRole(StaffUserOnly,View):
 	template_name = 'admin_edit_role.html'
 	def get(self, request, *args, **kwargs):
 		group_id = kwargs.get('group_id')

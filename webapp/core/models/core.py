@@ -39,6 +39,31 @@ class Config(models.Model):
 		return self.site_name
 
 
+	class Meta:
+		permissions = (
+				('can_view_home', 'Home'),
+				('can_view_super_admin', 'Super Admin'),
+				('can_view_staff', 'Staff'),
+				('can_add_staff', 'Add Staff'),
+				('can_view_roles', 'Roles'),
+				('can_view_users', 'Users'),
+				('can_manage_content', 'Manage Content'),
+				('can_view_blog_category', 'Blog Category'),
+				('can_view_blogs', 'Blogs'),
+				('can_view_config', 'Configuration'),
+				('can_view_company_profile', 'Company Profile'),
+				('can_view_faq_category', 'Faq Category'),
+				('can_view_faqs', 'FAQs'),
+				('can_view_price_and_fee', 'Price and Fee'),
+				('can_view_manage_posting', 'Manage Posting'),
+				('can_view_sales_order', 'Sales Order'),
+				('can_view_order_history', 'Order History'),
+				('can_view_contact_category', 'Contact Category'),
+				('can_view_contact', 'Contact'),
+				# ('can_view_refund_request', 'Refund Requests')
+			)
+
+
 class Company(models.Model):
 
 	company_name = models.CharField(max_length = 250, default = "Company Name")

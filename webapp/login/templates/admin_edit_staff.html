@@ -1,6 +1,13 @@
 {% extends 'Admin/admin-base.html' %}
 {% load static %}
 {% block title %} Edit Staff {% endblock %} 
+{% block head %}
+<style type="text/css">
+  ul {
+  list-style-type: none;
+}
+</style>
+{% endblock %}
 {% block content %}
 <div class="wrapper">
 
@@ -60,7 +67,6 @@
                   <div class="form-group">
                     <label>Retype Password</label>
                     <input type="password" class="form-control" id="confirm_password" name="repassword" minlength="8", maxlength="32" >
-                    <span style="display: none; color: red;" minlength="8", maxlength="32" id="mismatch_pass">Password does not match</span>
                   </div>
                 
       
@@ -69,14 +75,14 @@
   </div>
   <div class="access">
     <h3>Access</h3>
-    <div class="access_list">
+    <div class="">
           <ul>
-              {% for model in model_list %}
+              {% for permission in permissions %}
              
             <li>
 
-              <label class="payment_gateway_checkbox"><input type="checkbox" name="models[]" value="{{ model.id }}" {% if model.slug in selected_permissions %} checked  {% endif %}> 
-                <span class="checkmark"></span>{{model.name|title}}
+              <label class="payment_gateway_checkbox"><input type="checkbox" name="models[]" value="{{ permission.id }}" {% if permission.id in user_per %} checked  {% endif %}> 
+                <span class="checkmark"></span>{{permission.name|title}}
               
             </li>
            {% endfor %}

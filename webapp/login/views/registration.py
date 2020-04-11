@@ -18,6 +18,7 @@ from datetime import date
 import json
 from core.context_processors import getPublic_Config
 import urllib
+from django.core.exceptions import ObjectDoesNotExist
 
 def todaydate(request):
 	today = date.today()
@@ -56,30 +57,36 @@ class PublicRegistration(View):
 
 
 		try:
-			user = User.objects.get(email = email)
-			messages.info(request,"User already Exist.")
-			return HttpResponseRedirect('/login/')
+			user = User.objects.filter(email=email).count()
+			if user > 0:
+					messages.info(request,"User already exist.")
+					return HttpResponseRedirect('/login/')
+			else:
+				raise User.DoesNotExist
+		
 		except User.DoesNotExist:
 			if len(password) > 0 and len(email) > 0 and password == c_password and email == remail:
 				user = User.objects.create_user(
-					username=email,
-					email=email,
-					password=password
-					)
+						username=email,
+						email=email,
+						password=password
+						)
 				user.first_name = first_name
 				user.last_name = last_name
 				user.is_active = False
 				user.save()
-				profile=AccountInfo(
-					user=user,
-					terms_condition=terms
+				profile, created = AccountInfo.objects.get_or_create(
+					user = user,
+					terms_condition = terms
 					)
-				profile.save()
-				address = UserAddress(
-					info=profile,
-					country=country,
-					state=state,)
+				# profile.save()
+				address, create = UserAddress.objects.get_or_create(
+					info = profile,
+					)
+				address.country = country
+				address.state = state
 				address.save()
+
 				data =  getDomain(request)
 				site_name = (data['site_name'])
 				date = todaydate(request)
@@ -113,7 +120,7 @@ class PublicRegistration(View):
 					return HttpResponseRedirect('/login/')
 					
 			else:
-				messages.error(request,"Password or Email Does Not Match.")
+				messages.error(request,"Password or email does not match.")
 				return HttpResponseRedirect('/login/')
 
 class EmailVerification(View):
@@ -158,11 +165,11 @@ class CheckEmail(View):
 	def post(self, request, *args, **kwargs):
 		response = {}
 		email = request.POST.get('email').lower()
-		try:
-			user_email = User.objects.get(email = email)
+		user_email = User.objects.filter(email = email).count()
+
+		if user_email > 0:
 			response['message'] = "Email already exist"
-			response['status'] = True
-			
-		except User.DoesNotExist:
+			response['status'] = True		
+		else:
 			response['status'] = False
 		return HttpResponse(json.dumps(response), content_type = 'application/json')

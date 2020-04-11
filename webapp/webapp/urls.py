@@ -26,6 +26,7 @@ urlpatterns = [
     path('users/', include('user.urls')),
     path('payment/', include('payment.urls')),
     path('', include('simplepages.urls')), 
+    path('oauth/', include('social_django.urls', namespace='social')),
 
 ]
 # azxdasd as

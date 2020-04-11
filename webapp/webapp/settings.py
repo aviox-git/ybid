@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'simplepages',
     'user',
     'post_and_sell',
-    'payment'
+    'payment',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends', 
+                'social_django.context_processors.login_redirect', 
                 'login.context_processors.getDomain',
                 'core.context_processors.getPublic_Config',
                 'simplepages.context_processors.getPages',
@@ -78,6 +81,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'webapp.wsgi.application'
 
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
+LOGIN_URL = '/login/admin-login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = '/'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '573662540037692'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '31de9c4bc51f994955272a2f07c901bf'  # App Secret
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1053603160416-rpkqtutr59318svb23a55v5ousije290.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'NDN9TxbFn7CJgdiG8D3M7YXI'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

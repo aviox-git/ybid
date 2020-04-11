@@ -425,3 +425,7 @@ p{
 .total-sale{
     color: #ff0000;
 }
+
+.admin-perm{
+  list-style-type: none;
+}

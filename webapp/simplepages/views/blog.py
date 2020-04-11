@@ -7,13 +7,11 @@ import json
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.mixins import LoginRequiredMixin
 from login.helper_fun import StaffUserOnly
-from django.contrib.auth.mixins import PermissionRequiredMixin
 
 # Create your views here.
 
 # ============= Blog Categories ============== #
 class BlogCategoriesView(StaffUserOnly,View):
-	# permission_required = "simplepages.view_blogcategory"
 	def get(self,request):
 		blog_cats = BlogCategory.objects.all()
 		return render(request,'admin_blog-categories.html',locals())
@@ -25,7 +23,6 @@ class BlogCategoriesView(StaffUserOnly,View):
 		return HttpResponse(json.dumps(response), content_type="application/json")
 
 class BlogCategoriesAddView(StaffUserOnly,View):
-	# permission_required = "simplepages.view_blogcategory"
 	def get(self,request):
 		return render(request,'admin_blog-category-add.html',locals())
 
@@ -45,7 +42,6 @@ class BlogCategoriesAddView(StaffUserOnly,View):
 		return HttpResponseRedirect('/blog-category')
 
 class BlogCategoriesEditView(StaffUserOnly, View):
-	# permission_required = "simplepages.view_blogcategory"
 	def get(self, request,cat_id):
 		cat = BlogCategory.objects.get(pk = cat_id)
 		return render(request,'admin_blog-category-edit.html',locals())
@@ -110,8 +106,7 @@ class SingleBlog(View):
 		return render(request,self.template_name,locals())
 
 
-class BlogView(View):
-	# permission_required = "simplepages.view_blog"
+class BlogView(StaffUserOnly,View):
 	def get(self,request):
 		blogs = Blog.objects.all()
 		return render(request,'admin_blogs.html',locals())
@@ -124,7 +119,6 @@ class BlogView(View):
 		return HttpResponse(json.dumps(response), content_type="application/json")
 
 class AddBlogView(StaffUserOnly,View):
-	# permission_required = "simplepages.view_blog"
 	def get(self,request):
 		category = BlogCategory.objects.all()
 		return render(request,'admin_blog-add.html',locals())
@@ -147,7 +141,6 @@ class AddBlogView(StaffUserOnly,View):
 		return HttpResponseRedirect('/blogs')
 
 class EditBlogView(StaffUserOnly,View):
-	# permission_required = "simplepages.view_blog"
 	def get(self,request, blog_id):
 		category = BlogCategory.objects.all()
 		blog = Blog.objects.get(pk = blog_id)

@@ -57,13 +57,13 @@
 										</div>
 										<div class="login_social d-flex">
 											<div class="login_fb w-50">
-												<a href="#">
+												<a href="{% url 'social:begin' 'facebook' %}">
 													<!-- <i class="fab fa-facebook-f"></i> -->
 													Facebook
 												</a>
 											</div>
 											<div class="gp_btn w-50">
-												<a href="#">
+												<a href="{% url 'social:begin' 'google-oauth2' %}">
 													<!-- <i class="fab fa-google-plus-g"></i> -->
 													Google+
 												</a>

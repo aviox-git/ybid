@@ -70,14 +70,14 @@
   </div>
   <div class="access">
     <h3>Access</h3>
-    <div class="access_list">
-          <ul>
-              {% for model in model_list %}
+    <div class="">
+          <ul class="admin-perm">
+             {% for permission in permissions %}
              
             <li>
 
-              <label class="payment_gateway_checkbox"><input type="checkbox" name="models[]" value="{{ model.id }}" {% if model.slug in selected_permissions %} checked  {% endif %}> 
-                <span class="checkmark"></span>{{model.name|title}}
+              <label class="payment_gateway_checkbox"><input type="checkbox" name="models[]" value="{{ permission.id }}" {% if permission.id in user_per %} checked  {% endif %}> 
+                <span class="checkmark"></span>{{permission.name|title}}
               
             </li>
            {% endfor %}

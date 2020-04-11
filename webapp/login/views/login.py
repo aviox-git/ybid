@@ -59,12 +59,12 @@ class AdminLogin(View):
 					return HttpResponseRedirect('/login/admin-login')
 
 			else:
-				messages.error(request,'Please Enter Email and Password')
+				messages.error(request,'Please enter email and password')
 				return HttpResponseRedirect('/login/admin-login')
 
 		except Exception as e:
 			print(e)
-			messages.error(request,'Incorrect email or username  given.')
+			messages.error(request,'Incorrect email or username given.')
 			return HttpResponseRedirect('/login/admin-login')
 
 
@@ -83,7 +83,7 @@ class PublicLoginView(View):
 
 		try:
 			if email != "" and password != "": 
-				user= User.objects.get(email = email)
+				user= User.objects.get(username = email)
 				
 				if user.is_active == True:
 					userauth = authenticate(username=user.username, password=password)

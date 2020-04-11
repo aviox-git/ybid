@@ -112,8 +112,9 @@
         <span>Your last login was:{{request.user.last_login}}</span>
         </li>
         <!-- Optionally, you can add icons to the links -->
+        {% if perms.core.can_view_home %}
          <li class="">
-          <a href="9000-SUMMARY.html"><i class="fa fa-link"></i> <span>Home</span>
+          <a href="{% url 'admin_home' %}"><i class="fa fa-link"></i> <span>Home</span>
             <!-- <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span> -->
@@ -122,6 +123,8 @@
             <li><a href="#">Summary</a></li>
           </ul> -->
         </li>
+        {% endif %}
+        {% if perms.core.can_view_super_admin %}
          <li class="">
           <a href="{% url 'super_admin' %}"><i class="fa fa-link"></i> <span>Super Admin</span>
             <!-- <span class="pull-right-container">
@@ -132,25 +135,28 @@
             <li><a href="#">Summary</a></li>
           </ul> -->
         </li>
-        
-        
+        {% endif %}
+        {% if perms.core.can_view_staff %}
+
         <li class="">
           <a href="{% url 'staff_list' %}"><i class="fa fa-link"></i> <span>Staff</span>
           </a>
         </li>
-
+        {% endif %}
+        {% if perms.core.can_add_staff %}
         <li class="">
           <a href="{% url 'add_staff' %}"><i class="fa fa-link"></i> <span>Add Staff</span>
           </a>
         </li>
+        {% endif %}
        
-        {% if perms.auth.view_group %}
+        {% if perms.core.can_view_roles  %}
         <li class="">
           <a href="{% url 'role_list' %}"><i class="fa fa-link"></i> <span>Roles</span>
           </a>
         </li>
         {% endif %}
-        {% if perms.auth.view_user %}
+        {% if perms.core.can_view_users  %}
          <li class="">
           <a href="{% url 'webapp-users' %}"><i class="fa fa-link"></i> <span>Users</span>
             <!-- <span class="pull-right-container">
@@ -162,6 +168,7 @@
           </ul> -->
         </li>
         {% endif %}
+        {% if perms.core.can_manage_content %}
          <li class="">
           <a href="{% url 'pages' %}"><i class="fa fa-link"></i> <span>Manage Content</span>
             <!-- <span class="pull-right-container">
@@ -172,6 +179,8 @@
             <li><a href="#">Summary</a></li>
           </ul> -->
         </li>
+        {% endif %}
+        {% if perms.core.can_view_faq_category %}
          
         <li class="">
           <a href="{% url 'faq_category' %}"><i class="fa fa-link"></i> <span>FAQ Category</span>
@@ -179,13 +188,12 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </span> -->
           </a>
-         <!--  <ul class="treeview-menu">
-            <li><a href="#">Summary</a></li>
-          </ul> -->
+      
         </li>
-       
+       {% endif %}
+       {% if perms.core.can_view_faqs %}
         <li class="">
-          <a href="{% url 'faqs' %}"><i class="fa fa-link"></i> <span>FAQ</span>
+          <a href="{% url 'faqs' %}"><i class="fa fa-link"></i> <span>FAQs</span>
             <!-- <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span> -->
@@ -194,6 +202,8 @@
             <li><a href="#">Summary</a></li>
           </ul> -->
         </li>
+        {% endif %}
+        {% if core.can_view_price_and_fee %}
        <li class="">
           <a href="{% url 'price_and_fee' %}"><i class="fa fa-link"></i> <span>Price and Fee</span>
             <!-- <span class="pull-right-container">
@@ -204,67 +214,9 @@
             <li><a href="#">Summary</a></li>
           </ul> -->
         </li>
-        <li class="">
-          <a href="{% url 'admin_manage_postings' %}"><i class="fa fa-link"></i> <span>Manage Posting</span>
-            <!-- <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span> -->
-          </a>
-         <!--  <ul class="treeview-menu">
-            <li><a href="#">Summary</a></li>
-          </ul> -->
-        </li>
-        <li class="">
-          <a href="{% url 'sales_data' %}"><i class="fa fa-link"></i> <span>Sals Data</span>
-            <!-- <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span> -->
-          </a>
-         <!--  <ul class="treeview-menu">
-            <li><a href="#">Summary</a></li>
-          </ul> -->
-        </li>
-        <li class="">
-          <a href="{% url 'admin_order_history' %}"><i class="fa fa-link"></i> <span>Order History</span>
-            <!-- <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span> -->
-          </a>
-         <!--  <ul class="treeview-menu">
-            <li><a href="#">Summary</a></li>
-          </ul> -->
-        </li>
-        <li class="">
-          <a href="{% url 'product_list' %}"><i class="fa fa-link"></i> <span>Product</span>
-            <!-- <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span> -->
-          </a>
-         <!--  <ul class="treeview-menu">
-            <li><a href="#">Summary</a></li>
-          </ul> -->
-        </li>
-        <li class="">
-          <a href="9034-YBIDCARD-ORDER-HISTORY.html"><i class="fa fa-link"></i> <span>Add Product</span>
-            <!-- <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span> -->
-          </a>
-         <!--  <ul class="treeview-menu">
-            <li><a href="#">Summary</a></li>
-          </ul> -->
-        </li>
-     
-        <li class="">
-          <a href="9041-YBIDCARD-PRODUCT-LIST.html"><i class="fa fa-link"></i> <span>Product List</span>
-            <!-- <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span> -->
-          </a>
-         <!--  <ul class="treeview-menu">
-            <li><a href="#">Summary</a></li>
-          </ul> -->
-        </li>
+        {% endif %}
+      
+        {% if perms.core.can_view_config %}
         <li class="">
           <a href="{% url 'admin_config' %}"><i class="fa fa-link"></i> <span>Confirguration</span>
             <!-- <span class="pull-right-container">
@@ -275,6 +227,8 @@
             <li><a href="#">Summary</a></li>
           </ul> -->
         </li>
+        {% endif %}
+        {% if perms.core.can_view_company_profile %}
         <li class="">
           <a href="{% url 'company_profile' %}"><i class="fa fa-link"></i> <span>Company Profile</span>
             <!-- <span class="pull-right-container">
@@ -285,6 +239,8 @@
             <li><a href="#">Summary</a></li>
           </ul> -->
         </li>
+        {% endif %}
+        {% if perms.core.can_view_blog_category %}
         <li class="">
           <a href="{% url 'blog_category' %}"><i class="fa fa-link"></i> <span>Blog Category</span>
             <!-- <span class="pull-right-container">
@@ -295,7 +251,8 @@
             <li><a href="#">Summary</a></li>
           </ul> -->
         </li>
-      
+        {% endif %}
+        {% if perms.core.can_view_blogs %}
         <li class="">
           <a href="{% url 'blogs' %}"><i class="fa fa-link"></i> <span>Blog</span>
             <!-- <span class="pull-right-container">
@@ -306,16 +263,24 @@
             <li><a href="#">Summary</a></li>
           </ul> -->
         </li>
+        {% endif %}
+        {% if perms.core.can_view_manage_posting %}
+         </li>
+           <li class="">
+          <a href="{% url 'admin_manage_postings' %}"><i class="fa fa-link"></i> <span>Manage Posting</span>
+            <!-- <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span> -->
+          </a>
+         <!--  <ul class="treeview-menu">
+            <li><a href="#">Summary</a></li>
+          </ul> -->
+       </li>
+       {% endif %}
+        {% if perms.core.can_view_sales_order %}
 
         <li class="">
-          <a href="{% url 'contact_category' %}"><i class="fa fa-link"></i> <span>Contact  Category</span></a>
-        </li>
-         <li class="heading">
-          <a href="{% url 'public_contact_list' %}"><i class="fa fa-link"></i> <span>Contact</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="9081-YBIDCARD-PAYPAL.html"><i class="fa fa-link"></i> <span>Paypal</span>
+          <a href="{% url 'sales_data' %}"><i class="fa fa-link"></i> <span>Sals Data</span>
             <!-- <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span> -->
@@ -324,9 +289,53 @@
             <li><a href="#">Summary</a></li>
           </ul> -->
         </li>
-       
+        {% endif %}
+        {% if perms.core.can_view_order_history %}
+        <li class="">
+          <a href="{% url 'admin_order_history' %}"><i class="fa fa-link"></i> <span>Order History</span>
+            <!-- <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span> -->
+          </a>
+         <!--  <ul class="treeview-menu">
+            <li><a href="#">Summary</a></li>
+          </ul> -->
+        </li>
+        {% endif %}
+      <!--   <li class="">
+          <a href="{% url 'product_list' %}"><i class="fa fa-link"></i> <span>Product</span>
+      
+          </a>
+     
+        </li>
+        <li class="">
+          <a href="9034-YBIDCARD-ORDER-HISTORY.html"><i class="fa fa-link"></i> <span>Add Product</span>
 
+          </a>
+    
+        </li>
+     
+        <li class="">
+          <a href="9041-YBIDCARD-PRODUCT-LIST.html"><i class="fa fa-link"></i> <span>Product List</span>
 
+          </a>
+
+        </li>
+ -->
+
+        {% if perms.core.can_view_contact_category %}
+        <li class="">
+          <a href="{% url 'contact_category' %}"><i class="fa fa-link"></i> <span>Contact  Category</span></a>
+        </li>
+        {% endif %}
+        {% if perms.core.can_view_contact %}
+         <li class="heading">
+          <a href="{% url 'public_contact_list' %}"><i class="fa fa-link"></i> <span>Contact</span>
+          </a>
+        </li>
+        {% endif %}
+      
+      
       </ul>
       <!-- /.sidebar-menu -->
     </section>
