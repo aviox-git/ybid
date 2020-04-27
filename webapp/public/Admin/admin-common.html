@@ -108,9 +108,6 @@
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">Wellcome, {{request.user.username}}<br>
-        <span>Your last login was:{{request.user.last_login}}</span>
-        </li>
         <!-- Optionally, you can add icons to the links -->
         {% if perms.core.can_view_home %}
          <li class="">

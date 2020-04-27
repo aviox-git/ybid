@@ -26,7 +26,6 @@ def todaydate(request):
 
 
 class AdminSummary(StaffUserOnly,View):
-	# permission_required = "auth.view_user"
 	template_name = 'admin-summary.html'
 	def get(self,request,*args, **kwargs):
 		return render(request,self.template_name,locals())
@@ -118,6 +117,7 @@ class EditWebAppUsers(StaffUserOnly,View):
 
 
 class AddWebAppUsers(StaffUserOnly,TemplateView):
+	template_name = 'admin_add_web_user.html'
 	def get(self,request,*args, **kwargs):
 		print(request.user)
 		return render(request,self.template_name,{})

@@ -153,12 +153,12 @@ class ConfirmEmail(View):
 			current_site =  request.build_absolute_uri('/')
 			public =  getPublic_Config(request)
 			public_logo = (public['public_logo'])
-
+			site_name = public['public_site_name']
 			static_url = settings.STATIC_URL
 			content_html = render_to_string('email_successfully_register.html',locals())
 			recipients = [user.email]
 			email_from = settings.EMAIL_HOST_USER
-			subject = "successfully register"
+			subject = site_name.upper() + ' - SUCCESSFULLY-REGISTER'
 			send_status = mailSend(subject, recipients, html_message=content_html)	
 			login(request, user,backend='django.contrib.auth.backends.ModelBackend')
 			return HttpResponseRedirect("/")

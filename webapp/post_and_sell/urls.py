@@ -7,7 +7,7 @@ urlpatterns = [
 	path('my-order-history', PublicOrderHistory.as_view(), name='public_order_history'),
 	path('multiple-events',Events.as_view(), name='multiple_events'),
 	path('product-list',AdminProductView.as_view(), name='product_list'),
-	path('price-and-price',AdminPriceAndFee.as_view(), name='price_and_fee'),
+	path('price-and-fee',AdminPriceAndFee.as_view(), name='price_and_fee'),
 	path('admin-manage-postings',AdminManagePostings.as_view(), name='admin_manage_postings'),
 
 ]

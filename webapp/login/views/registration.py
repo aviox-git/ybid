@@ -106,7 +106,7 @@ class PublicRegistration(View):
 				
 				recipients = [email]
 				email_from = settings.EMAIL_HOST_USER
-				subject = "Email verification"
+				subject = site_name.upper() + ' - EMAIL-VERIFICATION'
 				send_status = mailSend(subject, recipients, html_message = content_html)
 				link = 'email_verification/'+str(user.pk)
 
@@ -150,7 +150,7 @@ class EmailVerification(View):
 		
 		recipients = [user.email]
 		email_from = settings.EMAIL_HOST_USER
-		subject = "Email verification"
+		subject = site_name.upper() + ' - EMAIL-VERIFICATION'
 		send_status = mailSend(subject, recipients, html_message=content_html)
 		if send_status:
 			messages.success(request,'Please check your email account for verification email.')
